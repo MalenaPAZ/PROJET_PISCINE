@@ -3,6 +3,12 @@
 //saisir les données du formulaire
 $login = isset($_POST["login"])? $_POST["login"] : "";
 $mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";
+$nom = isset($_POST["nom"])? $_POST["nom"] : "";
+$prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";
+$specialite = isset($_POST["specialite"])? $_POST["specialite"] : "";
+$email = isset($_POST["email"])? $_POST["email"] : "";
+$tel = isset($_POST["telephone"])? $_POST["telephone"] : "";
+
 
 //identifier BDD
 $database = "omnes sante";
@@ -12,7 +18,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 //*************************************
 
 
-// si bouton1 (Rechercher) est cliqué
+/*// si bouton1 (Rechercher) est cliqué
 if (isset($_POST["button1"])){
 if ($db_found) {
 //commencer le query
@@ -23,7 +29,7 @@ $sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$mdp%'";
 //on cherche ce livre par son auteur aussi
 /*if ($mdp != "") {
 $sql .= " AND Mdp LIKE '%$mdp%'";
-}*/
+}
 }
 $result = mysqli_query($db_handle, $sql);
 //regarder s'il y a des resultats
@@ -36,15 +42,15 @@ echo "/// Compte trouvé";
 } else {
 echo "<p>Database not found.</p>";
 }
-} //end Rechercher
+} //end Rechercher*/
 
 
 
 //si le bouton2 (Ajouter) est cliqué
-if (isset($_POST["button2"]))   {
+if (isset($_POST["Creer"]))   {
     if ($db_found) {
     //on cherche l'ADMIN
-    $sql = "SELECT * FROM admin ";
+    $sql = "SELECT * FROM medecin ";
     //avec son LOGIIN ET MDP
     if (($login != "")&& ($mdp != "")) {
     $sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$mdp%'";
@@ -54,9 +60,11 @@ if (isset($_POST["button2"]))   {
     if (mysqli_num_rows($result) != 0) {
     echo "<p>Compte already exists. Duplicates not allowed.</p>";
     } else {
+
+        if($specialite == "Géneraliste"){$spe = 0;}else $spe = 1;
     //on ajoute ce compte
-    $sql = "INSERT INTO admin (Mdp, Login)
-     VALUES('$mdp', '$login')";
+    $sql = "INSERT INTO admin (Nom, Prenom, Login, Mdp, Login, Specialiste, Email, Tel, Specialite, Photo)
+     VALUES('$nom','$prenom','$mdp', '$login','$spe','$email','$tel','$specialite','medecin.png')";
     $result =mysqli_query($db_handle, $sql);
         if($result)
         {
@@ -67,9 +75,9 @@ if (isset($_POST["button2"]))   {
             }    
     
     
-}}}
+}}else echo "WTF";}
 
-
+/*
 
 //si le bouton3 (Supprimer) est cliqué
 if (isset($_POST["button3"])) {
@@ -103,7 +111,7 @@ if (isset($_POST["button3"])) {
             }    
     //on affiche le reste des livres dans notre BDD
     
-}}}
+}}}*/ >
 
 
 
