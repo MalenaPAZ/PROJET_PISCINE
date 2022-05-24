@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Introduction au PHP</title>
+<title>Login</title>
+<link href="Login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<form action="Login.php" method="post">
 
+<h1 align="center">Se connecter</h1>
 <tr>
-<td>Login:</td>
-<td><input type="text" name="login"></td>
-</tr>
-<tr>
-<td>Mdp:</td>
-<td><input type="password" name="mdp"></td>
-</tr>
+    <div class="button-images" >
+        <div class="one_fourth">
+        	<div class="button-container">
+       		  <a href="Loginmedecin.html">Medecin</a>
+                 <img src="medecin.png">
+            </div>
+        </div>    
+          <div class="one_fourth">
+        	<div class="button-container">
+       		  <a href="Loginmedecin.html">Patient</a>
+           		<img src="Patient.png" />
+            </div>
+        </div>
+           <div class="one_fourth">
+        	<div class="button-container">
+       		  <a href="#">Administrateur</a>
+          <div class="button-image"> 		<img src="Admin.png"/></div>
+            </div>
+        </div>
+    </tr>  
+           
+	<div class="clearboth"></div>
+    </div>
+    <tr><h1 align="center">Creer un compte</h1></tr>
 
-<tr>
-    <td colspan="2" align="center">
-    <input type="submit" name="button1" value="Rechercher">
-   
-    <input type="submit" name="button2" value="Ajouter">
-    <input type="submit" name="button3" value="Supprimer">
-    </td>
-    </tr>
+    <tr>
+        <div class="button-images" align="center" >
+            <div class="one_fourth">
+                <div class="button-container">
+                     <a href="Loginmedecin.html">Medecin</a>
+                     <img src="medecin.png">
+                </div>
+            </div>    
+              <div class="one_fourth">
+                <div class="button-container">
+                     <a href="Loginmedecin.html">Patient</a>
+                       <img src="Patient.png" />
+                </div>
+            </div>
+               
+        </tr>  
+               
+        <div class="clearboth"></div>
+        </div>
 </form>
 </body>
 </html>
