@@ -35,3 +35,6 @@ echo "Compte trouvé";
 echo "<p>Database not found.</p>";
 }
 } //end Rechercher
+
+
+
