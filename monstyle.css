@@ -7,6 +7,17 @@
     padding: 5px;
 }
 
+.logo1{
+    right: 32%;
+    position: absolute;
+    bottom: 81%; 
+}
+.logo{
+    right: 32%;
+    position: absolute;
+    bottom: 81%; 
+    margin: 5px;  
+}
 
 #nav{
     background-color: white; 
@@ -23,29 +34,77 @@
     color:black;
     width: 100%;
     float :right;
-    height: 400px;
+    height: 830px;
+    text-align: center;
+    padding: 5px;
+}
+
+#event{
+    text-align: start;
+}
+
+#medecingéné{
+    background-color: white;
+    color:black;
+    width: 100%;
+    float :right;
+    height: 600px;
     text-align: center;
     padding: 5px;
 }
 
 #footer{
-    background-color: white;
     color:black;
     width: 100%;
     float :right;
     text-align: center;
     clear: both;
-    padding: 5px;
+    padding: 25px;
+    position: absolute;
 }
 
+#footer1{
+    color:black;
+    width: 100%;
+    float :right;
+    clear: both;
+    padding: 15px;
+    position: absolute;
+}
 
+#medecin{
+    float: right;
+    
+}
 
 #tableau {
-    background-color: rgb(23, 178, 209);
+    background-color: rgb(45, 141, 220);
     float: left;
     
 }
 
 #map{
-    right: 50%;
+    float: right;
+    padding: 15px;
+
+}
+
+
+
+input {
+    width : 250px;
+    height: 100;
+    margin: 5px;
+    padding: 10px;
+    color :black;
+    position: relative;
+}
+
+#retour{
+    background-color: red;
+    float :right
+}
+
+#rdv{
+    background-color: rgb(118, 206, 118);
 }
