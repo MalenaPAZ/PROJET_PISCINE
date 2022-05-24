@@ -5,8 +5,14 @@
     float: left;
     text-align: center;
     padding: 5px;
+    font-size: large;
 }
 
+.logo {
+    right: 37%;
+    padding-left: 10px;
+    position: absolute;
+}
 
 #nav{
     background-color: white; 
@@ -26,16 +32,15 @@
     height: 400px;
     text-align: center;
     padding: 5px;
+    padding-bottom: 350px;
 }
 
 #footer{
-    background-color: white;
     color:black;
     width: 100%;
     float :right;
     text-align: center;
     clear: both;
-    padding: 5px;
 }
 
 
@@ -43,9 +48,9 @@
 #tableau {
     background-color: rgb(23, 178, 209);
     float: left;
-    
 }
 
 #map{
     right: 50%;
+
 }
