@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="CreerCompte.css" />
+  <title>Pique-nique Multi-associations</title>
+</head>
+<body>
+
+<h1>Creer un compte</h1>
+<h2>Inscriptions</h2>
+<form action="LoginMed.php" method="post">
+    <p>
+        <label for="nom" class="left">Nom :</label> 
+        <input name="nom" id="nom" type="text" size="30" maxlength="30" />
+      </p>
+
+  <p>
+    <label for="prenom" class="left">Prénom :</label> 
+    <input name="prenom" id="prenom" type="text" size="30" maxlength="30" />
+  </p>
+
+  <p>
+    <label for="login" class="left">Login :</label> 
+    <input name="login" id="login" type="text" size="30" maxlength="30" />
+  </p>
+ 
+    <p>
+    <label for="motdepasse" class="left">Mot de passe : </label>
+    <input name="motdepasse" id="motdepasse" type="password" size="30" maxlength="30" />
+  </p>
+  <p>  
+    <label for="Specialite" class="left">Spécialité :</label> 
+    <select name="Specialite" id="Specialite">
+      <option value="1">Géneraliste</option>
+      <option value="2">Addictologie</option>
+      <option value="3">Andrologie</option>
+      <option value="4">Cardiologie</option>
+      <option value="5">Dertmatologie</option>
+      <option value="6">Gynécologie</option>
+      <option value="7">I.S.T</option>
+      <option value="8">Ostéopathie</option>
+      <option value="9">Gastro-blablabla</option>
+      
+    </select>
+  </p>
+  <p>
+    <label for="email" class="left">Email :</label> 
+    <input name="email" id="email" type="text" size="30" maxlength="30" />
+  </p>
+
+  <p>
+    <label for="telephone" class="left">Téléphone :</label> 
+    <input name="telephone" id="telephone" type="text" size="30" maxlength="30" />
+  </p>
+
