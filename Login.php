@@ -15,21 +15,21 @@ if (isset($_POST["button1"])){
 if ($db_found) {
 //commencer le query
 $sql = "SELECT * FROM admin";
-if ($login != "") {
+if (($login != "") && ($mdp != "")) {
 //on recherche le livre par son titre
-$sql .= " WHERE Login LIKE '%$login%'";
+$sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$mdp%'";
 //on cherche ce livre par son auteur aussi
-if ($mdp != "") {
+/*if ($mdp != "") {
 $sql .= " AND Mdp LIKE '%$mdp%'";
-}
+}*/
 }
 $result = mysqli_query($db_handle, $sql);
 //regarder s'il y a des resultats
 if (mysqli_num_rows($result) == 0) {
 echo "<p>Incorrect</p>";
 } else {
-
-echo "Compte trouvé";
+echo "Num : " . mysqli_num_rows($result);
+echo "/// Compte trouvé";
 }
 } else {
 echo "<p>Database not found.</p>";
