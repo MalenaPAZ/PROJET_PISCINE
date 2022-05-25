@@ -9,18 +9,15 @@ max-width: 950px;
 margin: 75px auto;
 
 
-
-
   
 }
 
 .button-container {
 position: relative;
 text-align: center;
-padding: 10;
+padding: 0;
 border-radius:50%; 
 overflow:hidden; 
-
 }
 
 
@@ -62,8 +59,6 @@ overflow:hidden;
   opacity:0;
 }
 .button-container img{width:100%; height:auto; display:block}
-
-
 
 
 /*Columns*/
@@ -123,6 +118,90 @@ font-size: 0;
 height: 0;
 line-height: 0;
 width: 100%;
+}
+
+.spacer {
+height: 15px;
+}
+
+.one_half .one_half {
+margin-right: 8.3333%;
+width: 45.8333%;
+}
+
+.one_half .one_third {
+margin-right: 8.3333%;
+width: 27.7778%;
+}
+
+.one_half .two_third {
+margin-right: 8.3333%;
+width: 63.8889%;
+}
+
+.two_third .one_third {
+margin-right: 6.1224%;
+width: 29.2517%;
+}
+
+.two_third .two_third {
+margin-right: 6.1224%;
+width: 64.6258%;
+}
+
+.two_third .one_fourth {
+margin-right: 6.1224%;
+width: 20.4082%;
+}
+
+.one_half, .two_fourth {
+width: 48%;
+}
+
+.one_third, .two_sixth {
+width: 30.6666%;
+}
+
+.two_third, .four_sixth {
+width: 65.3332%;
+}
+
+
+
+
+body{
+	width: 1000px;
+}
+h1{
+	color:black;
+	padding-left: 200px;
+	font-weight:bold;
+	text-align: center;
+}
+h2{
+	color:orange;
+	padding-left: 200px;
+	font-weight:bold;
+	text-align: center;
+}
+form{
+  
+	border: 1px solid orange;
+	padding:10px;
+	background-color:orange;
+  padding-left: 300px;
+  
+}
+p{
+	width:400px;
+	padding-left: 305px;
+	text-align: left;
+	vertical-align: top;
+}
+label.left{
+	float: left;
+	margin-left: -305px;
+	font-weight:bold;
 }
 
 
