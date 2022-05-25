@@ -29,21 +29,6 @@
     <label for="motdepasse" class="left">Mot de passe : </label>
     <input name="motdepasse" id="motdepasse" type="password" size="30" maxlength="30" />
   </p>
-  <p>  
-    <label for="Specialite" class="left">Spécialité :</label> 
-    <select name="Specialite" id="Specialite">
-      <option value="1">Géneraliste</option>
-      <option value="2">Addictologie</option>
-      <option value="3">Andrologie</option>
-      <option value="4">Cardiologie</option>
-      <option value="5">Dertmatologie</option>
-      <option value="6">Gynécologie</option>
-      <option value="7">I.S.T</option>
-      <option value="8">Ostéopathie</option>
-      <option value="9">Gastro-blablabla</option>
-      
-    </select>
-  </p>
   <p>
     <label for="email" class="left">Email :</label> 
     <input name="email" id="email" type="text" size="30" maxlength="30" />
@@ -53,6 +38,60 @@
     <label for="telephone" class="left">Téléphone :</label> 
     <input name="telephone" id="telephone" type="text" size="30" maxlength="30" />
   </p>
+  
+  
+  <br><br><br>
+
+  <form2 action="CreerPatient.php" method="post">
+
+    <p>
+        <p>
+            <label for="ville" class="left">Ville :</label> 
+            <input name="ville" id="ville" type="text" size="30" maxlength="30" />
+          </p>
+          <p>
+        <label for="adresse" class="left">Adresse :</label> 
+        <input name="adresse" id="adresse" type="text" size="30" maxlength="30" />
+      </p>
+
+      <p>
+        <label for="codepostal" class="left">Code Postal :</label> 
+        <input name="codepostal" id="codepostal" type="text" size="30" maxlength="30" />
+      </p>
+
+      
+      <p>
+        <label for="pays" class="left">Pays:</label> 
+        <input name="pays" id="pays" type="text" size="30" maxlength="30" />
+      </p>
+
+      <p>
+        <label for="numcartevitale" class="left">Numéro de carte vitale:</label> 
+        <input name="numcartevitale" id="numcartevitale" type="text" size="30" maxlength="30" />
+      </p>
+      <p>  
+        <label for="SpecialitePref" class="left">Spécialité préferée:</label> 
+        <select name="SpecialitePref" id="SpecialitePref">
+          <option value="rien">Aucune</option>
+          <option value="Géneraliste">Géneraliste</option>
+          <option value="Addictologie">Addictologie</option>
+          <option value="Andrologie">Andrologie</option>
+          <option value="Cardiologie">Cardiologie</option>
+          <option value="Dertmatologie">Dertmatologie</option>
+          <option value="Gynécologie">Gynécologie</option>
+          <option value="I.S.T">I.S.T</option>
+          <option value="Ostéopathie">Ostéopathie</option>
+          <option value="Gastro">Gastro-blablabla</option>
+          
+        </select>
+      </p>
+
+      <label for="avatar">Choose a profile picture:</label>
+
+        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+       <br><br>
+
+  <input type="submit" name="Creer" value="Creer">
 
 
 

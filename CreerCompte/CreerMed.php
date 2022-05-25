@@ -5,7 +5,7 @@ $login = isset($_POST["login"])? $_POST["login"] : "";
 $mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";
 $nom = isset($_POST["nom"])? $_POST["nom"] : "";
 $prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";
-$specialite = isset($_POST["specialite"])? $_POST["specialite"] : "";
+$specialite = isset($_POST["Specialite"])? $_POST["Specialite"] : "";
 $email = isset($_POST["email"])? $_POST["email"] : "";
 $tel = isset($_POST["telephone"])? $_POST["telephone"] : "";
 
@@ -61,18 +61,24 @@ if (isset($_POST["Creer"]))   {
     echo "<p>Compte already exists. Duplicates not allowed.</p>";
     } else {
 
-        if($specialite == "Géneraliste"){$spe = 0;}else $spe = 1;
+        if(isset($_POST["specialite"]) == "Generaliste"){$spe = FALSE;}else $spe = TRUE;
     //on ajoute ce compte
-    $sql = "INSERT INTO admin (Nom, Prenom, Login, Mdp, Login, Specialiste, Email, Tel, Specialite, Photo)
-     VALUES('$nom','$prenom','$mdp', '$login','$spe','$email','$tel','$specialite','medecin.png')";
+    $sql = "INSERT INTO medecin(Nom, Prenom, Login, Mdp, Specialiste, Email, Tel, Specialite, Photo)
+     VALUES('$nom','$prenom','$login','$mdp','$spe','$email','$tel','$specialite', 'medecin.png')";
+     
+
     $result =mysqli_query($db_handle, $sql);
         if($result)
         {
             echo "Insert Sucessful";
         }
         else {
+            
             echo "Unable to insert";
-            }    
+            }  
+            
+            
+            
     
     
 }}else echo "WTF";}
@@ -111,7 +117,7 @@ if (isset($_POST["button3"])) {
             }    
     //on affiche le reste des livres dans notre BDD
     
-}}}*/ >
+}}}*/ 
 
 
 
