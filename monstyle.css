@@ -2,26 +2,24 @@
     background-color: white;
     color:blue;
     width: 100%;
-    float: left;
     text-align: center;
     padding: 5px;
     font-size: large;
+    padding-bottom: 27px;
 }
 
 .logo {
-    right: 37%;
-    padding-left: 10px;
+    right: 35%;
     position: absolute;
+    bottom: 82%;
 }
 
 #nav{
     background-color: white; 
     color:black;
     width: 100%;
-    float :left;
     text-align: center;
     padding: 5px;
-    
 }
 
 #section{
@@ -29,10 +27,9 @@
     color:black;
     width: 100%;
     float :right;
-    height: 400px;
+    height: 720px;
     text-align: center;
     padding: 5px;
-    padding-bottom: 350px;
 }
 
 #footer{
@@ -43,7 +40,9 @@
     clear: both;
 }
 
-
+#event {
+    text-align: start;
+}
 
 #tableau {
     background-color: rgb(23, 178, 209);
@@ -52,5 +51,4 @@
 
 #map{
     right: 50%;
-
 }
