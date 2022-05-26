@@ -22,6 +22,8 @@ $database = "omnes sante";
 if (isset($_POST["button1"])) {
 //traitement
 if ($db_found) {
+    $_SESSION["login"] = $login;
+    $_SESSION["mdp"] =  $mdp;
 
 $sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
  Mdp LIKE '$mdp'";
@@ -39,16 +41,13 @@ if (mysqli_num_rows($result) == 0)
             echo "Compte incorrect";
 
         } else { 
-            $_SESSION["login"] = $data['Login'];
-            $_SESSION["mdp"] =  $data['Mdp'];
+            
             header("Location: accueilAdmin.php");}//si admin
     }else { 
-        $_SESSION["login"] = $data['Login'];
-        $_SESSION["mdp"] =  $data['Mdp'];
+        
         header("Location: accueilMed.php");}//si medecin
 }else { 
-    $_SESSION["login"] = $data['Login'];
-    $_SESSION["mdp"] = $data['Mdp'];
+    
     header("Location: accueilPat.php");}//si patient
 } 
 echo "BDD not found";

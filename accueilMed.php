@@ -1,11 +1,24 @@
 <?php
 
-
-
+// Start the session
+session_start();
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
+$login = $_SESSION["login"];
+$mdp = $_SESSION["mdp"];
+
+$sql = "SELECT * FROM medecin WHERE Login LIKE '$login' AND
+ Mdp LIKE '$mdp'";
+$result = mysqli_query($Connexion,$sql);
+while($data = mysqli_fetch_assoc($result)){
+
+    $id = $data['ID'];
+    $nom = $data['Nom'];
+    $prenom = $data['Prenom'];
+}
+
 
 ?>
 
@@ -17,7 +30,7 @@ if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
   <head>
 
-    <title>Accueil med</title>
+    <title>Accueil Patient</title>
 
     <!--Required meta tags-->
 
@@ -95,11 +108,15 @@ if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
                 <ul>      
 
-                  <a class="nav-item nav-link" href="ConnexionAdmin.html">
+                <div class="col-sm">
+                <?php echo $nom. ' '. $prenom ?>
+                        </div>
 
-                    Connexion <img id = "user" src="../Icon/32/user-2.png" alt="User" width="32" id="imgECE">
+                        <div class="col-sm">
+                <?php echo "ID : " . $id ?>
+                        </div>
 
-                  </a>
+                  
 
               </ul>
 
@@ -120,77 +137,8 @@ if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
-
-$sql = "SELECT * FROM medecin WHERE Specialite LIKE '$spe'";
-$result = mysqli_query($Connexion,$sql);
-
- while($data = mysqli_fetch_assoc($result)){
-
-    $prenom = $data['Prenom'];
-    $nom = $data['Nom'];
-    $tel = $data['Tel'];
-    $email = $data['Email'];
-    $photo = $data['Photo'];
-    
-        
-        
-
-    
-   echo'<div class="Enseignants">';
-               echo' <div class="row">';
-                
-                        echo '<div class="PhotoID">';
-                           echo' <a href="#"><img class="image" src="'.$data['Photo'].'" alt="Photo profil" width ="200" height="200"/></a>';
-                       echo'</div>';
-                 
-                    echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-                        echo'<h2 href=""> Dr.'. $data['Nom'] .'   '.$data['Prenom'] . '</h2>';
-                        echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                               echo'<p>Salle : EM015</p>';
-                            echo'</div>';
-                           
-                        echo'</div>';
-                       echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                                echo'<p>Telephone : '. $data['Tel'].'</p>';
-                            echo'</div>';
-                            
-                        echo '</div>';
-
-                        echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                                echo'<p>Email : '.$data['Email'].' </p>';
-                           echo'</div>';
-                            
-                        echo'</div>';
-                        echo'<div class="col-sm">';
-                        echo'<div class="row" >';
-
-                        
-
-                        
-
-                        echo'<div class="btn-group" role="group" aria-label="Basic example">';
-                        echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom='.$data['Nom'].'& prenom='.$data['Prenom'].'">Disponibilité</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
-                        echo'</div>';
-                        
-                        echo'</div></div>';
-                        echo'</div>';
-
-                       
-
-                        echo'</div>';
-                        echo'</div>';
-}
+echo "login: ".$_SESSION["login"]." mdp: " . $_SESSION["mdp"]. "//";
 ?>
-
-            
-        </div>
-
-        <a role="button" class="btn btn-light" href="accueil.html">Retour</a>
 
         
 

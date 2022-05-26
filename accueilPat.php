@@ -1,11 +1,23 @@
 <?php
 
-
+// Start the session
+session_start();
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
+$login = $_SESSION["login"];
+$mdp = $_SESSION["mdp"];
 
+$sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
+ Mdp LIKE '$mdp'";
+$result = mysqli_query($Connexion,$sql);
+while($data = mysqli_fetch_assoc($result)){
+
+    $id = $data['IDpatient'];
+    $nom = $data['NomPatient'];
+    $prenom = $data['PrenomPatient'];
+}
 
 
 ?>
@@ -96,11 +108,15 @@ if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
                 <ul>      
 
-                  <a class="nav-item nav-link" href="ConnexionAdmin.html">
+                <div class="col-sm">
+                <?php echo $nom. ' '. $prenom ?>
+                        </div>
 
-                    Connexion <img id = "user" src="../Icon/32/user-2.png" alt="User" width="32" id="imgECE">
+                        <div class="col-sm">
+                <?php echo "ID : " . $id ?>
+                        </div>
 
-                  </a>
+                  
 
               </ul>
 
