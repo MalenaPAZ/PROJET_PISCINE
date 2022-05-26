@@ -1,23 +1,12 @@
 <?php
 
 
-
+$spe = $_GET['spe'];
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM medecin";
-$result = mysqli_query($Connexion,$sql);
-
- while($data = mysqli_fetch_assoc($result)){
-
-    $prenom = $data['Prenom'];
-    $nom = $data['Nom'];
-    $tel = $data['Tel'];
-    $email = $data['Email'];
-    $photo = $data['Photo'];
-}
 ?>
 
 
@@ -132,7 +121,7 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM medecin";
+$sql = "SELECT * FROM medecin WHERE Specialite LIKE '$spe'";
 $result = mysqli_query($Connexion,$sql);
 
  while($data = mysqli_fetch_assoc($result)){
@@ -141,7 +130,6 @@ $result = mysqli_query($Connexion,$sql);
     $nom = $data['Nom'];
     $tel = $data['Tel'];
     $email = $data['Email'];
-    $salle = $data['Salle'];
     $photo = $data['Photo'];
     
         
@@ -159,7 +147,7 @@ $result = mysqli_query($Connexion,$sql);
                         echo'<h2 href=""> Dr.'. $data['Nom'] .'   '.$data['Prenom'] . '</h2>';
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                               echo'<p>Salle : '. $data['Salle'].'</p>';
+                               echo'<p>Salle : EM015</p>';
                             echo'</div>';
                            
                         echo'</div>';
