@@ -1,4 +1,9 @@
 <?php
+
+// Start the session
+session_start();
+
+
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
@@ -39,7 +44,7 @@ $result = mysqli_query($Connexion,$sql);
     <link href="MedGene.css" rel="stylesheet" type="text/css"/>
 
   </head>
-
+        
  
 
   <body>
@@ -123,97 +128,81 @@ $result = mysqli_query($Connexion,$sql);
         <div id="SectionEnseignants">
         
         
-            
+        <?php
+$Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
+//Verifier connexion
+if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-            <div class="Enseignants">
+$sql = "SELECT * FROM medecin";
+$result = mysqli_query($Connexion,$sql);
 
-                <div class="row">
+ while($data = mysqli_fetch_assoc($result)){
 
-                    <div class="col-sm">
-
-                        <div class="PhotoID">
-
-                            <img class="cropped2" src="medecin12.png" alt="logoEdu" id="imgECE">
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->
-
-                        <h2 href="#"> <?php echo $prenom?> <?php echo$nom;?> </h2>
-
-                        <div class="row">
-
-                            <div class="col-sm">
-
-                                <p>Salle : </p>
-
-                            </div>
-
-                            <div class="col-sm">
-
-                                <p>EM015 </p>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-sm">
-
-                                <p>Telephone : </p>
-
-                            </div>
-
-                            <div class="col-sm">
-
-                                <p><?php echo $tel;?></p>
-
-                            </div>
-
-                            
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-sm">
-
-                                <p>Email : </p>
-
-                            </div>
-
-                            <div class="col-sm">
-
-                                <p><?php echo $email;?></p>
-
-                            </div>  
-
-                        </div>
-
-                        <div class="col-sm">
-                        <div class="row" >
-
-                        <a class="btn btn-outline-light my-2 my-sm-0" type="submit"href="#">Prendre RDV</a><br>
-
-                        <a class="btn btn-outline-light my-2 my-sm-0" type="submit"href="#">Contacter</a><br>
-
-                        <a class="btn btn-outline-light my-2 my-sm-0" type="submit"href="#">Voir son CV</a>
-
-                    </div></div>
-
-                    </div>
-
-                    
-
-                </div>
-                
-
-            </div>
+    $prenom = $data['Prenom'];
+    $nom = $data['Nom'];
+    $tel = $data['Tel'];
+    $email = $data['Email'];
+    $photo = $data['Photo'];
+    
+        // Set session variables (variables globales)
+        $_SESSION["NomMedecin"] = $data['Nom'];
+        $_SESSION["PrenomMedecin"] = $data['Prenom'];
         
 
+    
+   echo'<div class="Enseignants">';
+               echo' <div class="row">';
+                
+                        echo '<div class="PhotoID">';
+                           echo' <a href="#"><img class="image" src="'.$data['Photo'].'" alt="Photo profil" width ="200" height="200"/></a>';
+                       echo'</div>';
+                 
+                    echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
+                        echo'<h2 href="">' . $data['Prenom'] .'   '.$data['Nom'] . '</h2>';
+                        echo'<div class="row">';
+                            echo'<div class="col-sm">';
+                               echo'<p>Salle : EM015</p>';
+                            echo'</div>';
+                           
+                        echo'</div>';
+                       echo'<div class="row">';
+                            echo'<div class="col-sm">';
+                                echo'<p>Telephone : '. $data['Tel'].'</p>';
+                            echo'</div>';
+                            
+                        echo '</div>';
+
+                        echo'<div class="row">';
+                            echo'<div class="col-sm">';
+                                echo'<p>Email : '.$data['Email'].' </p>';
+                           echo'</div>';
+                            
+                        echo'</div>';
+                        echo'<div class="col-sm">';
+                        echo'<div class="row" >';
+
+                        echo '<form action="AfficheMed.php" method="post">';
+
+                        $prenom = $data['Prenom'];
+                        $nom = $data['Nom'];
+
+                        echo'<div class="btn-group" role="group" aria-label="Basic example">';
+                        echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php">Disponibilité</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
+                        echo'</div>';
+                        
+                        echo'</div></div>';
+                        echo'</div>';
+
+                       
+
+                        echo'</div>';
+                        echo'</div>';
+}
+?>
+
+            
         </div>
 
         
