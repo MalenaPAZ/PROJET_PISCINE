@@ -1,7 +1,6 @@
 <?php
 
-// Start the session
-session_start();
+
 
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
@@ -144,9 +143,7 @@ $result = mysqli_query($Connexion,$sql);
     $email = $data['Email'];
     $photo = $data['Photo'];
     
-        // Set session variables (variables globales)
-        $_SESSION["NomMedecin"] = $data['Nom'];
-        $_SESSION["PrenomMedecin"] = $data['Prenom'];
+        
         
 
     
@@ -181,13 +178,12 @@ $result = mysqli_query($Connexion,$sql);
                         echo'<div class="col-sm">';
                         echo'<div class="row" >';
 
-                        echo '<form action="AfficheMed.php" method="post">';
+                        
 
-                        $prenom = $data['Prenom'];
-                        $nom = $data['Nom'];
+                        
 
                         echo'<div class="btn-group" role="group" aria-label="Basic example">';
-                        echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php">Disponibilité</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom='.$data['Nom'].'& prenom='.$data['Prenom'].'">Disponibilité</a>';
                         echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
                         echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
                         echo'</div>';
@@ -204,6 +200,8 @@ $result = mysqli_query($Connexion,$sql);
 
             
         </div>
+
+        <a role="button" class="btn btn-light" href="accueil.html">Retour</a>
 
         
 
