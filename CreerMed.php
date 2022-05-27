@@ -71,6 +71,7 @@ if (isset($_POST["Creer"]))   {
         if($result)
         {
             echo "Insert Sucessful";
+            header("Location : accueilAdmin.php");
         }
         else {
             

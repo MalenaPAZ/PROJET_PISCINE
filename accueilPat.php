@@ -111,11 +111,7 @@ while($data = mysqli_fetch_assoc($result)){
                 <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
               </ul>
             </li>
-            <div class="col-sm">
-                <?php echo $nom. ' '. $prenom ?>
-                <?php echo "ID : " . $id ?>
-                        </div>
-
+            
                         
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
