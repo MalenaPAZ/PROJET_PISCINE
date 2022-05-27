@@ -1,37 +1,42 @@
 <?php
 
-
+// Start the session
 session_start();
-$loginpatient = $_SESSION["login"];
-$mdppatient = $_SESSION["mdp"];
-echo "login : ".$loginpatient." , mdp : ".$mdppatient;
+$service = $_GET['service'];
+$login = $_SESSION["login"];
+$mdp = $_SESSION["mdp"];
+echo "login : ".$login." , mdp : ".$mdp;
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
- Mdp LIKE '$mdppatient'";
+
+$sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
+ Mdp LIKE '$mdp'";
 $result = mysqli_query($Connexion,$sql);
 while($data = mysqli_fetch_assoc($result)){
 
-    $idpatient = $data['IDpatient'];
-    $nompatient = $data['NomPatient'];
-    $prenompatient = $data['PrenomPatient'];
+    $id = $data['IDpatient'];
+    $nom = $data['NomPatient'];
+    $prenom = $data['PrenomPatient'];
 }
 
-$sql = "SELECT * FROM medecin";
+$sql = "SELECT * FROM service WHERE Servicelabo LIKE '$service'";
 $result = mysqli_query($Connexion,$sql);
+while($data = mysqli_fetch_assoc($result)){
 
- while($data = mysqli_fetch_assoc($result)){
-
-    $prenom = $data['Prenom'];
-    $nom = $data['Nom'];
-    $tel = $data['Tel'];
-    $email = $data['Email'];
-    $photo = $data['Photo'];
+    $salle = $data['Salle'];
+    $service1 = $data['Servicelabo'];
+    $infos = $data['Infos'];
 }
-echo "login : ".$nompatient." , mdp : ".$prenompatient;
+
+
+
+
+echo "login : ".$nom." , mdp : ".$prenom;
+echo "login : ".$salle." , mdp : ".$infos;
+
 ?>
 
 
@@ -122,31 +127,33 @@ echo "login : ".$nompatient." , mdp : ".$prenompatient;
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Ostéopathie">Ostéopathie</a></li>
                 </ul>
-                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
-                  <li><a href="ServicesP.php?service=Dépistage covid-19">Dépistage covid-19</a></li>
-                  <li><a href="ServicesP.php?service=Biologie préventive">Biologie préventive</a></li>
-                  <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
-                  <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
-                  <li><a href="ServicesP.php?service=Cancérologie">Cancérologie</a></li>
-                  <li><a href="ServicesP.php?service=Gynécologie">Gynécologie</a></li>
+                  <li><a href="ServiceP.php?service=Dépistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServiceP.php?service=Biologie préventive">Biologie préventive</a></li>
+                  <li><a href="ServiceP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
+                  <li><a href="ServiceP.php?service=Biologie de routine">Biologie de routine</a></li>
+                  <li><a href="ServiceP.php?service=Cancérologie">Cancérologie</a></li>
+                  <li><a href="ServiceP.php?service=Gynécologie">Gynécologie</a></li>
                 </ul>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
           <li><a class="nav-link scrollto" href="#departments">Rendez-vous</a></li>
           <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
+              
+                      
               <ul>
-               
                 <li><a href="#"><span>Mon compte</span></a>
-                <li class="dropdown"><a href="#"><span>Deconnexion</span></i></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
               </ul>
             </li>
             <div class="col-sm">
-                <?php echo $nompatient. ' '. $prenompatient ?>
-                <?php echo "ID : " . $idpatient ?>
+                <?php echo $nom. ' '. $prenom ?>
+                <?php echo "ID : " . $id ?>
                         </div>
+            
 
                         
         </ul>
@@ -166,20 +173,18 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM medecin";
+$sql = "SELECT * FROM service WHERE Servicelabo LIKE '$service'";
 $result = mysqli_query($Connexion,$sql);
 
- while($data = mysqli_fetch_assoc($result)){
+while($data = mysqli_fetch_assoc($result)){
 
-    $prenom = $data['Prenom'];
-    $nom = $data['Nom'];
-    $tel = $data['Tel'];
-    $email = $data['Email'];
-    $salle = $data['Salle'];
-    $photo = $data['Photo'];
+   $salle = $data['Salle'];
+   $service1 = $data['Service'];
+   $infos = $data['Infos'];
+
     
         
-        
+   echo "login : ".$salle." , mdp : ".$service1;
 
     
    echo'<div class="Enseignants">';
@@ -190,32 +195,23 @@ $result = mysqli_query($Connexion,$sql);
                        echo'</div>';
                  
                     echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-                        echo'<h2 href=""> Dr.'. $data['Nom'] .'   '.$data['Prenom'] . '</h2>';
+                        echo'<h2 href=""> Dr.'. $service1 . '</h2>';
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                               echo'<p>Salle : '. $data['Salle'].'</p>';
+                               echo'<p>Salle : '.$salle.'</p>';
                             echo'</div>';
                            
                         echo'</div>';
                        echo'<div class="row">';
                             echo'<div class="col-sm">';
-                                echo'<p>Telephone : '. $data['Tel'].'</p>';
+                                echo'<p>Infos : '. $info.'</p>';
                             echo'</div>';
                             
                         echo '</div>';
 
-                        echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                                echo'<p>Email : '.$data['Email'].' </p>';
-                           echo'</div>';
-                            
-                        echo'</div>';
+                        
                         echo'<div class="col-sm">';
                         echo'<div class="row" >';
-
-                        
-
-                        
 
                         echo'<div class="btn-group" role="group" aria-label="Basic example">';
                         echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom='.$data['Nom'].'& prenom='.$data['Prenom'].'">Disponibilité</a>';
@@ -230,6 +226,8 @@ $result = mysqli_query($Connexion,$sql);
 
                         echo'</div>';
                         echo'</div>';
+
+                        
 }
 ?>
 

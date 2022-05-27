@@ -2,12 +2,13 @@
 
 // Start the session
 session_start();
+$login = $_SESSION["login"];
+$mdp = $_SESSION["mdp"];
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
-$login = $_SESSION["login"];
-$mdp = $_SESSION["mdp"];
+
 
 $sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
  Mdp LIKE '$mdp'";
@@ -74,7 +75,7 @@ while($data = mysqli_fetch_assoc($result)){
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto " href="accueilPat.php">Accueil</a></li>
           <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
@@ -82,7 +83,7 @@ while($data = mysqli_fetch_assoc($result)){
               <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
-                  <li><a href="#MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Entérologie">Gastro-Hépato-Entérologie</a></li>
@@ -90,15 +91,15 @@ while($data = mysqli_fetch_assoc($result)){
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Ostéopathie">Ostéopathie</a></li>
                 </ul>
-              <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
-                  <li><a href="#">Dépistage covid-19</a></li>
-                  <li><a href="#">Biologie préventive</a></li>
-                  <li><a href="#">Biologie de la femme enceinte</a></li>
-                  <li><a href="#">Biologie de routine</a></li>
-                  <li><a href="#">Cancérologie</a></li>
-                  <li><a href="#">Gynécologie</a></li>
+                  <li><a href="ServicesP.php?service=Dépistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServicesP.php?service=Biologie préventive">Biologie préventive</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
+                  <li><a href="ServicesP.php?service=Cancérologie">Cancérologie</a></li>
+                  <li><a href="ServicesP.php?service=Gynécologie">Gynécologie</a></li>
                 </ul>
             </ul>
           </li>
@@ -558,6 +559,8 @@ while($data = mysqli_fetch_assoc($result)){
         
         <?php
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
+
+echo "login: ".$_SESSION["login"]." mdp: " . $_SESSION["mdp"]. "//";
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 echo "login: ".$_SESSION["login"]." mdp: " . $_SESSION["mdp"]. "//";

@@ -1,17 +1,16 @@
-
-
 <?php
 
 // Start the session
 session_start();
-
 $spe = $_GET['spe'];
+$login = $_SESSION["login"];
+$mdp = $_SESSION["mdp"];
+echo "login : ".$login." , mdp : ".$mdp;
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
-$login = $_SESSION["login"];
-$mdp = $_SESSION["mdp"];
+
 
 $sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
  Mdp LIKE '$mdp'";
@@ -23,7 +22,7 @@ while($data = mysqli_fetch_assoc($result)){
     $prenom = $data['PrenomPatient'];
 }
 
-
+echo "login : ".$nom." , mdp : ".$prenom;
 ?>
 
 
@@ -98,7 +97,7 @@ while($data = mysqli_fetch_assoc($result)){
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto " href="accueilPat.php">Accueil</a></li>
           <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
@@ -114,32 +113,33 @@ while($data = mysqli_fetch_assoc($result)){
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Ostéopathie">Ostéopathie</a></li>
                 </ul>
-              <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
-                  <li><a href="#">Dépistage covid-19</a></li>
-                  <li><a href="#">Biologie préventive</a></li>
-                  <li><a href="#">Biologie de la femme enceinte</a></li>
-                  <li><a href="#">Biologie de routine</a></li>
-                  <li><a href="#">Cancérologie</a></li>
-                  <li><a href="#">Gynécologie</a></li>
+                  <li><a href="ServiceP.php?service=Dépistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServiceP.php?service=Biologie préventive">Biologie préventive</a></li>
+                  <li><a href="ServiceP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
+                  <li><a href="ServiceP.php?service=Biologie de routine">Biologie de routine</a></li>
+                  <li><a href="ServiceP.php?service=Cancérologie">Cancérologie</a></li>
+                  <li><a href="ServiceP.php?service=Gynécologie">Gynécologie</a></li>
                 </ul>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
           <li><a class="nav-link scrollto" href="#departments">Rendez-vous</a></li>
           <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <ul>      
+              
+                      
               <ul>
                 <li><a href="#"><span>Mon compte</span></a>
-                <li class="dropdown"><a href="#"><span>Deconnexion</span></i></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
               </ul>
             </li>
             <div class="col-sm">
                 <?php echo $nom. ' '. $prenom ?>
                 <?php echo "ID : " . $id ?>
                         </div>
+            
 
                         
         </ul>
@@ -222,6 +222,8 @@ $result = mysqli_query($Connexion,$sql);
 
                         echo'</div>';
                         echo'</div>';
+
+                        
 }
 ?>
 
