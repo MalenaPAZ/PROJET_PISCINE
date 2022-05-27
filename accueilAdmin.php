@@ -123,7 +123,7 @@ while($data = mysqli_fetch_assoc($result)){
             <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
                <ul>
                  <li><a href="#"><span>Ajouter</span></a>
-                 <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
+                 <li class="dropdown"><a href="AfficherRdvADMIN.php"><span>Parcourir</span></i></a>
                </ul>
             </li>
 
