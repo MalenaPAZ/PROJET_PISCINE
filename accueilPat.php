@@ -94,12 +94,12 @@ while($data = mysqli_fetch_assoc($result)){
                 <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
-                  <li><a href="ServicesP.php?service=Dépistage covid-19">Dépistage covid-19</a></li>
-                  <li><a href="ServicesP.php?service=Biologie préventive">Biologie préventive</a></li>
+                  <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
                   <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
                   <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
-                  <li><a href="ServicesP.php?service=Cancérologie">Cancérologie</a></li>
-                  <li><a href="ServicesP.php?service=Gynécologie">Gynécologie</a></li>
+                  <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
+                  <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
                 </ul>
             </ul>
           </li>

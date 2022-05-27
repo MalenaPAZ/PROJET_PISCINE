@@ -4,11 +4,12 @@
 session_start();
 $loginpatient = $_SESSION["login"];
 $mdppatient = $_SESSION["mdp"];
-echo "login : ".$loginpatient." , mdp : ".$mdppatient;
+
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
+
 
 $sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
  Mdp LIKE '$mdppatient'";
@@ -31,7 +32,8 @@ $result = mysqli_query($Connexion,$sql);
     $email = $data['Email'];
     $photo = $data['Photo'];
 }
-echo "login : ".$nompatient." , mdp : ".$prenompatient;
+
+
 ?>
 
 
@@ -96,7 +98,7 @@ echo "login : ".$nompatient." , mdp : ".$prenompatient;
 
   <body>
 
-    <!-- ======= Header ======= -->
+     <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
@@ -114,7 +116,7 @@ echo "login : ".$nompatient." , mdp : ".$prenompatient;
               <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
-                  <li><a href="#MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Entérologie">Gastro-Hépato-Entérologie</a></li>
@@ -125,12 +127,12 @@ echo "login : ".$nompatient." , mdp : ".$prenompatient;
                 <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
-                  <li><a href="ServicesP.php?service=Dépistage covid-19">Dépistage covid-19</a></li>
-                  <li><a href="ServicesP.php?service=Biologie préventive">Biologie préventive</a></li>
+                  <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
                   <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
                   <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
-                  <li><a href="ServicesP.php?service=Cancérologie">Cancérologie</a></li>
-                  <li><a href="ServicesP.php?service=Gynécologie">Gynécologie</a></li>
+                  <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
+                  <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
                 </ul>
             </ul>
           </li>
@@ -138,7 +140,6 @@ echo "login : ".$nompatient." , mdp : ".$prenompatient;
           <li><a class="nav-link scrollto" href="#departments">Rendez-vous</a></li>
           <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
               <ul>
-               
                 <li><a href="#"><span>Mon compte</span></a>
                 <li class="dropdown"><a href="#"><span>Deconnexion</span></i></a>
               </ul>

@@ -2,10 +2,10 @@
 
 // Start the session
 session_start();
-$service = $_GET['service'];
+$service2 = $_GET['service'];
 $login = $_SESSION["login"];
 $mdp = $_SESSION["mdp"];
-echo "login : ".$login." , mdp : ".$mdp;
+
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
@@ -22,20 +22,7 @@ while($data = mysqli_fetch_assoc($result)){
     $prenom = $data['PrenomPatient'];
 }
 
-$sql = "SELECT * FROM service WHERE Servicelabo LIKE '$service'";
-$result = mysqli_query($Connexion,$sql);
-while($data = mysqli_fetch_assoc($result)){
 
-    $salle = $data['Salle'];
-    $service1 = $data['Servicelabo'];
-    $infos = $data['Infos'];
-}
-
-
-
-
-echo "login : ".$nom." , mdp : ".$prenom;
-echo "login : ".$salle." , mdp : ".$infos;
 
 ?>
 
@@ -101,7 +88,7 @@ echo "login : ".$salle." , mdp : ".$infos;
 
   <body>
 
-    <!-- ======= Header ======= -->
+      <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
@@ -119,7 +106,7 @@ echo "login : ".$salle." , mdp : ".$infos;
               <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
-                  <li><a href="#MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Entérologie">Gastro-Hépato-Entérologie</a></li>
@@ -127,33 +114,30 @@ echo "login : ".$salle." , mdp : ".$infos;
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Ostéopathie">Ostéopathie</a></li>
                 </ul>
-              <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
-                  <li><a href="ServiceP.php?service=Dépistage covid-19">Dépistage covid-19</a></li>
-                  <li><a href="ServiceP.php?service=Biologie préventive">Biologie préventive</a></li>
-                  <li><a href="ServiceP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
-                  <li><a href="ServiceP.php?service=Biologie de routine">Biologie de routine</a></li>
-                  <li><a href="ServiceP.php?service=Cancérologie">Cancérologie</a></li>
-                  <li><a href="ServiceP.php?service=Gynécologie">Gynécologie</a></li>
+                  <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
+                  <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
+                  <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
                 </ul>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
           <li><a class="nav-link scrollto" href="#departments">Rendez-vous</a></li>
           <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-              
-                      
               <ul>
                 <li><a href="#"><span>Mon compte</span></a>
-                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+                <li class="dropdown"><a href="#"><span>Deconnexion</span></i></a>
               </ul>
             </li>
             <div class="col-sm">
                 <?php echo $nom. ' '. $prenom ?>
                 <?php echo "ID : " . $id ?>
                         </div>
-            
 
                         
         </ul>
@@ -173,25 +157,25 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM service WHERE Servicelabo LIKE '$service'";
+$sql = "SELECT * FROM services WHERE Servicelab LIKE '$service2'";
 $result = mysqli_query($Connexion,$sql);
 
 while($data = mysqli_fetch_assoc($result)){
 
    $salle = $data['Salle'];
-   $service1 = $data['Service'];
+   $service1 = $data['Servicelab'];
    $infos = $data['Infos'];
 
     
         
-   echo "login : ".$salle." , mdp : ".$service1;
+  
 
     
    echo'<div class="Enseignants">';
                echo' <div class="row">';
                 
                         echo '<div class="PhotoID">';
-                           echo' <a href="#"><img class="image" src="'.$data['Photo'].'" alt="Photo profil" width ="200" height="200"/></a>';
+                           echo' <a href="#"><img class="image" src="sante.png" alt="Photo profil" width ="200" height="200"/></a>';
                        echo'</div>';
                  
                     echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
@@ -204,7 +188,7 @@ while($data = mysqli_fetch_assoc($result)){
                         echo'</div>';
                        echo'<div class="row">';
                             echo'<div class="col-sm">';
-                                echo'<p>Infos : '. $info.'</p>';
+                                echo'<p>Infos : '. $infos.'</p>';
                             echo'</div>';
                             
                         echo '</div>';
@@ -213,11 +197,7 @@ while($data = mysqli_fetch_assoc($result)){
                         echo'<div class="col-sm">';
                         echo'<div class="row" >';
 
-                        echo'<div class="btn-group" role="group" aria-label="Basic example">';
-                        echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom='.$data['Nom'].'& prenom='.$data['Prenom'].'">Disponibilité</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
-                        echo'</div>';
+                        
                         
                         echo'</div></div>';
                         echo'</div>';
@@ -225,6 +205,22 @@ while($data = mysqli_fetch_assoc($result)){
                        
 
                         echo'</div>';
+                   
+
+                        echo'<div class="col-sm">';
+                        echo'<div class="row" >';
+
+                        
+
+                        
+
+                        echo'<div class="btn-group" role="group" aria-label="Basic example">';
+                        echo'<a role="button" class="btn btn-secondary" href="#">Disponibilité</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
+                        echo'</div>';
+                        
+                        echo'</div></div>';
                         echo'</div>';
 
                         

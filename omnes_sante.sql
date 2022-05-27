@@ -152,12 +152,12 @@ CREATE TABLE IF NOT EXISTS `service` (
 --
 
 INSERT INTO `service` (`Servicelabo`, `Infos`, `Salle`) VALUES
-('Dépistage covid-19', 'info info info ', '100'),
-('Biologie préventive', 'info info info ', '101'),
+('Depistage covid-19', 'info info info ', '100'),
+('Biologie preventive', 'info info info ', '101'),
 ('Biologie de la femme enceinte', 'info info info ', '102'),
 ('Biologie de routine', 'infos infos infos', '103'),
-('Cancérologie', 'infos infos infos', '104'),
-('Gynécologie', 'infos infos infos ', '105');
+('Cancerologie', 'infos infos infos', '104'),
+('Gynecologie', 'infos infos infos ', '105');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
