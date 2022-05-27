@@ -115,7 +115,7 @@ while($data = mysqli_fetch_assoc($result)){
 
              <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="#"><span>Ajouter</span></a>
+                  <li><a href="CreerPatADMIN.php"><span>Ajouter</span></a>
                   <li class="dropdown"><a href="AfficherPatADMIN.php"><span>Parcourir</span></i></a>
                 </ul>
              </li>
@@ -127,12 +127,7 @@ while($data = mysqli_fetch_assoc($result)){
                </ul>
             </li>
 
-              <li class="dropdown"><a href="#"><span>Services</span><i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="#"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
-                </ul>
-             </li>
+              <li class="nav-link scrollto"><a href="AfficherSerADMIN.php">Services</a></li>
 
              <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
                 <ul>

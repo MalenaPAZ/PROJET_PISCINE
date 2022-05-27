@@ -3,8 +3,7 @@
 session_start();
 $loginpatient = $_SESSION["login"];
 $mdppatient = $_SESSION["mdp"];
-$nommed = $_GET['nom'];
-$prenommed = $_GET['prenom'];
+
 $idRdv = $_GET['idrdv'];
 
 
@@ -50,11 +49,11 @@ $db_found = mysqli_select_db($db_handle, $database);
     if($result)
         {
             echo "delete Sucessful";
-            header("Location: accueilPat.php");
+            header("Location: Accueil_neutre.html");
         }
         else {
             echo "Unable to delete";
-            header("Location: accueilPat.php");
+            header("Location:  Accueil_neutre.html");
             }    
     //on affiche le reste des livres dans notre BDD
     

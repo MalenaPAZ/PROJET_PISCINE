@@ -165,19 +165,14 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM patient ";
+$sql = "SELECT * FROM services ";
 $result = mysqli_query($Connexion,$sql);
 
  while($data = mysqli_fetch_assoc($result)){
 
-    $idpatient = $data['IDpatient'];
-    $nompatient = $data['NomPatient'];
-    $prenompatient = $data['PrenomPatient'];
-    $adressepatient = $data['AdressePatient'];
-    $emailpatient = $data['EmailPatient'];
-    $Telpatient = $data['NumPatient'];
-    $CarteVitale = $data['NumCarteVitale'];
-    $photo = $data['Photo'];
+    $salle = $data['Salle'];
+   $service1 = $data['Servicelab'];
+   $infos = $data['Infos'];
     
         
         
@@ -187,30 +182,20 @@ $result = mysqli_query($Connexion,$sql);
                echo' <div class="row">';
                 
                         echo '<div class="PhotoID">';
-                           echo' <a href="#"><img class="image" src="'.$photo.'" alt="Photo profil" width ="200" height="200"/></a>';
+                           echo' <a href="#"><img class="image" src="sante.png" alt="Photo profil" width ="200" height="200"/></a>';
                        echo'</div>';
                  
                     echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-                        echo'<h2 href=""> '. $nompatient .'   '.$prenompatient . '</h2>';
+                        echo'<h2 href=""> '. $service1 . '</h2>';
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                               echo'<p>Numero de carte vitale : '. $CarteVitale.'</p>';
+                               echo'<p>Salle : '.$salle.'</p>';
                             echo'</div>';
                            
                         echo'</div>';
-                       echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                                echo'<p>Telephone : '. $Telpatient.'</p>';
-                            echo'</div>';
-                            
-                        echo '</div>';
+                       
 
-                        echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                                echo'<p>Email : '.$emailpatient.' </p>';
-                           echo'</div>';
-                            
-                        echo'</div>';
+                        
                         echo'<div class="col-sm">';
                         echo'<div class="row" >';
 
@@ -220,7 +205,7 @@ $result = mysqli_query($Connexion,$sql);
 
                         echo'<div class="btn-group" role="group" aria-label="Basic example">';                        
                         echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="SuppPat.php?idpat='.$idpatient.'">Supprimer</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="SuppPat.php? nom='.$service1.'">Afficher RDV</a>';
                         echo'</div>';
                         
                         echo'</div></div>';

@@ -4,9 +4,6 @@ session_start();
 $login = $_SESSION["login"];
 $mdp = $_SESSION["mdp"];
 
-
-$nommed = $_GET['nom'];
-$prenommed = $_GET['prenom'];
 $idpat = $_GET['idpat'];
 
 
