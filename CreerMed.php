@@ -8,6 +8,7 @@ $prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";
 $specialite = isset($_POST["Specialite"])? $_POST["Specialite"] : "";
 $email = isset($_POST["email"])? $_POST["email"] : "";
 $tel = isset($_POST["telephone"])? $_POST["telephone"] : "";
+$salle = isset($_POST["salle"])? $_POST["salle"] : "";
 
 
 //identifier BDD
@@ -59,12 +60,13 @@ if (isset($_POST["Creer"]))   {
     //regarder s'il y a de resultat
     if (mysqli_num_rows($result) != 0) {
     echo "<p>Compte already exists. Duplicates not allowed.</p>";
+    header("Location : Creermedecin.html");
     } else {
 
         if(isset($_POST["specialite"]) == "Generaliste"){$spe = FALSE;}else $spe = TRUE;
     //on ajoute ce compte
-    $sql = "INSERT INTO medecin(Nom, Prenom, Login, Mdp, Specialiste, Email, Tel, Specialite, Photo)
-     VALUES('$nom','$prenom','$login','$mdp','$spe','$email','$tel','$specialite', 'medecin.png')";
+    $sql = "INSERT INTO medecin( Nom, Prenom, Login, Mdp, Specialiste, Email, Tel, Specialite, Photo, Salle) 
+     VALUES('$nom','$prenom','$login','$mdp','$spe','$email','$tel','$specialite', 'medecin.png', '$salle')";
      
 
     $result =mysqli_query($db_handle, $sql);
@@ -76,6 +78,7 @@ if (isset($_POST["Creer"]))   {
         else {
             
             echo "Unable to insert";
+            header("Location : accueilAdmin.php");
             }  
             
             

@@ -86,10 +86,10 @@ while($data = mysqli_fetch_assoc($result)){
                   <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Entérologie">Gastro-Hépato-Entérologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gynécologie">Gynécologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Ostéopathie">Ostéopathie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
                 <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>

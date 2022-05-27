@@ -1,3 +1,31 @@
+<?php
+
+
+session_start();
+$loginadmin = $_SESSION["login"];
+$mdpadmin = $_SESSION["mdp"];
+
+
+
+$Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
+//Verifier connexion
+if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
+
+
+/*$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
+ Mdp LIKE '$mdppatient'";
+$result = mysqli_query($Connexion,$sql);
+while($data = mysqli_fetch_assoc($result)){
+
+    $idpatient = $data['IDpatient'];
+    $nompatient = $data['NomPatient'];
+    $prenompatient = $data['PrenomPatient'];
+}*/
+
+
+
+?>
+
 <!DOCTYPE html >
 <html>
   <head>
@@ -41,12 +69,23 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto " href="accueilAdmin.php">Accueil</a></li>
-            <li class="dropdown"><a href="#"><span>Medecin</span><i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>Medecins</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="Creermedecin.html"><span>Ajouter</span></a>
+                
+              <li class="dropdown"><a href="#"><span>Parcourir</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="AfficherMedADMIN.php"><span>Parcourir</span></i></a>
+                  <li><a href="AfficherMedADMIN.php?spe=Generaliste">Généraliste</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Addictologie">Addictologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Cardiologie">Cardiologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Dermatologie">Dermatologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gynecologie">Gynécologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=I.S.T.">I.S.T.</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
-             </li>
+          </li>
 
              <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
@@ -72,7 +111,7 @@
              <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li><a href="#"><span>Mes informations</span></a>
-                  <li class="dropdown"><a href="#"><span>Deconnection</span></i></a>
+                  <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
                 </ul>
              </li>
 
@@ -88,7 +127,7 @@
 
       <br><br><br><br><br><br><br>
 
-    <title>Creer Medecin</title>
+    <title>Creer Patient</title>
   </head>
   <body>
 
@@ -102,67 +141,97 @@
       }
     </style>
 
-    <div id="section1">
-      <div id="a">
-        <h1>Créer un compte : Inscription</h1><br>
-      </div>
-      <form action="CreerMed.php" method="post">
+<div id="section1">
+          <div id="a">
+            <h1>Créer un compte : Inscription</h1><br>
+          </div>
+        <form action="CreerPatient.php" method="post">
+            <p>
+                <label for="nom" class="left">Nom</label>
+                <div id="section1"> 
+                <input name="nom" id="nom" type="text" size="30" maxlength="30" /></div>
+              </p>
+        
           <p>
-              <label for="nom" class="left">Nom</label>
-              <div id="section1">
-                <input name="nom" id="nom" type="text" size="30" maxlength="30" />
-              </div>
+            <label for="prenom" class="left">Prénom</label> <div id="section1">
+            <input name="prenom" id="prenom" type="text" size="30" maxlength="30" /></div>
+          </p>
+        
+          <p>
+            <label for="login" class="left">Identifiant</label> <div id="section1">
+            <input name="login" id="login" type="text" size="30" maxlength="30" /></div>
+          </p>
+         
+            <p>
+            <label for="motdepasse" class="left">Mot de passe</label><div id="section1">
+            <input name="motdepasse" id="motdepasse" type="password" size="30" maxlength="30" /></div>
+          </p>
+          <p>
+            <label for="email" class="left">Email</label> <div id="section1">
+            <input name="email" id="email" type="text" size="30" maxlength="30" /></div>
+          </p>
+        
+          <p>
+            <label for="telephone" class="left">Numéro de téléphone</label> <div id="section1">
+            <input name="telephone" id="telephone" type="text" size="30" maxlength="30" /></div>
           </p>
           
-        <p>
-            <label for="prenom" class="left">Prénom</label>
-            <div id="section1">
-              <input name="prenom" id="prenom" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
-        <p>
-          <label for="login" class="left">Identifiant</label>
-          <div id="section1">
-            <input name="login" id="login" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
-        <p>
-          <label for="dmp" class="left">Mot de passe</label>
-          <div id="section1">
-            <input name="mdp" id="mdp" type="password" size="30" maxlength="30" />
-          </div>
-        </p>
-        <p>  
-          <label for="Specialite" class="left">Spécialité</label> 
-          <div id="section1">
-            <select name="Specialite" id="Specialite">
-              <option value="Generaliste">Géneraliste</option>
-              <option value="Addictologie">Addictologie</option>
-              <option value="Andrologie">Andrologie</option>
-              <option value="Cardiologie">Cardiologie</option>
-              <option value="Dertmatologie">Dertmatologie</option>
-              <option value="Gynecologie">Gynécologie</option>
-              <option value="I.S.T">I.S.T</option>
-              <option value="Ostéopathie">Ostéopathie</option>
-              <option value="Gastro-blablabla">Gastro-blablabla</option>
-            </select>
-          </div>
-        </p>
-        <p>
-          <label for="email" class="left">Email</label>
-          <div id="section1">
-            <input name="email" id="email" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
+          
+          <br>
+        
+          <form2 action="CreerPatient.php" method="post">
+        
+            <p>
+                <p>
+                    <label for="ville" class="left">Ville</label> <div id="section1">
+                    <input name="ville" id="ville" type="text" size="30" maxlength="30" /></div>
+                  </p>
+                  <p>
+                <label for="adresse" class="left">Adresse</label> <div id="section1">
+                <input name="adresse" id="adresse" type="text" size="30" maxlength="30" /></div>
+              </p>
+        
+              <p>
+                <label for="codepostal" class="left">Code Postal</label> <div id="section1">
+                <input name="codepostal" id="codepostal" type="text" size="30" maxlength="30" /></div>
+              </p>
+        
+              
+              <p>
+                <label for="pays" class="left">Pays</label> <div id="section1">
+                <input name="pays" id="pays" type="text" size="30" maxlength="30" /></div>
+              </p>
+        
+              <p>
+                <label for="numcartevitale" class="left">Numéro de carte vitale</label> <div id="section1">
+                <input name="numcartevitale" id="numcartevitale" type="text" size="30" maxlength="30" /></div>
+              </p>
+              <p>  
+                <label for="SpecialitePref" class="left">Spécialité préferée</label> <div id="section1">
+                <select name="SpecialitePref" id="SpecialitePref">
+                  <option value="rien">Aucune</option>
+                  <option value="Géneraliste">Generaliste</option>
+                  <option value="Addictologie">Addictologie</option>
+                  <option value="Andrologie">Andrologie</option>
+                  <option value="Cardiologie">Cardiologie</option>
+                  <option value="Dertmatologie">Dertmatologie</option>
+                  <option value="Gynécologie">Gynecologie</option>
+                  <option value="I.S.T">I.S.T</option>
+                  <option value="Ostéopathie">Osteopathie</option>
+                  <option value="Gastro">Gastro-blablabla</option>
+                  
+                </select></div>
+              </p>
+              <br><br>
 
-        <p>
-          <label for="telephone" class="left">Numéro de téléphone</label>
-          <div id="section1">
-            <input name="telephone" id="telephone" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
 
-        <input type="submit" name="Creer" value="Créer">
+              <label for="avatar">Sélectionner un photo de profil : </label>
+
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                <br><br>
+                <div id="bouton">
+                  <input type="submit" name="Créer" value="Créer" >
+                </div>
       </form>
     </div>
 
@@ -230,4 +299,5 @@
   </body>
 </html>
             
+
 

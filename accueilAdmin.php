@@ -93,17 +93,30 @@ while($data = mysqli_fetch_assoc($result)){
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
         <li><a class="nav-link scrollto " href="accueilAdmin.php">Accueil</a></li>
-            <li class="dropdown"><a href="#"><span>Medecin</span><i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a href="#"><span>Medecins</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="CreerMedecin.php"><span>Ajouter</span></a>
+                
+              <li class="dropdown"><a href="#"><span>Parcourir</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="Creermedecin.html"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="AfficherMedADMIN.php"><span>Parcourir</span></i></a>
+                <li><a href="AfficherMedADMIN.php?spe=Generaliste">Généraliste</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Addictologie">Addictologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Cardiologie">Cardiologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Dermatologie">Dermatologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gynecologie">Gynécologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=I.S.T.">I.S.T.</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
-             </li>
+                
+            </ul>
+          </li>
 
              <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li><a href="#"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
+                  <li class="dropdown"><a href="AfficherPatADMIN.php"><span>Parcourir</span></i></a>
                 </ul>
              </li>
             
@@ -124,7 +137,7 @@ while($data = mysqli_fetch_assoc($result)){
              <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li><a href="#"><span>Mes informations</span></a>
-                  <li class="dropdown"><a href="#"><span>Deconnection</span></i></a>
+                  <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
                 </ul>
              </li>
 
