@@ -1,22 +1,16 @@
 <?php
-
-
-
+$Service = $_GET['service'];
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM medecin";
+$sql = "SELECT * FROM service";
 $result = mysqli_query($Connexion,$sql);
 
  while($data = mysqli_fetch_assoc($result)){
 
-    $prenom = $data['Prenom'];
-    $nom = $data['Nom'];
-    $tel = $data['Tel'];
-    $email = $data['Email'];
-    $photo = $data['Photo'];
+    
 }
 ?>
 

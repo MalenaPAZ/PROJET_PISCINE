@@ -1,5 +1,9 @@
 <?php
 
+// Start the session
+session_start();
+
+
 $login = isset($_POST["login"])? $_POST["login"] : "";
 $mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";
 
