@@ -205,7 +205,7 @@ $result = mysqli_query($Connexion,$sql);
 
                         echo'<div class="btn-group" role="group" aria-label="Basic example">';                        
                         echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="SuppPat.php? nom='.$service1.'">Afficher RDV</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="AfficherSerRdvADMIN.php? service='.$service1.'">Afficher RDV</a>';
                         echo'</div>';
                         
                         echo'</div></div>';
