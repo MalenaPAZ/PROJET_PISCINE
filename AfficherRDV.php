@@ -1,10 +1,9 @@
 <?php
 
-// Start the session
+
 session_start();
-$spe = $_GET['spe'];
-$login = $_SESSION["login"];
-$mdp = $_SESSION["mdp"];
+$loginpatient = $_SESSION["login"];
+$mdppatient = $_SESSION["mdp"];
 
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
@@ -12,15 +11,41 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
 
-$sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
- Mdp LIKE '$mdp'";
+$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
+ Mdp LIKE '$mdppatient'";
 $result = mysqli_query($Connexion,$sql);
 while($data = mysqli_fetch_assoc($result)){
 
-    $id = $data['IDpatient'];
-    $nom = $data['NomPatient'];
-    $prenom = $data['PrenomPatient'];
-}
+    $idpatient = $data['IDpatient'];
+    $nompatient = $data['NomPatient'];
+    $prenompatient = $data['PrenomPatient'];
+    }
+
+$sql = "SELECT * FROM rdv WHERE IDPatient LIKE '$idpatient' AND Etat_RDV LIKE '0'";
+$result = mysqli_query($Connexion,$sql);
+
+ while($data = mysqli_fetch_assoc($result)){
+
+    $Numrdv = $data['NumRDV'];
+    $date = $data['Date_RDV'];
+    $heure = $data['Heure_RDV'];
+    $type = $data['Type_RDV'];
+    $idmed = $data['IDMedecin'];
+    $salle = $data['Salle_RDV'];
+        }
+
+$sql = "SELECT * FROM medecin WHERE ID LIKE '$idmed' ";
+$result = mysqli_query($Connexion,$sql);
+
+ while($data = mysqli_fetch_assoc($result)){
+
+    $prenommed = $data['Prenom'];
+    $nommed = $data['Nom'];
+    $telmed = $data['Tel'];
+    $emailmed = $data['Email'];
+    $photomed= $data['Photo'];
+    }
+
 
 ?>
 
@@ -86,7 +111,7 @@ while($data = mysqli_fetch_assoc($result)){
 
   <body>
 
-      <!-- ======= Header ======= -->
+     <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
@@ -133,8 +158,8 @@ while($data = mysqli_fetch_assoc($result)){
               </ul>
             </li>
             <div class="col-sm">
-                <?php echo $nom. ' '. $prenom ?>
-                <?php echo "ID : " . $id ?>
+                <?php echo $nompatient. ' '. $prenompatient ?>
+                <?php echo "ID : " . $idpatient ?>
                         </div>
 
                         
@@ -155,17 +180,16 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM medecin WHERE Specialite LIKE '$spe'";
+$sql = "SELECT * FROM rdv WHERE IDPatient LIKE '$idpatient' AND Etat_RDV LIKE '0'";
 $result = mysqli_query($Connexion,$sql);
 
  while($data = mysqli_fetch_assoc($result)){
 
-    $prenom = $data['Prenom'];
-    $nom = $data['Nom'];
-    $tel = $data['Tel'];
-    $email = $data['Email'];
-    $photo = $data['Photo'];
-    
+    $Numrdv = $data['NumRDV'];
+    $date = $data['Date_RDV'];
+    $heure = $data['Heure_RDV'];
+    $type = $data['Type_RDV'];
+    $idmed = $data['IDMedecin'];
         
         
 
@@ -174,27 +198,27 @@ $result = mysqli_query($Connexion,$sql);
                echo' <div class="row">';
                 
                         echo '<div class="PhotoID">';
-                           echo' <a href="#"><img class="image" src="'.$data['Photo'].'" alt="Photo profil" width ="200" height="200"/></a>';
+                           echo' <a href="#"><img class="image" src="sante.png" alt="Photo profil" width ="200" height="200"/></a>';
                        echo'</div>';
                  
                     echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-                        echo'<h2 href=""> Dr.'. $data['Nom'] .'   '.$data['Prenom'] . '</h2>';
+                        echo'<h2 href=""> Dr.'. $nommed .'   '.$prenommed . '</h2>';
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                               echo'<p>Salle : EM015</p>';
+                               echo'<p>Salle : '. $salle.'</p>';
                             echo'</div>';
                            
                         echo'</div>';
                        echo'<div class="row">';
                             echo'<div class="col-sm">';
-                                echo'<p>Telephone : '. $data['Tel'].'</p>';
+                                echo'<p>Telephone : '. $telmed.'</p>';
                             echo'</div>';
                             
                         echo '</div>';
 
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                                echo'<p>Email : '.$data['Email'].' </p>';
+                                echo'<p>Date : '.$date.' a '.$heure.' heure.</p>';
                            echo'</div>';
                             
                         echo'</div>';
@@ -206,7 +230,7 @@ $result = mysqli_query($Connexion,$sql);
                         
 
                         echo'<div class="btn-group" role="group" aria-label="Basic example">';
-                        echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom='.$data['Nom'].'& prenom='.$data['Prenom'].'">Disponibilité</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="AnnulerRDV.php?nom='.$nommed.'& prenom='.$prenommed. '& idrdv='.$Numrdv.'">Annuler</a>';
                         echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
                         echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
                         echo'</div>';
@@ -218,8 +242,6 @@ $result = mysqli_query($Connexion,$sql);
 
                         echo'</div>';
                         echo'</div>';
-
-                        
 }
 ?>
 
