@@ -31,11 +31,10 @@ $result = mysqli_query($Connexion,$sql);
     $heure = $data['Heure_RDV'];
     $type = $data['Type_RDV'];
     $idpatient = $data['IDPatient'];
-    $salle = $data['Salle_RDV'];
+    $salle = $data['Salle_RDV'];}
 
     $sql = "SELECT * FROM patient WHERE IDpatient LIKE '$idpatient' ";
     $result = mysqli_query($Connexion,$sql);
-
  while($data = mysqli_fetch_assoc($result)){
 
     $prenompat = $data['PrenomPatient'];
@@ -44,7 +43,7 @@ $result = mysqli_query($Connexion,$sql);
     $emailpat = $data['EmailPatient'];
     $photopat= $data['Photo'];
     }
-        }
+        
 
 
 

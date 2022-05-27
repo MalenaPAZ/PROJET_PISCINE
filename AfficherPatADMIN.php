@@ -101,7 +101,7 @@ while($data = mysqli_fetch_assoc($result)){
         <li><a class="nav-link scrollto " href="accueilAdmin.php">Accueil</a></li>
         <li class="dropdown"><a href="#"><span>Medecins</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="MedecinGeneraliste.php"><span>Ajouter</span></a>
+              <li><a href="CreerMedecin.php"><span>Ajouter</span></a>
                 
               <li class="dropdown"><a href="#"><span>Parcourir</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -121,24 +121,19 @@ while($data = mysqli_fetch_assoc($result)){
 
              <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="#"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
+                  <li><a href="CreerPatADMIN.php"><span>Ajouter</span></a>
+                  <li class="dropdown"><a href="AfficherPatADMIN.php"><span>Parcourir</span></i></a>
                 </ul>
              </li>
             
             <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
                <ul>
                  <li><a href="#"><span>Ajouter</span></a>
-                 <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
+                 <li class="dropdown"><a href="AfficherRdvADMIN.php"><span>Parcourir</span></i></a>
                </ul>
             </li>
 
-              <li class="dropdown"><a href="#"><span>Services</span><i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="#"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
-                </ul>
-             </li>
+              <li class="nav-link scrollto"><a href="AfficherSerADMIN.php">Services</a></li>
 
              <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
                 <ul>

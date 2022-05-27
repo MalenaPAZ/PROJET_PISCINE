@@ -123,17 +123,56 @@ $result = mysqli_query($Connexion,$sql);
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li class="nav-link scrollto"><a href="AfficherRdvMED.php">Rendez-vous</a></li>
-          <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="#"><span>Mon compte</span></a>
-                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
-              </ul>
+        <li><a class="nav-link scrollto " href="accueilAdmin.php">Accueil</a></li>
+        <li class="dropdown"><a href="#"><span>Medecins</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="CreerMedecin.php"><span>Ajouter</span></a>
+                
+              <li class="dropdown"><a href="#"><span>Parcourir</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                <li><a href="AfficherMedADMIN.php?spe=Generaliste">Généraliste</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Addictologie">Addictologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Cardiologie">Cardiologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Dermatologie">Dermatologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gynecologie">Gynécologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=I.S.T.">I.S.T.</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Osteopathie">Ostéopathie</a></li>
+                </ul>
+                
+            </ul>
+          </li>
+
+             <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="CreerPatADMIN.php"><span>Ajouter</span></a>
+                  <li class="dropdown"><a href="AfficherPatADMIN.php"><span>Parcourir</span></i></a>
+                </ul>
+             </li>
+            
+            <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
+               <ul>
+                 <li><a href="#"><span>Ajouter</span></a>
+                 <li class="dropdown"><a href="AfficherRdvADMIN.php"><span>Parcourir</span></i></a>
+               </ul>
             </li>
+
+              <li class="nav-link scrollto"><a href="AfficherSerADMIN.php">Services</a></li>
+
+             <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="#"><span>Mes informations</span></a>
+                  <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+                </ul>
+             </li>
+
+          </ul>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
+      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"> </a>
 
     </div>
   </header><!-- End Header -->

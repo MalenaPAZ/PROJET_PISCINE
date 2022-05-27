@@ -12,46 +12,42 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
 
-$sql = "SELECT * FROM rdv ";
+$sql = "SELECT * FROM rdv WHERE Etat_RDV LIKE '0' ";
 $result = mysqli_query($Connexion,$sql);
 while($data = mysqli_fetch_assoc($result)){
 
     $Numrdv = $data['NumRDV'];
     $date = $data['Date_RDV'];
     $heure = $data['Heure_RDV'];
-    $type = $data['Type_RDV'];
     $idpatient = $data['IDPatient'];
     $idmed = $data['IDMedecin'];
-    $salle = $data['Salle_RDV'];
+    $salle = $data['Salle_RDV']; }
 
-    
-    
-    $sql = "SELECT * FROM patient WHERE IDPatient LIKE '$idpatient'";
-    $result = mysqli_query($Connexion,$sql);
-    while($data = mysqli_fetch_assoc($result)){
+        
 
-        $nompatient = $data['NomPatient'];
-        $prenompatient = $data['PrenomPatient'];
-        $adressepatient = $data['AdressePatient'];
-        $emailpatient = $data['EmailPatient'];
-        $Telpatient = $data['NumPatient'];
-        $CarteVitale = $data['NumCarteVitale'];
-        $photopatient = $data['Photo'];}
-    
-
-    $sql = "SELECT * FROM medecin WHERE IDMedecin LIKE '$idmed'";
-    $result = mysqli_query($Connexion,$sql);
-    while($data = mysqli_fetch_assoc($result)){
+    $sql1 = "SELECT * FROM medecin WHERE ID LIKE '$idmed'";
+    $result1 = mysqli_query($Connexion,$sql1);
+    while($data = mysqli_fetch_assoc($result1)){
 
         $prenommed = $data['Prenom'];
         $nommed = $data['Nom'];
-        $telmed = $data['Tel'];
-        $emailmed = $data['Email'];
-        $salle = $data['Salle'];
-        $photomed = $data['Photo'];
-        $specialite = $data['Specialite'];}}
- 
+        $specialite = $data['Specialite'];}
 
+$sql = "SELECT * FROM patient WHERE IDpatient LIKE '$idpatient' ";
+$result = mysqli_query($Connexion,$sql);
+
+ while($data = mysqli_fetch_assoc($result)){
+
+    $idpatient = $data['IDpatient'];
+    $nompatient = $data['NomPatient'];
+    $prenompatient = $data['PrenomPatient'];
+  }
+    
+    
+    
+
+    
+   
 ?>
 
 
@@ -129,7 +125,7 @@ while($data = mysqli_fetch_assoc($result)){
         <li><a class="nav-link scrollto " href="accueilAdmin.php">Accueil</a></li>
         <li class="dropdown"><a href="#"><span>Medecins</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="MedecinGeneraliste.php"><span>Ajouter</span></a>
+              <li><a href="CreerMedecin.php"><span>Ajouter</span></a>
                 
               <li class="dropdown"><a href="#"><span>Parcourir</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -149,24 +145,19 @@ while($data = mysqli_fetch_assoc($result)){
 
              <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="#"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
+                  <li><a href="CreerPatADMIN.php"><span>Ajouter</span></a>
+                  <li class="dropdown"><a href="AfficherPatADMIN.php"><span>Parcourir</span></i></a>
                 </ul>
              </li>
             
             <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
                <ul>
                  <li><a href="#"><span>Ajouter</span></a>
-                 <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
+                 <li class="dropdown"><a href="AfficherRdvADMIN.php"><span>Parcourir</span></i></a>
                </ul>
             </li>
 
-              <li class="dropdown"><a href="#"><span>Services</span><i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="#"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="#"><span>Parcourir</span></i></a>
-                </ul>
-             </li>
+              <li class="nav-link scrollto"><a href="AfficherSerADMIN.php">Services</a></li>
 
              <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
@@ -195,14 +186,34 @@ if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
 $sql = "SELECT * FROM rdv ";
 $result = mysqli_query($Connexion,$sql);
-
  while($data = mysqli_fetch_assoc($result)){
 
+    $Numrdv = $data['NumRDV'];
+    $date = $data['Date_RDV'];
+    $heure = $data['Heure_RDV'];
 
+    $idpatient = $data['IDPatient'];
+    $idmed = $data['IDMedecin'];
+    $salle = $data['Salle_RDV']; 
+
+    $sql1 = "SELECT * FROM medecin WHERE ID LIKE '$idmed'";
+    $result1 = mysqli_query($Connexion,$sql1);
+    while($data = mysqli_fetch_assoc($result1)){
+
+        $prenommed = $data['Prenom'];
+        $nommed = $data['Nom'];
+        $specialite = $data['Specialite'];}
+
+    $sql1 = "SELECT * FROM patient WHERE IDpatient LIKE '$idpatient'";
+    $result1 = mysqli_query($Connexion,$sql1);
+    while($data = mysqli_fetch_assoc($result1)){
+
+        $prenompatient = $data['PrenomPatient'];
+        $nompatient = $data['NomPatient'];
+        }
+
+        
     
-        
-        
-
     
    echo'<div class="Enseignants">';
                echo' <div class="row">';
@@ -213,7 +224,7 @@ $result = mysqli_query($Connexion,$sql);
                  
                     echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
                         echo'<h2 href=""> Dr.'. $nommed .'   '.$prenommed . ' - '.$specialite.'</h2>';
-                        echo'<h2 href=""> Dr.'. $nompatient .'   '.$prenompatient . '</h2>';
+                        echo'<h2 href=""> '. $nompatient .'   '.$prenompatient . '</h2>';
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
                                echo'<p>Salle : '. $salle.'</p>';

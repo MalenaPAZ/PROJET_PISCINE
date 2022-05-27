@@ -121,9 +121,10 @@ while($data = mysqli_fetch_assoc($result)){
 
     </div>
   </header><!-- End Header -->
+
       <br><br><br><br><br><br><br>
 
-    <title>Creer Patient</title>
+    <title>Creer Medecin</title>
   </head>
   <body>
 
@@ -137,97 +138,74 @@ while($data = mysqli_fetch_assoc($result)){
       }
     </style>
 
-<div id="section1">
-          <div id="a">
-            <h1>Créer un compte : Inscription</h1><br>
+    <div id="section1">
+      <div id="a">
+        <h1>Créer un compte : Inscription</h1><br>
+      </div>
+      <form action="CreerMed.php" method="post">
+          <p>
+              <label for="nom" class="left">Nom</label>
+              <div id="section1">
+                <input name="nom" id="nom" type="text" size="30" maxlength="30" />
+              </div>
+          </p>
+          
+        <p>
+            <label for="prenom" class="left">Prénom</label>
+            <div id="section1">
+              <input name="prenom" id="prenom" type="text" size="30" maxlength="30" />
           </div>
-        <form action="CreerPatient.php" method="post">
-            <p>
-                <label for="nom" class="left">Nom</label>
-                <div id="section1"> 
-                <input name="nom" id="nom" type="text" size="30" maxlength="30" /></div>
-              </p>
-        
-          <p>
-            <label for="prenom" class="left">Prénom</label> <div id="section1">
-            <input name="prenom" id="prenom" type="text" size="30" maxlength="30" /></div>
-          </p>
-        
-          <p>
-            <label for="login" class="left">Identifiant</label> <div id="section1">
-            <input name="login" id="login" type="text" size="30" maxlength="30" /></div>
-          </p>
-         
-            <p>
-            <label for="motdepasse" class="left">Mot de passe</label><div id="section1">
-            <input name="motdepasse" id="motdepasse" type="password" size="30" maxlength="30" /></div>
-          </p>
-          <p>
-            <label for="email" class="left">Email</label> <div id="section1">
-            <input name="email" id="email" type="text" size="30" maxlength="30" /></div>
-          </p>
-        
-          <p>
-            <label for="telephone" class="left">Numéro de téléphone</label> <div id="section1">
-            <input name="telephone" id="telephone" type="text" size="30" maxlength="30" /></div>
-          </p>
-          
-          
-          <br>
-        
-          <form2 action="CreerPatient.php" method="post">
-        
-            <p>
-                <p>
-                    <label for="ville" class="left">Ville</label> <div id="section1">
-                    <input name="ville" id="ville" type="text" size="30" maxlength="30" /></div>
-                  </p>
-                  <p>
-                <label for="adresse" class="left">Adresse</label> <div id="section1">
-                <input name="adresse" id="adresse" type="text" size="30" maxlength="30" /></div>
-              </p>
-        
-              <p>
-                <label for="codepostal" class="left">Code Postal</label> <div id="section1">
-                <input name="codepostal" id="codepostal" type="text" size="30" maxlength="30" /></div>
-              </p>
-        
-              
-              <p>
-                <label for="pays" class="left">Pays</label> <div id="section1">
-                <input name="pays" id="pays" type="text" size="30" maxlength="30" /></div>
-              </p>
-        
-              <p>
-                <label for="numcartevitale" class="left">Numéro de carte vitale</label> <div id="section1">
-                <input name="numcartevitale" id="numcartevitale" type="text" size="30" maxlength="30" /></div>
-              </p>
-              <p>  
-                <label for="SpecialitePref" class="left">Spécialité préferée</label> <div id="section1">
-                <select name="SpecialitePref" id="SpecialitePref">
-                  <option value="rien">Aucune</option>
-                  <option value="Géneraliste">Generaliste</option>
-                  <option value="Addictologie">Addictologie</option>
-                  <option value="Andrologie">Andrologie</option>
-                  <option value="Cardiologie">Cardiologie</option>
-                  <option value="Dertmatologie">Dertmatologie</option>
-                  <option value="Gynécologie">Gynecologie</option>
-                  <option value="I.S.T">I.S.T</option>
-                  <option value="Ostéopathie">Osteopathie</option>
-                  <option value="Gastro">Gastro-blablabla</option>
-                  
-                </select></div>
-              </p>
-              <br><br>
+        </p>
+        <p>
+          <label for="login" class="left">Identifiant</label>
+          <div id="section1">
+            <input name="login" id="login" type="text" size="30" maxlength="30" />
+          </div>
+        </p>
+        <p>
+          <label for="dmp" class="left">Mot de passe</label>
+          <div id="section1">
+            <input name="mdp" id="mdp" type="password" size="30" maxlength="30" />
+          </div>
+        </p>
 
+        <p>
+          <label for="dmp" class="left">Salle</label>
+          <div id="section1">
+            <input name="salle" id="salle" type="text" size="30" maxlength="30" />
+          </div>
+        </p>
+        <p>  
+          <label for="Specialite" class="left">Spécialité</label> 
+          <div id="section1">
+            <select name="Specialite" id="Specialite">
+              <option value="Generaliste">Géneraliste</option>
+              <option value="Addictologie">Addictologie</option>
+              <option value="Andrologie">Andrologie</option>
+              <option value="Cardiologie">Cardiologie</option>
+              <option value="Dertmatologie">Dertmatologie</option>
+              <option value="Gynecologie">Gynécologie</option>
+              <option value="I.S.T">I.S.T</option>
+              <option value="Ostéopathie">Ostéopathie</option>
+              <option value="Gastro-blablabla">Gastro-blablabla</option>
+            </select>
+          </div>
+        </p>
+        <p>
+          <label for="email" class="left">Email</label>
+          <div id="section1">
+            <input name="email" id="email" type="text" size="30" maxlength="30" />
+          </div>
+        </p>
 
-              <label for="avatar">Sélectionner un photo de profil : </label>
+        <p>
+          <label for="telephone" class="left">Numéro de téléphone</label>
+          <div id="section1">
+            <input name="telephone" id="telephone" type="text" size="30" maxlength="30" />
+          </div>
+        </p>
 
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
-                <br><br>
-                <div id="bouton">
-                  <input type="submit" name="Créer" value="Créer" >
-                </div>
+        <input type="submit" name="Creer" value="Créer">
       </form>
     </div>
 
