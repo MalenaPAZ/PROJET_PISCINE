@@ -1,10 +1,10 @@
 <?php
 
-// Start the session
+
 session_start();
-$spe = $_GET['spe'];
-$login = $_SESSION["login"];
-$mdp = $_SESSION["mdp"];
+$loginadmin = $_SESSION["login"];
+$mdpadmin = $_SESSION["mdp"];
+
 
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
@@ -12,18 +12,42 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
 
-$sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
- Mdp LIKE '$mdp'";
+$sql = "SELECT * FROM rdv WHERE Etat_RDV LIKE '0' ";
 $result = mysqli_query($Connexion,$sql);
 while($data = mysqli_fetch_assoc($result)){
 
-    $id = $data['IDpatient'];
-    $nom = $data['NomPatient'];
-    $prenom = $data['PrenomPatient'];
-}
+    $Numrdv = $data['NumRDV'];
+    $date = $data['Date_RDV'];
+    $heure = $data['Heure_RDV'];
+    $idpatient = $data['IDPatient'];
+    $idmed = $data['IDMedecin'];
+    $salle = $data['Salle_RDV']; }
 
-echo " spe".$spe."///";
+        
 
+    $sql1 = "SELECT * FROM medecin WHERE ID LIKE '$idmed'";
+    $result1 = mysqli_query($Connexion,$sql1);
+    while($data = mysqli_fetch_assoc($result1)){
+
+        $prenommed = $data['Prenom'];
+        $nommed = $data['Nom'];
+        $specialite = $data['Specialite'];}
+
+$sql = "SELECT * FROM patient WHERE IDpatient LIKE '$idpatient' ";
+$result = mysqli_query($Connexion,$sql);
+
+ while($data = mysqli_fetch_assoc($result)){
+
+    $idpatient = $data['IDpatient'];
+    $nompatient = $data['NomPatient'];
+    $prenompatient = $data['PrenomPatient'];
+  }
+    
+    
+    
+
+    
+   
 ?>
 
 
@@ -98,49 +122,56 @@ echo " spe".$spe."///";
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="accueilPat.php">Accueil</a></li>
-          <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
+        <li><a class="nav-link scrollto " href="accueilAdmin.php">Accueil</a></li>
+        <li class="dropdown"><a href="#"><span>Medecins</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
+              <li><a href="CreerMedecin.php"><span>Ajouter</span></a>
                 
-              <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>Parcourir</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
+                <li><a href="AfficherMedADMIN.php?spe=Generaliste">Généraliste</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Addictologie">Addictologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Cardiologie">Cardiologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Dermatologie">Dermatologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gynecologie">Gynécologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=I.S.T.">I.S.T.</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
-                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Informations</a></li>
-                  <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
-                  <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
-                  <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
-                  <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
-                  <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
-                  <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
-                </ul>
+                
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
-          <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
-          <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="#"><span>Mon compte</span></a>
-                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
-              </ul>
-            </li>
+
+             <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="CreerPatADMIN.php"><span>Ajouter</span></a>
+                  <li class="dropdown"><a href="AfficherPatADMIN.php"><span>Parcourir</span></i></a>
+                </ul>
+             </li>
             
-                        
+            <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
+               <ul>
+                 <li><a href="#"><span>Ajouter</span></a>
+                 <li class="dropdown"><a href="AfficherRdvADMIN.php"><span>Parcourir</span></i></a>
+               </ul>
+            </li>
+
+              <li class="nav-link scrollto"><a href="AfficherSerADMIN.php">Services</a></li>
+
+             <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="#"><span>Mes informations</span></a>
+                  <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+                </ul>
+             </li>
+
+          </ul>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      
+      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"> </a>
 
     </div>
   </header><!-- End Header -->
@@ -153,46 +184,58 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-$sql = "SELECT * FROM medecin WHERE Specialite LIKE '$spe'";
+$sql = "SELECT * FROM rdv ";
 $result = mysqli_query($Connexion,$sql);
-
  while($data = mysqli_fetch_assoc($result)){
 
-    $prenom = $data['Prenom'];
-    $nom = $data['Nom'];
-    $tel = $data['Tel'];
-    $email = $data['Email'];
-    $photo = $data['Photo'];
-    
-        
-        
+    $Numrdv = $data['NumRDV'];
+    $date = $data['Date_RDV'];
+    $heure = $data['Heure_RDV'];
 
+    $idpatient = $data['IDPatient'];
+    $idmed = $data['IDMedecin'];
+    $salle = $data['Salle_RDV']; 
+
+    $sql1 = "SELECT * FROM medecin WHERE ID LIKE '$idmed'";
+    $result1 = mysqli_query($Connexion,$sql1);
+    while($data = mysqli_fetch_assoc($result1)){
+
+        $prenommed = $data['Prenom'];
+        $nommed = $data['Nom'];
+        $specialite = $data['Specialite'];}
+
+    $sql1 = "SELECT * FROM patient WHERE IDpatient LIKE '$idpatient'";
+    $result1 = mysqli_query($Connexion,$sql1);
+    while($data = mysqli_fetch_assoc($result1)){
+
+        $prenompatient = $data['PrenomPatient'];
+        $nompatient = $data['NomPatient'];
+        }
+
+        
+    
     
    echo'<div class="Enseignants">';
                echo' <div class="row">';
                 
                         echo '<div class="PhotoID">';
-                           echo' <a href="#"><img class="image" src="'.$data['Photo'].'" alt="Photo profil" width ="200" height="200"/></a>';
+                           echo' <a href="#"><img class="image" src="sante.png" alt="Photo profil" width ="200" height="200"/></a>';
                        echo'</div>';
                  
                     echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-                        echo'<h2 href=""> Dr.'. $data['Nom'] .'   '.$data['Prenom'] . '</h2>';
+                        echo'<h2 href=""> Dr.'. $nommed .'   '.$prenommed . ' - '.$specialite.'</h2>';
+                        echo'<h2 href=""> '. $nompatient .'   '.$prenompatient . '</h2>';
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                               echo'<p>Salle : EM015</p>';
+                               echo'<p>Salle : '. $salle.'</p>';
                             echo'</div>';
                            
                         echo'</div>';
-                       echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                                echo'<p>Telephone : '. $data['Tel'].'</p>';
-                            echo'</div>';
-                            
-                        echo '</div>';
+                       
 
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                                echo'<p>Email : '.$data['Email'].' </p>';
+                                echo'<p>Date : '.$date.' a '.$heure.' heure.</p>';
                            echo'</div>';
                             
                         echo'</div>';
@@ -204,7 +247,7 @@ $result = mysqli_query($Connexion,$sql);
                         
 
                         echo'<div class="btn-group" role="group" aria-label="Basic example">';
-                        echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom='.$data['Nom'].'& prenom='.$data['Prenom'].'">Disponibilité</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="AnnulerRDV.php?nom='.$nommed.'& prenom='.$prenommed. '& idrdv='.$Numrdv.'">Annuler</a>';
                         echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
                         echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
                         echo'</div>';
@@ -216,15 +259,12 @@ $result = mysqli_query($Connexion,$sql);
 
                         echo'</div>';
                         echo'</div>';
-
-                        
-}
-?>
+ }?>
 
             
         </div>
 
-        <a role="button" class="btn btn-light" href="accueil.html">Retour</a>
+        <a role="button" class="btn btn-light" href="accueilAdmin.php">Retour</a>
 
         
 

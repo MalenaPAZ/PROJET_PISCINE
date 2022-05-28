@@ -86,10 +86,10 @@ while($data = mysqli_fetch_assoc($result)){
                   <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Entérologie">Gastro-Hépato-Entérologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gynécologie">Gynécologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Ostéopathie">Ostéopathie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
                 <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -104,18 +104,14 @@ while($data = mysqli_fetch_assoc($result)){
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Rendez-vous</a></li>
+          <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
           <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="#"><span>Mon compte</span></a>
-                <li class="dropdown"><a href="#"><span>Deconnexion</span></i></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
               </ul>
             </li>
-            <div class="col-sm">
-                <?php echo $nom. ' '. $prenom ?>
-                <?php echo "ID : " . $id ?>
-                        </div>
-
+            
                         
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

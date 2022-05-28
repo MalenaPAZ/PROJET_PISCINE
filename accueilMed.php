@@ -74,8 +74,13 @@ while($data = mysqli_fetch_assoc($result)){
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li class="nav-link scrollto"><a href="#">Rendez-vous</a></li>
-          <li class="nav-link scrollto"><a href="#">Mon compte</a></li>
+          <li class="nav-link scrollto"><a href="AfficherRdvMED.php">Rendez-vous</a></li>
+          <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="#"><span>Mon compte</span></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+              </ul>
+            </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
