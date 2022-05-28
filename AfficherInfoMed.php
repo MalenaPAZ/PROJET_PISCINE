@@ -19,15 +19,11 @@
         $login = $data['Login'];
         $motdepasse = $data['Mdp'];
         $email = $data['EmailPatient'];
-        $telephone = $data['NumPatient'];
-        $adresse = $data['AdressePatient'];
-        $numcartevitale = $data['NumCarteVitale'];
+        $tel = $data['NumPatient'];
         $specialiteP = $data['SpecialitePref'];
-        $ville = $data['Ville'];
-        $codepostal = $data['CodePostal'];
-        $pays = $data['Pays'];
+        $specialiste = $data['Specialiste'];
         $avatar = $data['Photo'];
-        
+        $salle = $data['Salle'];
     }
     /*
     echo "Id : ".$id ."<br>";
@@ -163,7 +159,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Numéro carte vitale : ".$numcartevitale;?></p>             
+                        <p><?php echo "Spécialiste : ".$specialiste;?></p>             
                    </div>
                 </div>
                 <div class="col-md-6">
@@ -173,19 +169,10 @@
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Ville : ".$ville;?></p>             
+                        <p><?php echo "Numéro de téléphone : ".$tel;?></p>             
                    </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Numéro de téléphone : ".$telephone;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Pays : ".$pays;?></p>             
-                   </div>
-                </div>
+                
                 <div class="col-md-6">
                     <div class="info-box mt-4">
                         <p><?php echo "Spécialité préférée : ".$specialiteP;?></p>             
@@ -193,7 +180,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Adresse : ".$adresse.", ".$codepostal;?></p>             
+                        <p><?php echo "Salle : ".$salle;?></p>             
                    </div>
                 </div>
 
