@@ -14,17 +14,9 @@
     while($data = mysqli_fetch_assoc($result)){
 
         $id = $data['IDpatient'];
-        $nom = $data['NomPatient'];
-        $prenom = $data['PrenomPatient'];
         $login = $data['Login'];
         $motdepasse = $data['Mdp'];
-        $email = $data['EmailPatient'];
-        $tel = $data['NumPatient'];
-        $specialiteP = $data['SpecialitePref'];
-        $specialiste = $data['Specialiste'];
-        $avatar = $data['Photo'];
-        $salle = $data['Salle'];
-    }
+            }
     /*
     echo "Id : ".$id ."<br>";
     echo "Nom : ".$nom."<br>";
@@ -114,6 +106,11 @@
     </header><!-- End Header -->
 
 
+    <style type="text/css">
+        
+    </style>
+
+
         <br><br><br>
        
         <!-- ======= Contact Section ======= -->
@@ -121,61 +118,23 @@
                 
         <div class="container">
 
-            <div class="row mt-5">
-                <div class="col-md-12">
-                    <div class="info-box">
-                        <p><?php echo $photo;?></p>
-                    </div>
+            
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="info-box">
+                    <p><?php echo "Identifiant : ".$login;?></p>
                 </div>
-                <div class="col-md-12">
-                    <div class="info-box">
-                        <p><?php echo $prenom." ".$nom;?></p>
-                    </div>
+            </div>
+            <div class="col-md-12">
+                <div class="info-box">
+                    <p><?php echo "Id : ".$id;?></p>
                 </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Identifiant : ".$login;?></p>
-                    </div>
-                
+            </div>
+            <div class="col-md-12">
+                <div class="info-box">
+                    <p><?php echo "Mot de passe : ".$motdepasse;?></p>
                 </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Id : ".$id ."<br>";?></p>             
-                   </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Mot de passe : ".$motdepasse;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Spécialiste : ".$specialiste;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Email : ".$email;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Numéro de téléphone : ".$tel;?></p>             
-                   </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Spécialité préférée : ".$specialiteP;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Salle : ".$salle;?></p>             
-                   </div>
-                </div>
-
+            </div>
         </div>
         </section><!-- End Contact Section -->
         <!-- ======= Contact Section ======= -->
