@@ -52,7 +52,7 @@ if (isset($_POST["Creer"]))   {
             echo "Insert Sucessful";
         }
         else {
-            echo "///".$sql."//////";
+            
             echo "Unable to insert";
             }    
     
