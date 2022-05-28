@@ -6,6 +6,7 @@ $login = $_SESSION["login"];
 $mdp = $_SESSION["mdp"];
 
 $ID = $_GET['id'];
+$_SESSION["id"] = $ID;
 
 $Connexion = mysqli_connect('localhost', 'root', '', 'omnes sante');
 //Verifier connexion
@@ -142,7 +143,7 @@ if (!$Connexion) {
         $sallemed = $data['Salle'];
         $photomed = $data['Photo'];
 
-        $_SESSION["idmed"] = $idmed;
+        
     }
     //si medecin
 
@@ -226,8 +227,10 @@ if (!$Connexion) {
             $jour = date("l", mktime(0, 0, 0, $month, $day, $year));
             $heure = $hour;
 
-        $dateRDV = "2022-05-31 $i:00:00";
-        $idmed =  '11';
+        $dateRDV = '2022-05-31 '.$i.':00:00';
+        $id = $data['IDMedecin'];
+        $_SESSION["login"] = $data['IDMedecin'];
+        echo "id11 : ".$id.' date11 : '.$dateRDV;
 
             if ($jour == 'Tuesday' && $heure == '0' . $i . '' && $min == '00') {
                 echo '<div class="indispo">';
@@ -235,13 +238,14 @@ if (!$Connexion) {
                 echo '</div>';
                 $test = 1;
             }
-            if ($test != 1) {
-
-                echo '<div class="dispo">';
-                echo '<a href="CreerRDVPat.php?idmed ='.$idmed.' && date='. $dateRDV.'"><input type="button" value="Envoyer un MP" /></a>';
-                echo '</div>';
-                echo '</a>';
-            }
+           
+        }
+        if ($test != 1) {
+            echo "id : ".$id.' date : '.$dateRDV;
+            echo '<div class="dispo">';
+            echo '<a href="CreerRDVPat.php? identifiant ='.$dateRDV.'& date='. $id.'"><input type="button" value="Envoyer un MP" /></a>';
+            echo '</div>';
+            echo '</a>';
         }
         
         echo '</td>';

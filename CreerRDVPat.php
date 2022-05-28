@@ -4,11 +4,12 @@
 session_start();
 $login = $_SESSION["login"];
 $mdp = $_SESSION["mdp"];
-$ID = $_GET['id'];
+
+$identifiant = $_GET["identifiant"];
 $date = $_GET['date'];
 
 //$idmed = isset($_POST['idmed']) ? $_POST['idmed'] : NULL;
-echo'ID :' .$date.'// spe: '.$ID;
+echo'date :' .$date.'// id: '.$identifiant;
 
 
 
