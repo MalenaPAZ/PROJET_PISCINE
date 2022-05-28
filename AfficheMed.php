@@ -81,7 +81,7 @@ $Prenom = $_GET['prenom'];
                             
 
                             echo'<div class="btn-group" role="group" aria-label="Basic example">';
-                            echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom='.$data['Nom'].'& prenom='.$data['Prenom'].'">Disponibilité</a>';
+                            echo'<a role="button" class="btn btn-secondary" href="prof.php?id='.$data['ID'].'">Disponibilité</a>';
                             echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
                             echo'<a role="button" class="btn btn-secondary" href="chat.php?iddest='.$idmed.' && logindest = '.$loginmed.'">Contacter</a>';
                             echo'</div>';
