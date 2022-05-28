@@ -1,5 +1,12 @@
 <?php
 
+
+session_start();
+$loginpatient = $_SESSION["login"];
+$mdppatient = $_SESSION["mdp"];
+
+echo "login : ".$loginpatient." mdp : ".$mdppatient;
+
 $Nom = $_GET['nom'];
 $Prenom = $_GET['prenom'];
 ?>

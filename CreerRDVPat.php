@@ -2,14 +2,13 @@
 
 
 session_start();
-$login = $_SESSION["login"];
-$mdp = $_SESSION["mdp"];
+$loginpatient = $_SESSION["login"];
+$mdppatient = $_SESSION["mdp"];
 
-$identifiant = $_GET["identifiant"];
+$idmed = $_GET["id"];
 $date = $_GET['date'];
 
-//$idmed = isset($_POST['idmed']) ? $_POST['idmed'] : NULL;
-echo'date :' .$date.'// id: '.$identifiant;
+
 
 
 
@@ -36,7 +35,7 @@ while ($data = mysqli_fetch_assoc($result)) {
 }
 
 
-$sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND Mdp LIKE '$mdp' ";
+$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND Mdp LIKE '$mdppatient' ";
 $result = mysqli_query($Connexion, $sql);
 while ($data = mysqli_fetch_assoc($result)) {
 
@@ -99,6 +98,12 @@ while ($data = mysqli_fetch_assoc($result)) {
 
     <?php
 
+$Connexion = mysqli_connect('localhost', 'root', '', 'omnes sante');
+//Verifier connexion
+if (!$Connexion) {
+    die("Echec de la connexion : " . mysqli_connect_error());
+}
+
 $sql = "SELECT * FROM medecin WHERE ID LIKE '$idmed'";
 $result = mysqli_query($Connexion, $sql);
 while ($data = mysqli_fetch_assoc($result)) {
@@ -114,7 +119,7 @@ while ($data = mysqli_fetch_assoc($result)) {
 }
 
 
-$sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND Mdp LIKE '$mdp' ";
+$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND Mdp LIKE '$mdppatient' ";
 $result = mysqli_query($Connexion, $sql);
 while ($data = mysqli_fetch_assoc($result)) {
 
@@ -126,6 +131,8 @@ while ($data = mysqli_fetch_assoc($result)) {
     $Telpatient = $data['NumPatient'];
     $CarteVitale = $data['NumCarteVitale'];
     $photo = $data['Photo'];
+
+
 }
 
      $motif= isset($_POST["Motif"])? $_POST["Motif"] : "";
@@ -137,19 +144,19 @@ while ($data = mysqli_fetch_assoc($result)) {
             $prix = 0;
         } else $prix = 30;
 
+
+        echo $idpatient.', '.$idmed.','.$salle.',  '.$spe.', '.$prix.', '.$date;
+
         //on ajoute ce compte
-        $sql = "INSERT INTO rdv( IDPatient, IDMedecin, Motif_RDV, Salle_RDV, Etat_RDV, Type_RDV, prix, Date) 
-       VALUES ('$idpatient','$idmed','','$salle','0','$spe','$prix',$date)";
+        $sql= "INSERT INTO `rdv`( `IDPatient`, `IDMedecin`, `Salle_RDV`, `Etat_RDV`, `Type_RDV`, `prix`, `Date`) VALUES ('$idpatient', '$idmed','$salle', '0', '$spe', '$prix', '$date')";
         $result = mysqli_query($Connexion, $sql);
         if ($result) {
             echo "Insert Sucessful";
         } else {
-
             echo "Unable to insert";
         }
     } else echo "WTF";  
 
-    echo'ID :' .$idmed.'// spe: '.$spe;
 
    
 

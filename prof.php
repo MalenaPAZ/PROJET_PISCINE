@@ -2,8 +2,10 @@
 
 
 session_start();
-$login = $_SESSION["login"];
-$mdp = $_SESSION["mdp"];
+$loginpatient = $_SESSION["login"];
+$mdppatient = $_SESSION["mdp"];
+
+echo "login : ".$loginpatient." mdp : ".$mdppatient;
 
 $ID = $_GET['id'];
 $_SESSION["id"] = $ID;
@@ -229,8 +231,7 @@ if (!$Connexion) {
 
         $dateRDV = '2022-05-31 '.$i.':00:00';
         $id = $data['IDMedecin'];
-        $_SESSION["login"] = $data['IDMedecin'];
-        echo "id11 : ".$id.' date11 : '.$dateRDV;
+        echo "ID : ".$id.' date11 : '.$dateRDV;
 
             if ($jour == 'Tuesday' && $heure == '0' . $i . '' && $min == '00') {
                 echo '<div class="indispo">';
@@ -241,9 +242,9 @@ if (!$Connexion) {
            
         }
         if ($test != 1) {
-            echo "id : ".$id.' date : '.$dateRDV;
+            echo "id : ".$loginpatient.' date : '.$dateRDV;
             echo '<div class="dispo">';
-            echo '<a href="CreerRDVPat.php? identifiant ='.$dateRDV.'& date='. $id.'"><input type="button" value="Envoyer un MP" /></a>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Envoyer un MP" /></a>';
             echo '</div>';
             echo '</a>';
         }
