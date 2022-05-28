@@ -56,6 +56,7 @@
         <meta content="" name="description">
         <meta content="" name="keywords">
 
+
         <!-- Favicons -->
         <link href="sante.png" rel="icon">
 
@@ -118,14 +119,7 @@
     </header><!-- End Header -->
 
 
-    <style type="text/css">
-        #ado {
-        text-align: center;
-        width: 100px;        
-        }
-    </style>
-
-
+  
         <br><br><br>
        
         <!-- ======= Contact Section ======= -->

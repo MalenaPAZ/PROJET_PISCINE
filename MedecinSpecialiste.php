@@ -22,7 +22,7 @@ while($data = mysqli_fetch_assoc($result)){
     $prenom = $data['PrenomPatient'];
 }
 
-echo " spe".$spe."///";
+echo " spe".$login."///";
 
 ?>
 
