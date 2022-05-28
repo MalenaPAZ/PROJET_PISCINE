@@ -16,7 +16,8 @@ function loginForm(){
     </form>
     </div>
     ';
-    echo '<p class="welcome">Welcome, <b>' echo $_SESSION['name'];'</b></p>'
+    echo '<p class="welcome">Welcome, <b>' ;
+    echo $_SESSION['name'].'</b></p>';
 }
  
 if(isset($_POST['enter'])){

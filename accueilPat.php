@@ -107,7 +107,7 @@ while($data = mysqli_fetch_assoc($result)){
           <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
           <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="#"><span>Mon compte</span></a>
+                <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
                 <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
               </ul>
             </li>
