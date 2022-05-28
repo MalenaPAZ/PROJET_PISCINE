@@ -14,21 +14,9 @@
     while($data = mysqli_fetch_assoc($result)){
 
         $id = $data['IDpatient'];
-        $nom = $data['NomPatient'];
-        $prenom = $data['PrenomPatient'];
         $login = $data['Login'];
         $motdepasse = $data['Mdp'];
-        $email = $data['EmailPatient'];
-        $telephone = $data['NumPatient'];
-        $adresse = $data['AdressePatient'];
-        $numcartevitale = $data['NumCarteVitale'];
-        $specialiteP = $data['SpecialitePref'];
-        $ville = $data['Ville'];
-        $codepostal = $data['CodePostal'];
-        $pays = $data['Pays'];
-        $avatar = $data['Photo'];
-        
-    }
+            }
     /*
     echo "Id : ".$id ."<br>";
     echo "Nom : ".$nom."<br>";
@@ -55,7 +43,6 @@
         <title>Omnes santé</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
-
 
         <!-- Favicons -->
         <link href="sante.png" rel="icon">
@@ -119,7 +106,11 @@
     </header><!-- End Header -->
 
 
-  
+    <style type="text/css">
+        
+    </style>
+
+
         <br><br><br>
        
         <!-- ======= Contact Section ======= -->
@@ -127,70 +118,23 @@
                 
         <div class="container">
 
-            <div class="row mt-5">
-                <div class="col-md-12">
-                    <div class="info-box">
-                        <p><?php echo $photo;?></p>
-                    </div>
+            
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="info-box">
+                    <p><?php echo "Identifiant : ".$login;?></p>
                 </div>
-                <div class="col-md-12">
-                    <div class="info-box">
-                        <p><?php echo $prenom." ".$nom;?></p>
-                    </div>
+            </div>
+            <div class="col-md-12">
+                <div class="info-box">
+                    <p><?php echo "Id : ".$id;?></p>
                 </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Identifiant : ".$login;?></p>
-                    </div>
-                
+            </div>
+            <div class="col-md-12">
+                <div class="info-box">
+                    <p><?php echo "Mot de passe : ".$motdepasse;?></p>
                 </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Id : ".$id ."<br>";?></p>             
-                   </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Mot de passe : ".$motdepasse;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Numéro carte vitale : ".$numcartevitale;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Email : ".$email;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Ville : ".$ville;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Numéro de téléphone : ".$telephone;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Pays : ".$pays;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Spécialité préférée : ".$specialiteP;?></p>             
-                   </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box mt-4">
-                        <p><?php echo "Adresse : ".$adresse.", ".$codepostal;?></p>             
-                   </div>
-                </div>
-
+            </div>
         </div>
         </section><!-- End Contact Section -->
         <!-- ======= Contact Section ======= -->
