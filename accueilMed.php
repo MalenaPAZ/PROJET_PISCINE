@@ -14,9 +14,9 @@ $sql = "SELECT * FROM medecin WHERE Login LIKE '$login' AND
 $result = mysqli_query($Connexion,$sql);
 while($data = mysqli_fetch_assoc($result)){
 
-    $id = $data['ID'];
-    $nom = $data['Nom'];
-    $prenom = $data['Prenom'];
+    $idmed = $data['ID'];
+    $nommed = $data['Nom'];
+    $prenommed = $data['Prenom'];
 }
 
 
@@ -74,6 +74,7 @@ while($data = mysqli_fetch_assoc($result)){
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
+        <li class="nav-link scrollto"><a href="AfficherPatMED.php">Patients</a></li>
           <li class="nav-link scrollto"><a href="AfficherRdvMED.php">Rendez-vous</a></li>
           <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
               <ul>
@@ -81,14 +82,19 @@ while($data = mysqli_fetch_assoc($result)){
                 <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
               </ul>
             </li>
+           
+            <div class="col-sm">
+                <?php echo '    '.$nommed. ' '. $prenommed ?>
+                <?php echo "ID : " . $idmed ?>
+                        </div>
         </ul>
+        
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
 
     </div>
   </header><!-- End Header -->
-
 
   
 

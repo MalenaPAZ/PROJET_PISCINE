@@ -18,6 +18,7 @@ while($data = mysqli_fetch_assoc($result)){
     $id = $data['IDpatient'];
     $nom = $data['NomPatient'];
     $prenom = $data['PrenomPatient'];
+    
 }
 
 echo "Nom : ".$nom.", Prenom: ".$prenom." id: ".$id; 
