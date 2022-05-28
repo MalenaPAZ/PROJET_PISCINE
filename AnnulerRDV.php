@@ -49,11 +49,11 @@ $db_found = mysqli_select_db($db_handle, $database);
     if($result)
         {
             echo "delete Sucessful";
-            header("Location: Accueil_neutre.html");
+            header("Location: AfficherRDV.php");
         }
         else {
             echo "Unable to delete";
-            header("Location:  Accueil_neutre.html");
+            header("Location:  AfficherRDV.php");
             }    
     //on affiche le reste des livres dans notre BDD
     

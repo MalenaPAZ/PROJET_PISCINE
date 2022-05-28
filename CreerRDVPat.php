@@ -148,12 +148,13 @@ while ($data = mysqli_fetch_assoc($result)) {
         echo $idpatient.', '.$idmed.','.$salle.',  '.$spe.', '.$prix.', '.$date;
 
         //on ajoute ce compte
-        $sql= "INSERT INTO `rdv`( `IDPatient`, `IDMedecin`, `Salle_RDV`, `Etat_RDV`, `Type_RDV`, `prix`, `Date`) VALUES ('$idpatient', '$idmed','$salle', '0', '$spe', '$prix', '$date')";
-        $result = mysqli_query($Connexion, $sql);
-        if ($result) {
-            echo "Insert Sucessful";
+        $sql1= "INSERT INTO rdv( IDPatient, IDMedecin,Motif_RDV, Salle_RDV, Etat_RDV, Type_RDV, prix, Date) 
+        VALUES ('".$idpatient."', '".$idmed."','coucou','".$salle."', '0', '".$spe."', '".$prix."', '".$date."')";
+        $result1 = mysqli_query($Connexion, $sql1);
+        if ($result1) {
+            header("Location: accueilPat.php");
         } else {
-            echo "Unable to insert";
+            header("Location: prof.php");
         }
     } else echo "WTF";  
 
