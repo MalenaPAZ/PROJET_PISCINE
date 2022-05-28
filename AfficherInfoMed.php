@@ -1,6 +1,46 @@
 <?php
-// Start the session
-session_start();
+    // Start the session
+    session_start();
+    $login = $_SESSION["login"];
+    $mdp = $_SESSION["mdp"];
+
+    $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
+    //Verifier connexion
+    if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
+
+    $sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
+    Mdp LIKE '$mdp'";
+    $result = mysqli_query($Connexion,$sql);
+    while($data = mysqli_fetch_assoc($result)){
+
+        $id = $data['IDpatient'];
+        $nom = $data['NomPatient'];
+        $prenom = $data['PrenomPatient'];
+        $login = $data['Login'];
+        $motdepasse = $data['Mdp'];
+        $email = $data['EmailPatient'];
+        $tel = $data['NumPatient'];
+        $specialiteP = $data['SpecialitePref'];
+        $specialiste = $data['Specialiste'];
+        $avatar = $data['Photo'];
+        $salle = $data['Salle'];
+    }
+    /*
+    echo "Id : ".$id ."<br>";
+    echo "Nom : ".$nom."<br>";
+    echo "Prenom : ".$prenom."<br>";
+    echo "Identifiant : ".$login."<br>";
+    echo "Mot de passe : ".$motdepasse."<br>";
+    echo "Email : ".$email."<br>";
+    echo "Numéro de téléphone : ".$telephone."<br>";
+    echo "Adresse : ".$adresse."<br>";
+    echo "Numéro carte vitale : ".$numcartevitale."<br>";
+    echo "Spécialité préférée : ".$specialiteP."<br>";
+    echo "Ville : ".$ville."<br>";
+    echo "Code postal : ".$codepostal."<br>";
+    echo "Pays : ".$pays."<br>";
+    echo "Photo : ".$avatar."<br>";
+    */
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,12 +71,10 @@ session_start();
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        </head>
-    <?php
-    // Set session variables (variables globales)
-    $_SESSION["login"] = "";
-    $_SESSION["mdp"] = "";
-    ?>
+    </head>
+    
+
+    
     <body>
         <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
@@ -75,41 +113,79 @@ session_start();
         </div>
     </header><!-- End Header -->
 
-    
-    
-      <br><br><br><br><br><br><br>
-      
-     
-     <style type="text/css">
-        #section{
+
+    <style type="text/css">
+        #ado {
         text-align: center;
+        width: 100px;        
         }
     </style>
 
-    <div id="section">
 
-        <h2>Connexion</h2>
-        <form action="Connexion2.php" method="post">
-            <tr>
-                <td>Identifiant</td>
-                <div id="section">
-                    <td><input type="text" name="login"></td><br><br>
+        <br><br><br>
+       
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+                
+        <div class="container">
+
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="info-box">
+                        <p><?php echo $photo;?></p>
+                    </div>
                 </div>
-            </tr>
-            <tr>
-                <td>Mot de passe</td>
-                <div id="section">
-                    <td><input type="text"  name="mdp"></td><br><br>
+                <div class="col-md-12">
+                    <div class="info-box">
+                        <p><?php echo $prenom." ".$nom;?></p>
+                    </div>
                 </div>
-            </tr>
-                <td colspan="2" align="center">
-                    <input type="submit" name="button1" value="Se Connecter">
-                </td>
-            </tr>
-        </form>
-    </div>
+                <div class="col-md-6">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Identifiant : ".$login;?></p>
+                    </div>
+                
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Id : ".$id ."<br>";?></p>             
+                   </div>
+                </div>
 
+                <div class="col-md-6">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Mot de passe : ".$motdepasse;?></p>             
+                   </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Spécialiste : ".$specialiste;?></p>             
+                   </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Email : ".$email;?></p>             
+                   </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Numéro de téléphone : ".$tel;?></p>             
+                   </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Spécialité préférée : ".$specialiteP;?></p>             
+                   </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Salle : ".$salle;?></p>             
+                   </div>
+                </div>
 
+        </div>
+        </section><!-- End Contact Section -->
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
         <div class="container">
@@ -172,3 +248,7 @@ session_start();
     </footer><!-- End Footer -->
 
     
+
+    </body>
+</html>    
+

@@ -1,17 +1,47 @@
 <?php
-$database = "omnes sante";
-$db_handle = mysqli_connect('localhost','root','');
-$db_found = mysqli_select_db($db_handle, $database);
-
 session_start();
+
+
+
+$login = $_SESSION["login"];
+$mdp = $_SESSION["mdp"];
+$idpat = $_SESSION["idpat"];
+$idmed = $_SESSION["idmed"];
+
+$sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
+ Mdp LIKE '$mdp'";
+$result = mysqli_query($db_handle, $sql);
+if (mysqli_num_rows($result) == 0)
+{
+    $sql = "SELECT * FROM medecin WHERE Login LIKE '$login' AND Mdp LIKE '$mdp'";
+    $result = mysqli_query($db_handle, $sql);
+    if (mysqli_num_rows($result) == 0)
+    {
+        $sql = "SELECT * FROM admin WHERE Login LIKE '$login' AND Mdp LIKE '$mdp'";
+        $result = mysqli_query($db_handle, $sql);
+        if (mysqli_num_rows($result) == 0)
+        {
+            echo "Compte incorrect";
+
+        } else { 
+            
+            header("Location: accueilAdmin.php");}//si admin
+    }else { 
+        
+        header("Location: accueilMed.php");}//si medecin
+}else { 
+    
+    header("Location: accueilPat.php");}//si patient
+
+
  if (isset($_GET['logout'])){
 
  //Message de sortie simple
  $logout_message = "<div class='msgln'><span class='left-info'>User <b class='user-name-left'>" .
- $_SESSION['name'] . "</b> a quitté la session de chat.</span><br></div>";
+ $_SESSION['login'] . "</b> a quitté la session de chat.</span><br></div>";
 
 
- $myfile = fopen(__DIR__ . "/log.html", "a") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/log.html");
+ $myfile = fopen(__DIR__ . "/log".$idmed.".".$idpat.".html", "a") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/log.html");
  fwrite($myfile, $logout_message);
  fclose($myfile);
  session_destroy();
@@ -43,7 +73,7 @@ session_start();
  <head>
  <meta charset="utf-8" />
  <title>Exemple Chat Texto</title>
- <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href=".css" />
  </head>
  <body>
  <?php
@@ -54,13 +84,14 @@ session_start();
  ?>
  <div id="wrapper">
  <div id="menu">
+
  <p class="welcome">Bienvenue, <b><?php echo $_SESSION['name']; ?></b></p>
  <p class="logout"><a id="exit" href="#">Quitter la conversation</a></p>
  </div>
  <div id="chatbox">
  <?php
- if(file_exists("log.html") && filesize("log.html") > 0){
- $contents = file_get_contents("log.html");
+ if(file_exists("/log".$id1.".".$id2.".html") && filesize("/log".$id1.".".$id2.".html") > 0){
+ $contents = file_get_contents("/log".$id1.".".$id2.".html");
  echo $contents;
  }
  ?>
@@ -76,6 +107,7 @@ session_start();
  $(document).ready(function () {
  $("#submitmsg").click(function () {
  var clientmsg = $("#usermsg").val();
+ //ICI RECUP DONNEE DESTINATAIRE ET ENVOYEUR
  $.post("post.php", { text: clientmsg });
  $("#usermsg").val("");
  return false;
@@ -108,4 +140,3 @@ session_start();
 </html>
 <?php
 }
-?>
