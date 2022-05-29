@@ -12,21 +12,16 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
 
+/*$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
+ Mdp LIKE '$mdppatient'";
+$result = mysqli_query($Connexion,$sql);
+while($data = mysqli_fetch_assoc($result)){
 
+    $idpatient = $data['IDpatient'];
+    $nompatient = $data['NomPatient'];
+    $prenompatient = $data['PrenomPatient'];
+}*/
 
-
-$sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
-    Mdp LIKE '$mdpadmin'";
-    $result = mysqli_query($Connexion,$sql);
-    while($data = mysqli_fetch_assoc($result)){
-
-        $id = $data['ID'];
-        $nomAdmin = $data['NomAdmin'];
-        $prenomAdmin = $data['PrenomAdmin'];
-        $login = $data['Login'];
-        $motdepasse = $data['Mdp'];
-        $email = $data['EmailAdmin'];
-    }
 
 
 ?>
@@ -112,29 +107,24 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
 
              <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
-                <li><a href="CreerAdmin1.php"><span>CreerAdmin</span></a>
-                  <li><a href="AfficherInfoAdmin"><span>Mes informations</span></a>
+                  <li><a href="#"><span>Mes informations</span></a>
                   <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
                 </ul>
              </li>
-             <div class="col-sm">
-                <?php echo '    '.$nomAdmin. ' '. $prenomAdmin ?>
-                <?php echo "ID : " . $id ?>
-                        </div>
 
           </ul>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-     
+      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"> </a>
 
     </div>
   </header><!-- End Header -->
 
       <br><br><br><br><br><br><br>
 
-    <title>Creer Medecin</title>
+    <title>Créer RDV Medecin</title>
   </head>
   <body>
 
@@ -150,72 +140,67 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
 
     <div id="section1">
       <div id="a">
-        <h1>Créer un compte : Inscription</h1><br>
+        <h1>Créer un rendez-vous</h1><br>
       </div>
-      <form action="CreerMed.php" method="post">
+      <form action="creerRDVMed.php" method="post">
           <p>
-              <label for="nom" class="left">Nom</label>
+              <label for="NumRDV" class="left">NumRDV</label>
               <div id="section1">
-                <input name="nom" id="nom" type="text" size="30" maxlength="30" />
+                <input name="NumRDV" id="NumRDV" type="text" size="30" maxlength="30" />
               </div>
           </p>
           
         <p>
-            <label for="prenom" class="left">Prénom</label>
+            <label for="IDPatient" class="left">ID Patient</label>
             <div id="section1">
-              <input name="prenom" id="prenom" type="text" size="30" maxlength="30" />
+              <input name="IDPatient" id="IDPatient" type="text" size="30" maxlength="30" />
           </div>
         </p>
         <p>
-          <label for="login" class="left">Identifiant</label>
+          <label for="IDMedecin" class="left">ID Medecin</label>
           <div id="section1">
-            <input name="login" id="login" type="text" size="30" maxlength="30" />
+            <input name="IDMedecin" id="IDMedecin" type="text" size="30" maxlength="30" />
           </div>
         </p>
         <p>
-          <label for="mdp" class="left">Mot de passe</label>
+          <label for="Motif_RDV" class="left">Motif du RDV</label>
           <div id="section1">
-            <input name="mdp" id="mdp" type="password" size="30" maxlength="30" />
+            <input name="Motif_RDV" id="Motif_RDV" type="text" size="30" maxlength="30" />
           </div>
         </p>
 
         <p>
-          <label for="salle" class="left">Salle</label>
+          <label for="Salle_RDV" class="left">Salle du RDV</label>
           <div id="section1">
-            <input name="salle" id="salle" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
-        <p>  
-          <label for="Specialite" class="left">Spécialité</label> 
-          <div id="section1">
-            <select name="Specialite" id="Specialite">
-              <option value="Generaliste">Géneraliste</option>
-              <option value="Addictologie">Addictologie</option>
-              <option value="Andrologie">Andrologie</option>
-              <option value="Cardiologie">Cardiologie</option>
-              <option value="Dertmatologie">Dertmatologie</option>
-              <option value="Gynecologie">Gynécologie</option>
-              <option value="I.S.T">I.S.T</option>
-              <option value="Ostéopathie">Ostéopathie</option>
-              <option value="Gastro-blablabla">Gastro-blablabla</option>
-            </select>
+            <input name="Salle_RDV" id="Salle_RDV" type="text" size="30" maxlength="30" />
           </div>
         </p>
         <p>
-          <label for="email" class="left">Email</label>
+          <label for="Etat_RDV" class="left">Etat du RDV</label>
           <div id="section1">
-            <input name="email" id="email" type="text" size="30" maxlength="30" />
+            <input name="Etat_RDV" id="Etat_RDV" type="text" size="30" maxlength="30" />
           </div>
         </p>
-
         <p>
-          <label for="telephone" class="left">Numéro de téléphone</label>
+          <label for="Type_RDV" class="left">Type de RDV</label>
           <div id="section1">
-            <input name="telephone" id="telephone" type="text" size="30" maxlength="30" />
+            <input name="Type_RDV" id="Type_RDV" type="text" size="30" maxlength="30" />
+          </div>
+        </p>
+        <p>
+          <label for="prix" class="left">Prix</label>
+          <div id="section1">
+            <input name="prix" id="prix" type="text" size="30" maxlength="30" />
+          </div>
+        </p>
+        <p>
+          <label for="Date" class="left">Date</label>
+          <div id="section1">
+            <input name="Date" id="Date" type="Date" size="30" maxlength="30" />
           </div>
         </p>
 
-        <input type="submit" name="Creer" value="Créer">
+        <input type="submit" name="Creer" value="Créer RDV">
       </form>
     </div>
 
