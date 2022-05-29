@@ -5,7 +5,7 @@ session_start();
 $loginpatient = $_SESSION["login"];
 $mdppatient = $_SESSION["mdp"];
 
-echo "login : ".$loginpatient." mdp : ".$mdppatient;
+
 
 $ID = $_GET['id'];
 $_SESSION["id"] = $ID;
@@ -14,6 +14,16 @@ $Connexion = mysqli_connect('localhost', 'root', '', 'omnes sante');
 //Verifier connexion
 if (!$Connexion) {
     die("Echec de la connexion : " . mysqli_connect_error());
+}
+
+$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
+ Mdp LIKE '$mdppatient'";
+$result = mysqli_query($Connexion,$sql);
+while($data = mysqli_fetch_assoc($result)){
+
+    $id = $data['IDpatient'];
+    $nom = $data['NomPatient'];
+    $prenom = $data['PrenomPatient'];
 }
 
 
@@ -69,62 +79,65 @@ if (!$Connexion) {
 <body>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center">
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-            <a href="index.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+      <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
-            <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="accueilPat.php">Accueil</a></li>
+          <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
+                
+              <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                    <li><a class="nav-link scrollto " href="accueilPat.php">Accueil</a></li>
-                    <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
-
-                            <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
-                                    <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
-                                    <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
-                                    <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
-                                    <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
-                                    <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
-                                    <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
-                                    <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
-                                </ul>
-                            <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Informations</a></li>
-                                    <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
-                                    <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
-                                    <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
-                                    <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
-                                    <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
-                                    <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
-                                </ul>
-                        </ul>
-                    </li>
-                    <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
-                    <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
-                    <li class="dropdown"><a href="chat.php"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
-                            <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
-                        </ul>
-                    </li>
-
-
-
+                  <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
+                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Informations</a></li>
+                  <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
+                  <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
+                  <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
+                </ul>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
+          <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
+          <li class="dropdown"><a href="chat.php"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+              </ul>
+            </li>
+            
+            <div class="col-sm">
+                <?php echo $nom. ' '. $prenom ?>
+                <?php echo "ID : " . $id ?>
+                        </div>
+                        
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
+      
 
-
-        </div>
-    </header><!-- End Header -->
+    </div>
+  </header><!-- End Header -->
 
     <!--------------------------- PHP ----------------------------------------------------------------------->
 
@@ -194,6 +207,8 @@ if (!$Connexion) {
             $jour = date("l", mktime(0, 0, 0, $month, $day, $year));
             $heure = $hour;
 
+        
+            $id = $data['IDMedecin'];
 
 
             if ($jour == 'Monday' && $heure == '0' . $i . '' && $min == '00') {
@@ -202,14 +217,18 @@ if (!$Connexion) {
                 echo '</div>';
                 $test = 1;
             }
+           
         }
+        
+        $dateRDV = '2022-05-30 '.$i.':00:00';
         if ($test != 1) {
-            echo '<a onclick="masquer_div("RDVvalide");">';
+
             echo '<div class="dispo">';
-            echo '<input type="button" onclick="#" value="Disponible"/>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
+        
         echo '</td>';
 
         /********* MARDI *******/
@@ -229,9 +248,9 @@ if (!$Connexion) {
             $jour = date("l", mktime(0, 0, 0, $month, $day, $year));
             $heure = $hour;
 
-        $dateRDV = '2022-05-31 '.$i.':00:00';
-        $id = $data['IDMedecin'];
-        echo "ID : ".$id.' date11 : '.$dateRDV;
+        
+            $id = $data['IDMedecin'];
+
 
             if ($jour == 'Tuesday' && $heure == '0' . $i . '' && $min == '00') {
                 echo '<div class="indispo">';
@@ -241,10 +260,12 @@ if (!$Connexion) {
             }
            
         }
+        
+        $dateRDV = '2022-05-31 '.$i.':00:00';
         if ($test != 1) {
-            echo "id : ".$loginpatient.' date : '.$dateRDV;
+
             echo '<div class="dispo">';
-            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Envoyer un MP" /></a>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
@@ -258,7 +279,6 @@ if (!$Connexion) {
         $test = 0;
         while ($data = mysqli_fetch_assoc($result)) {
 
-
             $var_date = $data['Date'];
             //separation de la variable en deux partie une pour les date une pour les heures
             list($date, $time) = explode(" ", $var_date);
@@ -269,23 +289,28 @@ if (!$Connexion) {
             $jour = date("l", mktime(0, 0, 0, $month, $day, $year));
             $heure = $hour;
 
+        
+            $id = $data['IDMedecin'];
 
 
             if ($jour == 'Wednesday' && $heure == '0' . $i . '' && $min == '00') {
                 echo '<div class="indispo">';
                 echo  '<input type="button" onclick="funcIndispo()" value="Indisponible"/>';
-
                 echo '</div>';
                 $test = 1;
             }
+           
         }
+        
+        $dateRDV = '2022-06-01 '.$i.':00:00';
         if ($test != 1) {
-            echo '<a onclick="masquer_div("RDVvalide");">';
+
             echo '<div class="dispo">';
-            echo '<input type="button" onclick="#" value="Disponible"/>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
+        
         echo '</td>';
 
         /********* Jeudi *******/
@@ -305,23 +330,28 @@ if (!$Connexion) {
             $jour = date("l", mktime(0, 0, 0, $month, $day, $year));
             $heure = $hour;
 
+        
+            $id = $data['IDMedecin'];
 
 
             if ($jour == 'Thursday' && $heure == '0' . $i . '' && $min == '00') {
                 echo '<div class="indispo">';
                 echo  '<input type="button" onclick="funcIndispo()" value="Indisponible"/>';
-
                 echo '</div>';
                 $test = 1;
             }
+           
         }
+        
+        $dateRDV = '2022-06-02 '.$i.':00:00';
         if ($test != 1) {
-            echo '<a onclick="masquer_div("RDVvalide");">';
+
             echo '<div class="dispo">';
-            echo '<input type="button" onclick="#" value="Disponible"/>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
+        
         echo '</td>';
 
         /********* Vendredi *******/
@@ -341,6 +371,8 @@ if (!$Connexion) {
             $jour = date("l", mktime(0, 0, 0, $month, $day, $year));
             $heure = $hour;
 
+        
+            $id = $data['IDMedecin'];
 
 
             if ($jour == 'Friday' && $heure == '0' . $i . '' && $min == '00') {
@@ -349,14 +381,18 @@ if (!$Connexion) {
                 echo '</div>';
                 $test = 1;
             }
+           
         }
+        
+        $dateRDV = '2022-06-03 '.$i.':00:00';
         if ($test != 1) {
-            echo '<a onclick="masquer_div("RDVvalide");">';
+
             echo '<div class="dispo">';
-            echo '<input type="button" onclick="#" value="Disponible"/>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
+        
         echo '</td>';
     }
 

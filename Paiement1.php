@@ -12,7 +12,7 @@ $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
 
-/*$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
+$sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
  Mdp LIKE '$mdppatient'";
 $result = mysqli_query($Connexion,$sql);
 while($data = mysqli_fetch_assoc($result)){
@@ -20,7 +20,7 @@ while($data = mysqli_fetch_assoc($result)){
     $idpatient = $data['IDpatient'];
     $nompatient = $data['NomPatient'];
     $prenompatient = $data['PrenomPatient'];
-}*/
+}
 
 
 
@@ -58,75 +58,74 @@ while($data = mysqli_fetch_assoc($result)){
 
           </head>
           <body>
-         <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-
-      <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-        <li><a class="nav-link scrollto " href="accueilAdmin.php">Accueil</a></li>
-        <li class="dropdown"><a href="#"><span>Medecins</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="CreerMedecin.php"><span>Ajouter</span></a>
-                
-              <li class="dropdown"><a href="#"><span>Parcourir</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                <li><a href="AfficherMedADMIN.php?spe=Generaliste">Généraliste</a></li>
-                  <li><a href="AfficherMedADMIN.php?spe=Addictologie">Addictologie</a></li>
-                  <li><a href="AfficherMedADMIN.php?spe=Andrologie">Andrologie</a></li>
-                  <li><a href="AfficherMedADMIN.php?spe=Cardiologie">Cardiologie</a></li>
-                  <li><a href="AfficherMedADMIN.php?spe=Dermatologie">Dermatologie</a></li>
-                  <li><a href="AfficherMedADMIN.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
-                  <li><a href="AfficherMedADMIN.php?spe=Gynecologie">Gynécologie</a></li>
-                  <li><a href="AfficherMedADMIN.php?spe=I.S.T.">I.S.T.</a></li>
-                  <li><a href="AfficherMedADMIN.php?spe=Osteopathie">Ostéopathie</a></li>
-                </ul>
-                
-            </ul>
-          </li>
-
-             <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="CreerPatADMIN.php"><span>Ajouter</span></a>
-                  <li class="dropdown"><a href="AfficherPatADMIN.php"><span>Parcourir</span></i></a>
-                </ul>
-             </li>
-            
-            <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
-               <ul>
-                 <li><a href="#"><span>Ajouter</span></a>
-                 <li class="dropdown"><a href="AfficherRdvADMIN.php"><span>Parcourir</span></i></a>
-               </ul>
-            </li>
-
-              <li class="nav-link scrollto"><a href="AfficherSerADMIN.php">Services</a></li>
-
-             <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="#"><span>Mes informations</span></a>
-                  <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
-                </ul>
-             </li>
-
-          </ul>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"> </a>
-
-    </div>
-  </header><!-- End Header -->
+         
 
       <br><br><br><br><br><br><br>
 
     <title>Creer Medecin</title>
   </head>
   <body>
+
+       <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <a href="index.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="accueilPat.php">Accueil</a></li>
+          <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
+                
+              <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
+                </ul>
+                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Informations</a></li>
+                  <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
+                  <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
+                  <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
+                </ul>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
+          <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
+          <li class="dropdown"><a href="chat.php"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+              </ul>
+            </li>
+            
+            <div class="col-sm">
+                <?php echo $nom. ' '. $prenom ?>
+                <?php echo "ID : " . $id ?>
+                        </div>
+                        
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      
+
+    </div>
+  </header><!-- End Header -->
 
     <style type="text/css">
       #section1{
@@ -140,70 +139,47 @@ while($data = mysqli_fetch_assoc($result)){
 
     <div id="section1">
       <div id="a">
-        <h1>Créer un compte : Inscription</h1><br>
+        <h1>Paiement</h1><br>
       </div>
-      <form action="CreerMed.php" method="post">
-          <p>
-              <label for="nom" class="left">Nom</label>
-              <div id="section1">
-                <input name="nom" id="nom" type="text" size="30" maxlength="30" />
-              </div>
-          </p>
-          
-        <p>
-            <label for="prenom" class="left">Prénom</label>
+      <form action="Paiement2.php" method="post">
+      <h2>Coordonnées bancaires</h2><br>
+            
+            <p>
+              <label for="Typecarte" class="left">Type de carte de paiement :</label>
             <div id="section1">
-              <input name="prenom" id="prenom" type="text" size="30" maxlength="30" />
-          </div>
+              <select name="Typecarte" id="Typecarte">
+                <option value="Visa">Visa</option>
+                <option value="MasterCard">MasterCard</option>
+                <option value="American Express">American Express</option>
+                <option value="PayPal">PayPal</option>
+              </select>
+            </div>
+            </p>
+        <p>
+          <label for="numcarte" class="left">Numero de  la carte :</label>
+        <div id="section1">
+          <input name="numcarte" id="numcarte" type="int" size="30" maxlength="30" />
+        </div>
         </p>
         <p>
-          <label for="login" class="left">Identifiant</label>
-          <div id="section1">
-            <input name="login" id="login" type="text" size="30" maxlength="30" />
-          </div>
+          <label for="nomcarte" class="left">Nom afficher dans la carte :</label>
+        <div id="section1">
+          <input name="nomcarte" id="nomcarte" type="text" size="30" maxlength="30" />
+        </div>
         </p>
         <p>
-          <label for="dmp" class="left">Mot de passe</label>
-          <div id="section1">
-            <input name="mdp" id="mdp" type="password" size="30" maxlength="30" />
-          </div>
+          <label for="dateexp" class="left">Date d'espiration :</label>
+        <div id="section1">
+          <input name="dateexp" id="dateexp" type="text" size="30" maxlength="30" />
+        </div>
+        </p>
+        <p>
+          <label for="codecarte" class="left">Code de sécurité :</label>
+        <div id="section1">
+          <input name="codecarte" id="codecarte" type="int" size="30" maxlength="30" />
+        </div>
         </p>
 
-        <p>
-          <label for="dmp" class="left">Salle</label>
-          <div id="section1">
-            <input name="salle" id="salle" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
-        <p>  
-          <label for="Specialite" class="left">Spécialité</label> 
-          <div id="section1">
-            <select name="Specialite" id="Specialite">
-              <option value="Generaliste">Géneraliste</option>
-              <option value="Addictologie">Addictologie</option>
-              <option value="Andrologie">Andrologie</option>
-              <option value="Cardiologie">Cardiologie</option>
-              <option value="Dertmatologie">Dertmatologie</option>
-              <option value="Gynecologie">Gynécologie</option>
-              <option value="I.S.T">I.S.T</option>
-              <option value="Ostéopathie">Ostéopathie</option>
-              <option value="Gastro-blablabla">Gastro-blablabla</option>
-            </select>
-          </div>
-        </p>
-        <p>
-          <label for="email" class="left">Email</label>
-          <div id="section1">
-            <input name="email" id="email" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
-
-        <p>
-          <label for="telephone" class="left">Numéro de téléphone</label>
-          <div id="section1">
-            <input name="telephone" id="telephone" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
 
         <input type="submit" name="Creer" value="Créer">
       </form>

@@ -22,7 +22,6 @@ while($data = mysqli_fetch_assoc($result)){
     $prenom = $data['PrenomPatient'];
 }
 
-echo " spe".$login."///";
 
 ?>
 
@@ -92,7 +91,7 @@ echo " spe".$login."///";
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="index.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
+      <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
@@ -128,13 +127,17 @@ echo " spe".$login."///";
           </li>
           <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
           <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
-          <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="chat.php"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="#"><span>Mon compte</span></a>
+                <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
                 <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
               </ul>
             </li>
             
+            <div class="col-sm">
+                <?php echo $nom. ' '. $prenom ?>
+                <?php echo "ID : " . $id ?>
+                        </div>
                         
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -158,12 +161,14 @@ $result = mysqli_query($Connexion,$sql);
 
  while($data = mysqli_fetch_assoc($result)){
 
-    $prenom = $data['Prenom'];
-    $nom = $data['Nom'];
-    $tel = $data['Tel'];
-    $email = $data['Email'];
-    $photo = $data['Photo'];
-    
+  $tel = $data['Tel'];
+  $email = $data['Email'];
+  $photo = $data['Photo'];
+  $idmed = $data['ID'];
+  $loginmed = $data['Login'];
+  $salle = $data['Salle'];
+  $spe = $data['Specialite'];
+
         
         
 
@@ -179,7 +184,7 @@ $result = mysqli_query($Connexion,$sql);
                         echo'<h2 href=""> Dr.'. $data['Nom'] .'   '.$data['Prenom'] . '</h2>';
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                               echo'<p>Salle : EM015</p>';
+                               echo'<p>Salle : '. $data['Salle'] .' </p>';
                             echo'</div>';
                            
                         echo'</div>';

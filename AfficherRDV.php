@@ -116,7 +116,7 @@ while ($data = mysqli_fetch_assoc($result)) {
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="index.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
+      <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
@@ -196,7 +196,17 @@ while ($data = mysqli_fetch_assoc($result)) {
 
 
      
-
+      $sql = "SELECT * FROM medecin WHERE ID LIKE '$idmed' ";
+      $result = mysqli_query($Connexion, $sql);
+      
+      while ($data = mysqli_fetch_assoc($result)) {
+      
+        $prenommed = $data['Prenom'];
+        $nommed = $data['Nom'];
+        $telmed = $data['Tel'];
+        $emailmed = $data['Email'];
+        $photomed = $data['Photo'];
+      }
 
       echo '<div class="Enseignants">';
       echo ' <div class="row">';
@@ -206,7 +216,7 @@ while ($data = mysqli_fetch_assoc($result)) {
       echo '</div>';
 
       echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-      echo '<h2 href=""> Dr.' . $nommed . '   ' . $prenommed . '</h2>';
+      echo '<h2 href=""> Dr.' . $idmed . '   ' . $prenommed . '</h2>';
       //echo '<h2 href=""> Dr.' . $nompatient . '   ' . $prenompatient . '</h2>';
       echo '<div class="row">';
       echo '<div class="col-sm">';

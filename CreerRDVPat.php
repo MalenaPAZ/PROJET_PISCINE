@@ -142,10 +142,11 @@ while ($data = mysqli_fetch_assoc($result)) {
 
         if ($spe == 'Generaliste') {
             $prix = 0;
-        } else $prix = 30;
+        } else {header('Location: CreerPatient.html');
+                exit();} 
 
 
-        echo $idpatient.', '.$idmed.','.$salle.',  '.$spe.', '.$prix.', '.$date;
+        
 
         //on ajoute ce compte
         $sql1= "INSERT INTO rdv( IDPatient, IDMedecin,Motif_RDV, Salle_RDV, Etat_RDV, Type_RDV, prix, Date) 
