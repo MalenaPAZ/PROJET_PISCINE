@@ -8,7 +8,7 @@ $mdppatient = $_SESSION["mdp"];
 
 
 $ID = $_GET['id'];
-$_SESSION["id"] = $ID;
+
 
 $Connexion = mysqli_connect('localhost', 'root', '', 'omnes sante');
 //Verifier connexion
@@ -144,20 +144,16 @@ while($data = mysqli_fetch_assoc($result)){
     <?php
 
 
-    $sql = "SELECT * FROM medecin WHERE ID LIKE '$ID'";
+    $sql = "SELECT * FROM services WHERE ID LIKE '$ID'";
     $result = mysqli_query($Connexion, $sql);
     if (mysqli_num_rows($result) == 0) {
-        
+        echo "compte n'existe pas";
     } else while ($data = mysqli_fetch_assoc($result)) {
 
-        $prenom = $data['Prenom'];
-        $nommed = $data['Nom'];
-        $idmed = $data['ID'];
-        $telmed = $data['Tel'];
-        $emailmed = $data['Email'];
-        $sallemed = $data['Salle'];
-        $photomed = $data['Photo'];
-
+        $salle = $data['Salle'];
+        $service1 = $data['Servicelab'];
+        $infos = $data['Infos'];
+        $idservice = $data['ID'];
         
     }
     //si medecin
@@ -166,7 +162,7 @@ while($data = mysqli_fetch_assoc($result)){
 
     /************       EMPLOI DU TEMPS        *********************************************************/
     echo '<div class="EDT">';
-    echo '<h1>Disponibilités </h1>';
+    echo '<h1>Disponibilités de '.$service1.'</h1>';
 
     echo '<div class="calendrier">';
     echo '<div class="table-responsive">';
@@ -208,7 +204,7 @@ while($data = mysqli_fetch_assoc($result)){
             $heure = $hour;
 
         
-            $id = $data['IDMedecin'];
+         
 
 
             if ($jour == 'Monday' && $heure == '0' . $i . '' && $min == '00') {
@@ -249,7 +245,7 @@ while($data = mysqli_fetch_assoc($result)){
             $heure = $hour;
 
         
-            $id = $data['IDMedecin'];
+           
 
 
             if ($jour == 'Tuesday' && $heure == '0' . $i . '' && $min == '00') {
@@ -290,7 +286,6 @@ while($data = mysqli_fetch_assoc($result)){
             $heure = $hour;
 
         
-            $id = $data['IDMedecin'];
 
 
             if ($jour == 'Wednesday' && $heure == '0' . $i . '' && $min == '00') {
@@ -331,7 +326,7 @@ while($data = mysqli_fetch_assoc($result)){
             $heure = $hour;
 
         
-            $id = $data['IDMedecin'];
+
 
 
             if ($jour == 'Thursday' && $heure == '0' . $i . '' && $min == '00') {
@@ -372,7 +367,7 @@ while($data = mysqli_fetch_assoc($result)){
             $heure = $hour;
 
         
-            $id = $data['IDMedecin'];
+
 
 
             if ($jour == 'Friday' && $heure == '0' . $i . '' && $min == '00') {

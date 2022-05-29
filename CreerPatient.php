@@ -15,7 +15,14 @@ $adresse = isset($_POST["adresse"]) ? $_POST["adresse"] : "";
 $codepostal = isset($_POST["codepostal"]) ? $_POST["codepostal"] : "";
 $pays = isset($_POST["pays"]) ? $_POST["pays"] : "";
 $numcartevitale = isset($_POST["numcartevitale"]) ? $_POST["numcartevitale"] : "";
+
 $avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "";
+$typecarte = isset($_POST["Typecarte"]) ? $_POST["Typecarte"] : "";
+$numcarte = isset($_POST["Numcarte"]) ? $_POST["Numcarte"] : "";
+$nomcarte = isset($_POST["Nomcarte"]) ? $_POST["Nomcarte"] : "";
+$dateexp = isset($_POST["Dateexp"]) ? $_POST["Dateexp"] : "";
+$codesecu = isset($_POST["Codesecu"]) ? $_POST["Codesecu"] : "";
+
 
 
 
@@ -28,31 +35,6 @@ $db_found = mysqli_select_db($db_handle, $database);
 //*************************************
 
 
-/*// si bouton1 (Rechercher) est cliqué
-if (isset($_POST["button1"])){
-if ($db_found) {
-//commencer le query
-$sql = "SELECT * FROM medecin ";
-if (($login != "") && ($mdp != "")) {
-//on recherche le livre par son titre
-$sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$mdp%'";
-//on cherche ce livre par son auteur aussi
-/*if ($mdp != "") {
-$sql .= " AND Mdp LIKE '%$mdp%'";
-}
-}
-$result = mysqli_query($db_handle, $sql);
-//regarder s'il y a des resultats
-if (mysqli_num_rows($result) == 0) {
-echo "<p>Incorrect</p>";
-} else {
-echo "Num : " . mysqli_num_rows($result);
-echo "/// Compte trouvé";
-}
-} else {
-echo "<p>Database not found.</p>";
-}
-} //end Rechercher*/
 
 
 
@@ -69,13 +51,20 @@ if (isset($_POST["Creer"])) {
         $result = mysqli_query($db_handle, $sql);
         //regarder s'il y a de resultat
         if (mysqli_num_rows($result) != 0) {
-            echo "<p>Compte already exists. Duplicates not allowed.</p>";
+            
+
+            echo'<script type="text/javascript">
+            alert("Ces identifiants sont deja utilisés")';
+            echo '</script>';
+            exit();
         } else {
+            
 
             //on ajoute ce compte
-            $sql = "INSERT INTO `patient` (`IDpatient`, `NomPatient`, `PrenomPatient`, `Mdp`, `Login`, `AdressePatient`, `EmailPatient`, `NumPatient`, `NumCarteVitale`, `SpecialitePref`, `Ville`, `CodePostal`, `Pays`, `Photo`, `TypeCarte`, `NumCarteB`, `NomCarte`, `DateExp`, `CodeSecu`) 
-           VALUES('".$nom."','".$prenom."','".$login."','".$motdepasse."','".$email."','".$telephone."','".$adresse."','".$numcartevitale."','".$specialiteP."','".$ville."','".$codepostal."','".$pays."','".$avatar."', 'Master Card', 123456789, 'PAZ Malena', '05/22', 1234)";
-            $result = mysqli_query($db_handle, $sql);
+<<<<<<< HEAD
+            $sql1 = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo, Typecarte, Numcarte, Nomcarte, Dateexp, Codesecu)
+     VALUES('$nom','$prenom','$login','$motdepasse','$email','$telephone','$adresse','$numcartevitale','$specialiteP','$ville','$codepostal','$pays','$avatar','$typecarte','$numcarte','$nomcarte','$dateexp','$codesecu')";
+            $result1 = mysqli_query($db_handle, $sql1);
         }
         //on cherche l'ADMIN
         $sql = "SELECT * FROM patient ";
@@ -84,8 +73,15 @@ if (isset($_POST["Creer"])) {
             $sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$motdepasse%'";
         }
         $result = mysqli_query($db_handle, $sql);
+=======
+            $sql = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo, TypeCarte, NumCarteB, NomCarte, DateExp, CodeSecu)
+     VALUES('".$nom."','".$prenom."','".$login."','".$motdepasse."','".$email."','".$telephone."','".$adresse."','".$numcartevitale."','".$specialiteP."','".$ville."','".$codepostal."','".$pays."','".$avatar."', '".$typecarte."', '".$numCarte."', '".$nomcarte."', '".$dateexp."', '".$codecarte."')";
+            $result = mysqli_query($db_handle, $sql);
+            
+        if ($result) {
+>>>>>>> dd07caf2a862fad226634c30208447e8fc6a507f
 
-        ## Définitions des deux constantes
+            ## Définitions des deux constantes
         define('ADRESSE_WEBMASTER', 'pazmalena2001@yahoo.fr'); // Votre adresse qui apparaitra en tant qu'expéditeur des E-mails
         define('SUJET', 'Creation Compte Omnes sante'); // Sujet commun aux deux E-mail
 
@@ -105,8 +101,9 @@ if (isset($_POST["Creer"])) {
             echo'<script type="text/javascript">
             alert("email de validation de creation de compte envoyé à '.$email .'")';
             
-            echo '</script>';
             
+            echo '</script>';
+
            
 
         } else {
@@ -117,43 +114,18 @@ if (isset($_POST["Creer"])) {
             //header("Location : CreerPatient.html");
     
         }
+        header('Location: Accueil_neutre.html');
+        exit();
+        } header('Location: CreerPatient.html');
+        exit();
+        }
+        
+        
 
-       
+        //header("Location : Accueil_neutre.html");
     } else echo "database not found";
 } else echo "bouton not found";
 
-/*
 
-//si le bouton3 (Supprimer) est cliqué
-if (isset($_POST["button3"])) {
-    if ($db_found) {
-    //on cherche le livre
-    $sql = "SELECT * FROM admin";
-    //avec son titre et auteur
-    if (($login != "")&&($mdp != "")) {
-    $sql .= " WHERE Login LIKE '%$login%'AND Mdp LIKE '%$mdp%'";
-    }
-    $result = mysqli_query($db_handle, $sql);
-    //regarder s'il y a de resultat
-    if (mysqli_num_rows($result) == 0) {
-        //ce livre n'existe pas
-    echo "<p>Cannot delete. account not found.</p>";
-    } else {
-    //on supprime cet item
-    while ($data = mysqli_fetch_assoc($result)) {
-        $id = $data['ID'];
-        }
-    //on supprime cet item par son ID
-    $sql = "DELETE FROM admin WHERE ID = $id";
-    $result =mysqli_query($db_handle, $sql);
-    
-    if($result)
-        {
-            echo "delete Sucessful";
-        }
-        else {
-            echo "Unable to delete";
-            }    
-    //on affiche le reste des livres dans notre BDD
-    
-}}}*/
+
+
