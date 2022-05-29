@@ -33,10 +33,7 @@ while ($data = mysqli_fetch_assoc($result)) {
     $salle = $data['Salle'];
     $photo = $data['Photo'];
     $spe = $data['Specialite'];
-} if (!$result){
-
-    
-} else {
+} if ($result){} else{
     $spe = "Generaliste";
     $sql = "SELECT * FROM services WHERE ID LIKE '$idmed'";
     $result = mysqli_query($Connexion, $sql);
@@ -135,6 +132,7 @@ while ($data = mysqli_fetch_assoc($result)) {
     $salle = $data['Salle'];
     $photo = $data['Photo'];
     $spe = $data['Specialite'];
+    
 }
 
 
@@ -154,23 +152,23 @@ while ($data = mysqli_fetch_assoc($result)) {
 
 }
 
-     $motif= isset($_POST["Motif"])? $_POST["Motif"] : "";
 
  
     if ($Connexion) {
 
         if ($spe != 'Generaliste' ) {
             
-            header('Location: Paiement1.php?id='.$idmed.'&date='.$date.'');
-                exit();
+           header('Location: Paiement1.php?id='.$idmed.'&date='.$date.'');
+               exit();
         } 
+       
 
 
         
 
         //on ajoute ce compte
-        $sql1= "INSERT INTO rdv( IDPatient, IDMedecin,Motif_RDV, Salle_RDV, Etat_RDV, Type_RDV, prix, Date) 
-        VALUES ('".$idpatient."', '".$idmed."','coucou','".$salle."', '0', '".$spe."', '0', '".$date."')";
+        $sql1= "INSERT INTO rdv( IDPatient, IDMedecin,Motif_RDV, Salle_RDV, Etat_RDV, Type_RDV, prix, Date, NomMed, PrenomMed, SpeMed) 
+        VALUES ('".$idpatient."', '".$idmed."','coucou','".$salle."', '0', '".$spe."', '0', '".$date."', '".$nommed."', '".$prenommed."', '".$spe."')";
         $result1 = mysqli_query($Connexion, $sql1);
         if ($result1) {
              ## Définitions des deux constantes

@@ -45,8 +45,8 @@ $nomcarte = isset($_POST["nomcarte"]) ? $_POST["nomcarte"] : "";
 $dateexp = isset($_POST["dateexp"]) ? $_POST["dateexp"] : "";
 $codecarte = isset($_POST["codecarte"]) ? $_POST["codecarte"] : "";
 
-echo $typecarte.'//'.$numCarte.'//'.$nomcarte.' //'.$dateexp.'//'.$codecarte.'';
-echo $TYPECARTE.'//'.$NUMCARTE.'//'.$NOMCARTE.' //'.$DATEEXP.'//'.$CODECARTE.'';
+echo $typecarte.'//'.$numCarte.'//'.$nomcarte.' //'.$dateexp.'//'.$codecarte.'//';
+echo $TYPECARTE.'//'.$NUMCARTE.'//'.$NOMCARTE.' //'.$DATEEXP.'//'.$CODECARTE.'//';
 echo $idpat.'//'.$idmed.'//'.$date.' //'.$spe.'//'.$salle.'';
 
 
@@ -71,11 +71,11 @@ if (isset($_POST["Creer"])) {
             
 
 
-            $sql= "INSERT INTO rdv( IDPatient, IDMedecin,Motif_RDV, Salle_RDV, Etat_RDV, Type_RDV, prix, Date) 
-            VALUES ('".$idpat."', '".$idmed."','coucou','".$salle."', '0', '".$spe."', '0', '".$date."')";
-            $result = mysqli_query($Connexion, $sql);
+            $sql1= "INSERT INTO rdv( IDPatient, IDMedecin,Motif_RDV, Salle_RDV, Etat_RDV, Type_RDV, prix, Date, NomMed, PrenomMed, SpeMed) 
+            VALUES ('".$idpat."', '".$idmed."','coucou','".$salle."', '0', '".$spe."', '30', '".$date."', '".$nommed."', '".$prenommed."', '".$spe."')";
+            $result1 = mysqli_query($Connexion, $sql1);
         
-                if ($result) {
+                if ($result1) {
 
                     ## Définitions des deux constantes
                     define('ADRESSE_WEBMASTER', 'pazmalena2001@yahoo.fr'); // Votre adresse qui apparaitra en tant qu'expéditeur des E-mails
@@ -107,9 +107,13 @@ if (isset($_POST["Creer"])) {
                     }
                     
                 }
+
                 header('Location: prof.php?id='.$idmed.'');
-                exit();
+               
             
         } 
+        echo '<script type="text/javascript">
+        alert("données sont fausses")';
+        echo '</script>';
     } else echo "database not found";
 } else echo "bouton not found";

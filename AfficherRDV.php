@@ -22,7 +22,7 @@ while ($data = mysqli_fetch_assoc($result)) {
   $nompatient = $data['NomPatient'];
   $prenompatient = $data['PrenomPatient'];
 }
-
+echo 'idpatient : '.$idpatient.'';
 $sql = "SELECT * FROM rdv WHERE IDPatient LIKE '$idpatient' AND Etat_RDV LIKE '0'";
 $result = mysqli_query($Connexion, $sql);
 
@@ -112,8 +112,8 @@ while ($data = mysqli_fetch_assoc($result)) {
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+   <!-- ======= Header ======= -->
+   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
       <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
@@ -126,19 +126,19 @@ while ($data = mysqli_fetch_assoc($result)) {
           <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
-
+                
               <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Entérologie">Gastro-Hépato-Entérologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gynécologie">Gynécologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Ostéopathie">Ostéopathie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
-              <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
                   <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
@@ -151,24 +151,24 @@ while ($data = mysqli_fetch_assoc($result)) {
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Rendez-vous</a></li>
-          <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#"><span>Mon compte</span></a>
-              <li class="dropdown"><a href="#"><span>Deconnexion</span></i></a>
-            </ul>
-          </li>
-          <div class="col-sm">
-            <?php echo $nompatient . ' ' . $prenompatient ?>
-            <?php echo "ID : " . $idpatient ?>
-          </div>
-
-
+          <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
+          <li class="dropdown"><a href="chat.php"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+              </ul>
+            </li>
+            
+            <div class="col-sm">
+                <?php echo $nompatient. ' '. $prenompatient ?>
+                <?php echo "ID : " . $idpatient ?>
+                        </div>
+                        
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-
+      
 
     </div>
   </header><!-- End Header -->
@@ -190,23 +190,16 @@ while ($data = mysqli_fetch_assoc($result)) {
 
       $Numrdv = $data['NumRDV'];
       $date = $data['Date'];
-
+      $salle = $data['Salle_RDV'];
       $type = $data['Type_RDV'];
       $idmed = $data['IDMedecin'];
+      $nomMED = $data['NomMed'];
+      $prenomMED = $data['PrenomMed'];
+      $spemed = $data['SpeMed'];
 
 
      
-      $sql = "SELECT * FROM medecin WHERE ID LIKE '$idmed' ";
-      $result = mysqli_query($Connexion, $sql);
-      
-      while ($data = mysqli_fetch_assoc($result)) {
-      
-        $prenommed = $data['Prenom'];
-        $nommed = $data['Nom'];
-        $telmed = $data['Tel'];
-        $emailmed = $data['Email'];
-        $photomed = $data['Photo'];
-      }
+     
 
       echo '<div class="Enseignants">';
       echo ' <div class="row">';
@@ -216,7 +209,7 @@ while ($data = mysqli_fetch_assoc($result)) {
       echo '</div>';
 
       echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-      echo '<h2 href=""> Dr.' . $idmed . '   ' . $prenommed . '</h2>';
+      echo '<h2 href=""> Dr.' . $nomMED . '   ' . $prenomMED . '</h2>';
       //echo '<h2 href=""> Dr.' . $nompatient . '   ' . $prenompatient . '</h2>';
       echo '<div class="row">';
       echo '<div class="col-sm">';

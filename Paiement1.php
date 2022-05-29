@@ -140,7 +140,7 @@ while($data = mysqli_fetch_assoc($result)){
 
     <div id="section1">
       <div id="a">
-        <h1>Paiement</h1><br>
+        <h1>Paiement de 30 euros</h1><br>
       </div>
       <?php 
           echo '<form action="Paiement2.php?date='.$date.'&amp;id='.$idmed.'" method="post">'; 

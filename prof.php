@@ -224,7 +224,7 @@ while($data = mysqli_fetch_assoc($result)){
         if ($test != 1) {
 
             echo '<div class="dispo">';
-            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$ID.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
@@ -265,7 +265,7 @@ while($data = mysqli_fetch_assoc($result)){
         if ($test != 1) {
 
             echo '<div class="dispo">';
-            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$ID.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
@@ -306,7 +306,7 @@ while($data = mysqli_fetch_assoc($result)){
         if ($test != 1) {
 
             echo '<div class="dispo">';
-            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$ID.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
@@ -347,7 +347,7 @@ while($data = mysqli_fetch_assoc($result)){
         if ($test != 1) {
 
             echo '<div class="dispo">';
-            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$ID.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
@@ -388,7 +388,7 @@ while($data = mysqli_fetch_assoc($result)){
         if ($test != 1) {
 
             echo '<div class="dispo">';
-            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$id.'"><input type="button" value="Reserver" /></a>';
+            echo '<a href="CreerRDVPat.php?date='. $dateRDV.'&amp;id='.$ID.'"><input type="button" value="Reserver" /></a>';
             echo '</div>';
             echo '</a>';
         }
