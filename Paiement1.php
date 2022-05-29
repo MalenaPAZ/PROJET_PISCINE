@@ -2,10 +2,11 @@
 
 
 session_start();
-$loginadmin = $_SESSION["login"];
-$mdpadmin = $_SESSION["mdp"];
+$loginpatient = $_SESSION["login"];
+$mdppatient = $_SESSION["mdp"];
 
-
+$idmed = $_GET["id"];
+$date = $_GET['date'];
 
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
@@ -114,8 +115,8 @@ while($data = mysqli_fetch_assoc($result)){
             </li>
             
             <div class="col-sm">
-                <?php echo $nom. ' '. $prenom ?>
-                <?php echo "ID : " . $id ?>
+                <?php echo $nompatient. ' '. $prenompatient ?>
+                <?php echo "ID : " . $idpatient ?>
                         </div>
                         
         </ul>
@@ -141,7 +142,9 @@ while($data = mysqli_fetch_assoc($result)){
       <div id="a">
         <h1>Paiement</h1><br>
       </div>
-      <form action="Paiement2.php" method="post">
+      <?php 
+          echo '<form action="Paiement2.php?date='.$date.'&amp;id='.$idmed.'" method="post">'; 
+        ?>
       <h2>Coordonnées bancaires</h2><br>
             
             <p>
@@ -181,7 +184,7 @@ while($data = mysqli_fetch_assoc($result)){
         </p>
 
 
-        <input type="submit" name="Creer" value="Créer">
+        <input type="submit" name="Creer" value="Payer">
       </form>
     </div>
 
