@@ -52,6 +52,48 @@
           <li class="nav-link scrollto"><a href="#">Mon compte</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+        <div class="search">
+          <input class="srch" type="search" id="search" value="" placeholder="Rechercher" onchange="ouvrirPage()">
+          <button class="btn" id="button" type="button" onclick="ouvrirPage()">Search</button>
+      </div>
+      <script>
+        $database = "omnes sante";
+        $db_handle = mysqli_connect('localhost','root','');
+        $db_found = mysqli_select_db($db_handle, $database);
+
+      function ouvrirPage() {
+      var a = document.getElementById("search").value;
+
+      if (a === "medecin generaliste" | a =="médecin généraliste" | a =="médecine générale" | a =="medecine generale") {
+          window.open("MedecinGeneraliste.php");
+      }
+      if (a === "medecin specialiste" | a =="médecin spécialiste" | a =="médecin specialiste" | a =="medecin spécialiste") {
+          window.open("MedecinSpecialiste.php");
+      }
+      if (a === "labo" | a =="laboratoire" | a =="laboratoire de biologie" | a =="laboratoire de biologie médicale  ") {
+          window.open("AfficherSerADMIN.php");
+      }
+      if (a === "rendez vous" | a=="rendez-vous" | a=="rdv") {
+          window.open("AfficherRDV.php");
+      }
+      if (a === "mon compte" | a=="compte") {
+          window.open("AfficherInfoPat.php");
+      }
+      if (a === "gynécologie" | a=="addictologie" | a=="andrologie"  | a=="cardiologie" | a=="dermatologie"
+          | a=="gastro" | a=="gastro-hépato" | a=="gastro-hépato-entérologie" | a=="ist" | a=="IST "
+          | a=="I.S.T" | a=="I.S.T. " | a=="ostéopathie") {
+          window.open("MedecinSpecialiste.php");
+      }
+      if (a === "informations" | a=="depistage covid-19" | a=="covid 19"  | a=="depistage" | a=="bilogie preventive" | a=="biologie de la femme enceinte"
+          | a=="biologie de routine" | a=="cancérologie" | a=="cancerologie" | a=="gynecologie") {
+          window.open("AfficherSerADMIN.php");
+      }
+
+
+
+      }
+
+      </script>
       </nav><!-- .navbar -->
 
       <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">
