@@ -166,6 +166,7 @@ while($data = mysqli_fetch_assoc($result)){
    $salle = $data['Salle'];
    $service1 = $data['Servicelab'];
    $infos = $data['Infos'];
+   $idservice = $data['ID'];
 
     
         
@@ -216,7 +217,7 @@ while($data = mysqli_fetch_assoc($result)){
                         
 
                         echo'<div class="btn-group" role="group" aria-label="Basic example">';
-                        echo'<a role="button" class="btn btn-secondary" href="#">Disponibilité</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="EDTService.php?id='.$idservice.'">Disponibilité</a>';
                         echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
                         echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
                         echo'</div>';
