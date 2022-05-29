@@ -6,6 +6,8 @@ $mdpadmin = $_SESSION["mdp"];
 
 //saisir les données du formulaire
 $message = isset($_POST["message"])? $_POST["message"] : "";
+$MAILENV = $_GET['mailenv'];
+$MAILREC = $_GET['mailrec'];
 
 
 
@@ -20,80 +22,32 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 //si le bouton2 (Ajouter) est cliqué
 if (isset($_POST["Creer"]))   {
-    if ($db_found) {
-    //on cherche l'ADMIN
-    $sql = "SELECT * FROM admin ";
-    //avec son LOGIIN ET MDP
-    if (($login != "")&& ($mdp != "")) {
-    $sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$mdp%'";
+## Définitions des deux constantes
+define('ADRESSE_WEBMASTER', "'.$MAILENV.'"); // Votre adresse qui apparaitra en tant qu'expéditeur des E-mails
+define('SUJET', 'Creation Compte Omnes sante'); // Sujet commun aux deux E-mail
+
+
+
+## Second appel de la fonction mail() : le visiteur reçoit cet E-mail
+ini_set('SMTP', 'smtp.orange.fr'); //il faut mettre le stmp qui correspond à son serveur, le lien suivant nous le donne : http://check414.free.fr/detection-smtp/
+ini_set("sendmail_from", "'.$MAILENV.'"); //donne l'expéditeur (il faut mettre une vrai addresse mail)
+mail($MAILREC, SUJET, $message, 'From: Omnes sante message'); //on envoie le mail
+
+
+if (mail($MAILREC, SUJET, $message, 'From: Omnes sante')) {
+
+    echo '<script type="text/javascript">
+    alert("email de validation de rendez-vous envoyé à ' . $emMAILRECail . '")';
+    echo '</script>';
+} else {
+
+    echo '<script type="text/javascript">
+    alert("Les données sont incorrectes, réesayez")';
+    echo '</script>';
+}
+
+
     }
-    $result = mysqli_query($db_handle, $sql);
-    //regarder s'il y a de resultat
-    if (mysqli_num_rows($result) != 0) {
-    echo "<p>Compte already exists. Duplicates not allowed.</p>";
-    header("Location : accueilAdmin.php");
-    } else {
-
-
-    //on ajoute ce compte
-    $sql = "INSERT INTO admin( Mdp, Login, NomAdmin, PrenomAdmin, EmailAdmin) 
-     VALUES('$mdp','$login','$nom','$prenom','$email')";
-     
-
-    $result =mysqli_query($db_handle, $sql);
-        if($result)
-        {
-            echo "Insert Sucessful";
-            header('Location: accueilAdmin.php');
-        }
-        else {
-            
-            echo "Unable to insert";
-            header('Location : accueilAdmin.php');
-            }  
-            
-            
-            
-    
-    
-}}else echo "WTF";}
-
-/*
-
-//si le bouton3 (Supprimer) est cliqué
-if (isset($_POST["button3"])) {
-    if ($db_found) {
-    //on cherche le livre
-    $sql = "SELECT * FROM admin";
-    //avec son titre et auteur
-    if (($login != "")&&($mdp != "")) {
-    $sql .= " WHERE Login LIKE '%$login%'AND Mdp LIKE '%$mdp%'";
-    }
-    $result = mysqli_query($db_handle, $sql);
-    //regarder s'il y a de resultat
-    if (mysqli_num_rows($result) == 0) {
-        //ce livre n'existe pas
-    echo "<p>Cannot delete. account not found.</p>";
-    } else {
-    //on supprime cet item
-    while ($data = mysqli_fetch_assoc($result)) {
-        $id = $data['ID'];
-        }
-    //on supprime cet item par son ID
-    $sql = "DELETE FROM admin WHERE ID = $id";
-    $result =mysqli_query($db_handle, $sql);
-    
-    if($result)
-        {
-            echo "delete Sucessful";
-        }
-        else {
-            echo "Unable to delete";
-            }    
-    //on affiche le reste des livres dans notre BDD
-    
-}}}*/ 
-
 
 
 
