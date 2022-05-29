@@ -16,6 +16,13 @@ $codepostal = isset($_POST["codepostal"]) ? $_POST["codepostal"] : "";
 $pays = isset($_POST["pays"]) ? $_POST["pays"] : "";
 $numcartevitale = isset($_POST["numcartevitale"]) ? $_POST["numcartevitale"] : "";
 $avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "";
+$typecarte = isset($_POST["Typecarte"]) ? $_POST["Typecarte"] : "";
+$numcarte = isset($_POST["Numcarte"]) ? $_POST["Numcarte"] : "";
+$nomcarte = isset($_POST["Nomcarte"]) ? $_POST["Nomcarte"] : "";
+$dateexp = isset($_POST["Dateexp"]) ? $_POST["Dateexp"] : "";
+$codesecu = isset($_POST["Codesecu"]) ? $_POST["Codesecu"] : "";
+
+
 
 
 
@@ -73,8 +80,8 @@ if (isset($_POST["Creer"])) {
         } else {
 
             //on ajoute ce compte
-            $sql1 = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo)
-     VALUES('$nom','$prenom','$login','$motdepasse','$email','$telephone','$adresse','$numcartevitale','$specialiteP','$ville','$codepostal','$pays','$avatar')";
+            $sql1 = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo, Typecarte, Numcarte, Nomcarte, Dateexp, Codesecu)
+     VALUES('$nom','$prenom','$login','$motdepasse','$email','$telephone','$adresse','$numcartevitale','$specialiteP','$ville','$codepostal','$pays','$avatar','$typecarte','$numcarte','$nomcarte','$dateexp','$codesecu')";
             $result1 = mysqli_query($db_handle, $sql1);
         }
         //on cherche l'ADMIN

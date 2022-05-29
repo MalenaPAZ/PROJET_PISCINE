@@ -13,26 +13,14 @@
     $result = mysqli_query($Connexion,$sql);
     while($data = mysqli_fetch_assoc($result)){
 
-        $id = $data['IDpatient'];
+        $id = $data['ID'];
+        $nomAdmin = $data['NomAdmin'];
+        $prenomAdmin = $data['PrenomAdmin'];
         $login = $data['Login'];
         $motdepasse = $data['Mdp'];
-            }
-    /*
-    echo "Id : ".$id ."<br>";
-    echo "Nom : ".$nom."<br>";
-    echo "Prenom : ".$prenom."<br>";
-    echo "Identifiant : ".$login."<br>";
-    echo "Mot de passe : ".$motdepasse."<br>";
-    echo "Email : ".$email."<br>";
-    echo "Numéro de téléphone : ".$telephone."<br>";
-    echo "Adresse : ".$adresse."<br>";
-    echo "Numéro carte vitale : ".$numcartevitale."<br>";
-    echo "Spécialité préférée : ".$specialiteP."<br>";
-    echo "Ville : ".$ville."<br>";
-    echo "Code postal : ".$codepostal."<br>";
-    echo "Pays : ".$pays."<br>";
-    echo "Photo : ".$avatar."<br>";
-    */
+        $email = $data['EmailAdmin'];
+    }
+   
 ?>
 <!DOCTYPE html>
 <html>
@@ -120,9 +108,9 @@
 
             
         <div class="row mt-5">
-            <div class="col-md-12">
+        <div class="col-md-12">
                 <div class="info-box">
-                    <p><?php echo "Identifiant : ".$login;?></p>
+                    <p><?php echo $nomAdmin." ".$prenomAdmin;?></p>
                 </div>
             </div>
             <div class="col-md-12">
@@ -132,9 +120,21 @@
             </div>
             <div class="col-md-12">
                 <div class="info-box">
+                    <p><?php echo "Identifiant : ".$login;?></p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="info-box">
                     <p><?php echo "Mot de passe : ".$motdepasse;?></p>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="info-box">
+                    <p><?php echo "Email : ".$email;?></p>
+                </div>
+            </div>
+            
+            
         </div>
         </section><!-- End Contact Section -->
         <!-- ======= Contact Section ======= -->

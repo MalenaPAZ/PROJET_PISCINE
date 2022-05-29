@@ -131,7 +131,7 @@ while($data = mysqli_fetch_assoc($result)){
 
              <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="#"><span>Mes informations</span></a>
+                  <li><a href="AfficherInfoAdmin"><span>Mes informations</span></a>
                   <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
                 </ul>
              </li>

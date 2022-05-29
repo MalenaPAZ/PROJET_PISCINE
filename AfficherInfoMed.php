@@ -13,34 +13,19 @@
     $result = mysqli_query($Connexion,$sql);
     while($data = mysqli_fetch_assoc($result)){
 
-        $id = $data['IDpatient'];
-        $nom = $data['NomPatient'];
-        $prenom = $data['PrenomPatient'];
+        $id = $data['ID'];
+        $nom = $data['Nom'];
+        $prenom = $data['Prenom'];
         $login = $data['Login'];
         $motdepasse = $data['Mdp'];
-        $email = $data['EmailPatient'];
-        $tel = $data['NumPatient'];
-        $specialiteP = $data['SpecialitePref'];
+        $email = $data['Email'];
+        $tel = $data['Tel'];
+        $specialiteP = $data['Specialite'];
         $specialiste = $data['Specialiste'];
         $avatar = $data['Photo'];
         $salle = $data['Salle'];
     }
-    /*
-    echo "Id : ".$id ."<br>";
-    echo "Nom : ".$nom."<br>";
-    echo "Prenom : ".$prenom."<br>";
-    echo "Identifiant : ".$login."<br>";
-    echo "Mot de passe : ".$motdepasse."<br>";
-    echo "Email : ".$email."<br>";
-    echo "Numéro de téléphone : ".$telephone."<br>";
-    echo "Adresse : ".$adresse."<br>";
-    echo "Numéro carte vitale : ".$numcartevitale."<br>";
-    echo "Spécialité préférée : ".$specialiteP."<br>";
-    echo "Ville : ".$ville."<br>";
-    echo "Code postal : ".$codepostal."<br>";
-    echo "Pays : ".$pays."<br>";
-    echo "Photo : ".$avatar."<br>";
-    */
+   
 ?>
 <!DOCTYPE html>
 <html>
@@ -126,7 +111,9 @@
                     <div class="info-box">
                         <p><?php echo $prenom." ".$nom;?></p>
                         <br>
-                        <p><img src = "medecin.png" width = "320px" height = "320px"/></p>
+                        <p><?php echo '<img class="image" src="'.$data['Photo'].'" width ="200" height="200"/></a>';?></p>
+
+                        <!--<p><img src = "medecin.png" width = "200px" height = "200px"/></p>!-->
                     </div>
                 </div>
                 <div class="col-md-6">
