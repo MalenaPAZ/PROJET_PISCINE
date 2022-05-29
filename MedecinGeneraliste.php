@@ -5,7 +5,7 @@ session_start();
 $loginpatient = $_SESSION["login"];
 $mdppatient = $_SESSION["mdp"];
 
-echo "login : ".$loginpatient." mdp : ".$mdppatient;
+
 $Connexion = mysqli_connect('localhost', 'root', '', 'omnes sante');
 //Verifier connexion
 if (!$Connexion) {
@@ -105,7 +105,7 @@ while ($data = mysqli_fetch_assoc($result)) {
           <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
-
+                
               <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
@@ -117,7 +117,7 @@ while ($data = mysqli_fetch_assoc($result)) {
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
-              <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
                   <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
@@ -131,19 +131,23 @@ while ($data = mysqli_fetch_assoc($result)) {
           </li>
           <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
           <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
-          <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#"><span>Mon compte</span></a>
-              <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
-            </ul>
-          </li>
-
-
+          <li class="dropdown"><a href="chat.php"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+              </ul>
+            </li>
+            
+            <div class="col-sm">
+                <?php echo $nompatient. ' '. $prenompatient ?>
+                <?php echo "ID : " . $idpat ?>
+                        </div>
+                        
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-
+      
 
     </div>
   </header><!-- End Header -->
