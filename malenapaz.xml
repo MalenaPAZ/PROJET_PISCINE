@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<cv >
+
+    <entete>
+        <nom>PAZ</nom>
+        <prenom>Malena</prenom>
+        <ddn>20/10/2001</ddn>
+        <nationalite>Française</nationalite>
+        <mail>pazmalena2001@yahoo</mail>
+    </entete>
+    <situationActuelle>Medecin généraliste</situationActuelle>
+    <diplomes>
+        <diplome>
+            <annee>2017</annee>
+            <intitule>Diplomée à Paris VII</intitule>
+        </diplome>
+        <diplome>
+            <annee>2005</annee>
+            <intitule>Baccalauréat Scientifique</intitule>
+        </diplome>
+    </diplomes>
+    <stages>
+        <stage>
+            <date>été</date>
+            <annee>2005</annee>
+            <titre>Stage d'observation à l'hôpital</titre>
+            <description>Accompagnement d'un chirurgien dans son quotidien à l'Hôpital Fosch, pas de bloc </description>
+        </stage>
+        <stage> 
+            <annee>2009-2012</annee>
+            <titre>Stage de pratique</titre>
+            <description>Cabinet de gynécologie</description>
+        </stage>
+    </stages>
+    <competences>
+        <competence>
+            <titre>APPROCHE GLOBALE, PRISE EN COMPTE DE LA COMPLEXITE</titre>
+        </competence>
+        <description> Capacité à mettre en œuvre une démarche décisionnelle centrée patient selon un modèle global de santé quel que soit le type de recours de soins dans l’exercice de Médecine Générale</description>
+        <competence>
+            <titre>EDUCATION EN SANTE, PREVENTION INDIVIDUELLE ET COMMUNAUTAIRE</titre>
+            <description>Capacité à accompagner le patient dans une démarche autonome visant à maintenir et améliorer sa santé, prévenir les maladies, les blessures et les problèmes psychosociaux dans le respect de son propre cheminement, et donc à intégrer et à articuler dans sa pratique l’éducation et la prévention</description>
+        </competence>
+    </competences>
+    <langues>
+        <langue>
+            <intitule>Anglais</intitule>
+            <niveau>Bilingue</niveau>
+        </langue>
+        <langue>
+            <intitule>Espagnol</intitule>
+            <niveau>Bilingue</niveau>
+        </langue>
+    </langues>
+    <loisirs>
+        <loisir>Ski</loisir>
+        <loisir>Plongée</loisir>
+        <loisir>Natation</loisir>
+    </loisirs>
+</cv>

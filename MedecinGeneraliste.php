@@ -218,7 +218,7 @@ while ($data = mysqli_fetch_assoc($result)) {
 
       echo '<div class="btn-group" role="group" aria-label="Basic example">';
       echo '<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom=' . $data['Nom'] . '& prenom=' . $data['Prenom'] . '">Disponibilité</a>';
-      echo '<a role="button" class="btn btn-secondary" href="">CV</a>';
+      echo '<a role="button" class="btn btn-secondary" href="testxmlphp.php">CV</a>';
       echo '<a role="button" class="btn btn-secondary" href="chat.php">Contacter</a>';
       echo '</div>';
 
