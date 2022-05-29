@@ -92,8 +92,8 @@
       </div>
       <script>
         $database = "omnes sante";
-$db_handle = mysqli_connect('localhost','root','');
-$db_found = mysqli_select_db($db_handle, $database);
+        $db_handle = mysqli_connect('localhost','root','');
+        $db_found = mysqli_select_db($db_handle, $database);
 
       function ouvrirPage() {
       var a = document.getElementById("search").value;
@@ -118,16 +118,16 @@ $db_found = mysqli_select_db($db_handle, $database);
           | a=="I.S.T" | a=="I.S.T. " | a=="ostéopathie") {
           window.open("MedecinSpecialiste.php");
       }
-if (a === "informations" | a=="depistage covid-19" | a=="covid 19"  | a=="depistage" | a=="bilogie preventive" | a=="biologie de la femme enceinte"
+      if (a === "informations" | a=="depistage covid-19" | a=="covid 19"  | a=="depistage" | a=="bilogie preventive" | a=="biologie de la femme enceinte"
           | a=="biologie de routine" | a=="cancérologie" | a=="cancerologie" | a=="gynecologie") {
           window.open("AfficherSerADMIN.php");
       }
 
 
 
-   }
+      }
 
-</script>
+      </script>
       </nav><!-- .navbar -->
 
       <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Prendre un</span> rendez-vous</a>
