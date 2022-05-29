@@ -6,45 +6,46 @@ $loginpatient = $_SESSION["login"];
 $mdppatient = $_SESSION["mdp"];
 
 
-$Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
+$Connexion = mysqli_connect('localhost', 'root', '', 'omnes sante');
 //Verifier connexion
-if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
+if (!$Connexion) {
+  die("Echec de la connexion : " . mysqli_connect_error());
+}
 
 
 $sql = "SELECT * FROM patient WHERE Login LIKE '$loginpatient' AND
  Mdp LIKE '$mdppatient'";
-$result = mysqli_query($Connexion,$sql);
-while($data = mysqli_fetch_assoc($result)){
+$result = mysqli_query($Connexion, $sql);
+while ($data = mysqli_fetch_assoc($result)) {
 
-    $idpatient = $data['IDpatient'];
-    $nompatient = $data['NomPatient'];
-    $prenompatient = $data['PrenomPatient'];
-    }
+  $idpatient = $data['IDpatient'];
+  $nompatient = $data['NomPatient'];
+  $prenompatient = $data['PrenomPatient'];
+}
 
 $sql = "SELECT * FROM rdv WHERE IDPatient LIKE '$idpatient' AND Etat_RDV LIKE '0'";
-$result = mysqli_query($Connexion,$sql);
+$result = mysqli_query($Connexion, $sql);
 
- while($data = mysqli_fetch_assoc($result)){
+while ($data = mysqli_fetch_assoc($result)) {
 
-    $Numrdv = $data['NumRDV'];
-    $date = $data['Date_RDV'];
-    $heure = $data['Heure_RDV'];
-    $type = $data['Type_RDV'];
-    $idmed = $data['IDMedecin'];
-    $salle = $data['Salle_RDV'];
-        }
+  $Numrdv = $data['NumRDV'];
+  $date = $data['Date'];
+  $type = $data['Type_RDV'];
+  $idmed = $data['IDMedecin'];
+  $salle = $data['Salle_RDV'];
+}
 
 $sql = "SELECT * FROM medecin WHERE ID LIKE '$idmed' ";
-$result = mysqli_query($Connexion,$sql);
+$result = mysqli_query($Connexion, $sql);
 
- while($data = mysqli_fetch_assoc($result)){
+while ($data = mysqli_fetch_assoc($result)) {
 
-    $prenommed = $data['Prenom'];
-    $nommed = $data['Nom'];
-    $telmed = $data['Tel'];
-    $emailmed = $data['Email'];
-    $photomed= $data['Photo'];
-    }
+  $prenommed = $data['Prenom'];
+  $nommed = $data['Nom'];
+  $telmed = $data['Tel'];
+  $emailmed = $data['Email'];
+  $photomed = $data['Photo'];
+}
 
 
 ?>
@@ -55,23 +56,23 @@ $result = mysqli_query($Connexion,$sql);
 
 <html lang="en">
 
-  <head>
+<head>
 
-    <title>Index Projet Piscine</title>
+  <title>Index Projet Piscine</title>
 
-    <!--Required meta tags-->
+  <!--Required meta tags-->
 
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!--Bootstrap CSS -->
+  <!--Bootstrap CSS -->
 
-    <link rel="stylesheet" href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link href="MedGene.css" rel="stylesheet" type="text/css"/>
+  <link href="MedGene.css" rel="stylesheet" type="text/css" />
 
-    
+
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Omnes santé</title>
@@ -88,7 +89,7 @@ $result = mysqli_query($Connexion,$sql);
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  
+
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -103,15 +104,15 @@ $result = mysqli_query($Connexion,$sql);
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-    
 
-  </head>
-        
- 
 
-  <body>
+</head>
 
-     <!-- ======= Header ======= -->
+
+
+<body>
+
+  <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
@@ -125,7 +126,7 @@ $result = mysqli_query($Connexion,$sql);
           <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
-                
+
               <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
@@ -137,7 +138,7 @@ $result = mysqli_query($Connexion,$sql);
                   <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
                   <li><a href="MedecinSpecialiste.php?spe=Ostéopathie">Ostéopathie</a></li>
                 </ul>
-                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Informations</a></li>
                   <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
@@ -152,116 +153,120 @@ $result = mysqli_query($Connexion,$sql);
           <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
           <li><a class="nav-link scrollto" href="#departments">Rendez-vous</a></li>
           <li class="dropdown"><a href="#"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="#"><span>Mon compte</span></a>
-                <li class="dropdown"><a href="#"><span>Deconnexion</span></i></a>
-              </ul>
-            </li>
-            <div class="col-sm">
-                <?php echo $nompatient. ' '. $prenompatient ?>
-                <?php echo "ID : " . $idpatient ?>
-                        </div>
+            <ul>
+              <li><a href="#"><span>Mon compte</span></a>
+              <li class="dropdown"><a href="#"><span>Deconnexion</span></i></a>
+            </ul>
+          </li>
+          <div class="col-sm">
+            <?php echo $nompatient . ' ' . $prenompatient ?>
+            <?php echo "ID : " . $idpatient ?>
+          </div>
 
-                        
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      
+
 
     </div>
   </header><!-- End Header -->
 
-        <div id="SectionEnseignants">
-        
-        
-        <?php
-$Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
-//Verifier connexion
-if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
+  <div id="SectionEnseignants">
 
-$sql = "SELECT * FROM rdv WHERE IDPatient LIKE '$idpatient' AND Etat_RDV LIKE '0'";
-$result = mysqli_query($Connexion,$sql);
 
- while($data = mysqli_fetch_assoc($result)){
+    <?php
+    $Connexion = mysqli_connect('localhost', 'root', '', 'omnes sante');
+    //Verifier connexion
+    if (!$Connexion) {
+      die("Echec de la connexion : " . mysqli_connect_error());
+    }
 
-    $Numrdv = $data['NumRDV'];
-    $date = $data['Date_RDV'];
-    $heure = $data['Heure_RDV'];
-    $type = $data['Type_RDV'];
-    $idmed = $data['IDMedecin'];
-        
-        
+    $sql = "SELECT * FROM rdv WHERE IDPatient LIKE '$idpatient' AND Etat_RDV LIKE '0'";
+    $result = mysqli_query($Connexion, $sql);
 
-    
-   echo'<div class="Enseignants">';
-               echo' <div class="row">';
-                
-                        echo '<div class="PhotoID">';
-                           echo' <a href="#"><img class="image" src="sante.png" alt="Photo profil" width ="200" height="200"/></a>';
-                       echo'</div>';
-                 
-                    echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-                        echo'<h2 href=""> Dr.'. $nommed .'   '.$prenommed . '</h2>';
-                        echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                               echo'<p>Salle : '. $salle.'</p>';
-                            echo'</div>';
-                           
-                        echo'</div>';
-                       echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                                echo'<p>Telephone : '. $telmed.'</p>';
-                            echo'</div>';
-                            
-                        echo '</div>';
+    while ($data = mysqli_fetch_assoc($result)) {
 
-                        echo'<div class="row">';
-                            echo'<div class="col-sm">';
-                                echo'<p>Date : '.$date.' a '.$heure.' heure.</p>';
-                           echo'</div>';
-                            
-                        echo'</div>';
-                        echo'<div class="col-sm">';
-                        echo'<div class="row" >';
+      $Numrdv = $data['NumRDV'];
+      $date = $data['Date'];
 
-                        
+      $type = $data['Type_RDV'];
+      $idmed = $data['IDMedecin'];
 
-                        
 
-                        echo'<div class="btn-group" role="group" aria-label="Basic example">';
-                        echo'<a role="button" class="btn btn-secondary" href="AnnulerRDV.php?nom='.$nommed.'& prenom='.$prenommed. '& idrdv='.$Numrdv.'">Annuler</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="">CV</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
-                        echo'</div>';
-                        
-                        echo'</div></div>';
-                        echo'</div>';
+     
 
-                       
 
-                        echo'</div>';
-                        echo'</div>';
-}
-?>
+      echo '<div class="Enseignants">';
+      echo ' <div class="row">';
 
-            
-        </div>
+      echo '<div class="PhotoID">';
+      echo ' <a href="#"><img class="image" src="sante.png" alt="Photo profil" width ="200" height="200"/></a>';
+      echo '</div>';
 
-        <a role="button" class="btn btn-light" href="accueil.html">Retour</a>
+      echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
+      echo '<h2 href=""> Dr.' . $nommed . '   ' . $prenommed . '</h2>';
+      //echo '<h2 href=""> Dr.' . $nompatient . '   ' . $prenompatient . '</h2>';
+      echo '<div class="row">';
+      echo '<div class="col-sm">';
+      echo '<p>Salle : ' . $salle . '</p>';
+      echo '</div>';
 
-        
+      echo '</div>';
+      echo '<div class="row">';
+      echo '<div class="col-sm">';
+      echo '<p>Telephone : ' . $telmed . '</p>';
+      echo '</div>';
 
-    <!-- Optional JavaScript -->
+      echo '</div>';
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      echo '<div class="row">';
+      echo '<div class="col-sm">';
+      echo '<p>Date : ' . $date . ' heure.</p>';
+      echo '</div>';
 
-    <script src=https://code.jquery.com/jquery-3.3.1.slim.min.js integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      echo '</div>';
+      echo '<div class="col-sm">';
+      echo '<div class="row" >';
 
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
-    <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  </body>
+
+
+      echo '<div class="btn-group" role="group" aria-label="Basic example">';
+      echo '<a role="button" class="btn btn-secondary" href="AnnulerRDV.php?nom=' . $nommed . '& prenom=' . $prenommed . '& idrdv=' . $Numrdv . '">Annuler</a>';
+      echo '<a role="button" class="btn btn-secondary" href="">CV</a>';
+      echo '<a role="button" class="btn btn-secondary" href="">Contacter</a>';
+      echo '</div>';
+
+      echo '</div></div>';
+      echo '</div>';
+
+
+
+      echo '</div>';
+      echo '</div>';
+    }
+    ?>
+
+
+  </div>
+
+  <a role="button" class="btn btn-light" href="accueil.html">Retour</a>
+
+
+
+  <!-- Optional JavaScript -->
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src=https://code.jquery.com/jquery-3.3.1.slim.min.js integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+  <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
 
 </html>
