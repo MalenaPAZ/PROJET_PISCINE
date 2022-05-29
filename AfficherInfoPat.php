@@ -125,7 +125,7 @@
                     <div class="info-box">
                         <p><?php echo $prenom." ".$nom;?></p>
                         <br>
-                        <p><?php echo '<img class="image" src="'.$data['Photo'].'" width ="200" height="200"/></a>';?></p>
+                        <p><?php echo '<img class="image" src="patient.png" width ="200" height="200"/></a>';?></p>
                     </div>
                 </div>
                 <div class="col-md-6">
