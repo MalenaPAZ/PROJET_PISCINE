@@ -436,56 +436,7 @@ while($data = mysqli_fetch_assoc($result)){
 
   <main id="main">
 
-    <!-- ======= Appointment Section ======= -->
-    <section id="appointment" class="appointment section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Prendre un rendez-vous</h2>
-        </div>
-
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
-          <div class="row">
-            <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Votre nom" required>
-            </div>
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" required>
-            </div>
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Votre numéro de téléphone" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Choisir une date" required>
-            </div>
-            
-            <div class="col-md-4 form-group mt-3">
-              <select name="doctor" id="doctor" class="form-select">
-                <option value="">Select Doctor</option>
-                <option value="Doctor 1">Docteur 1</option>
-                <option value="Doctor 2">Docteur 2</option>
-                <option value="Doctor 3">Docteur 3</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message (Optionel)"></textarea>
-          </div>
-          <div class="my-3">
-            <div class="loading">Chargement</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Votre demande de rendez-vous a été envoyée avec succès. Merci!</div>
-          </div>
-          <div class="text-center"><button type="submit">Prendre un rendez-vous</button></div>
-        </form>
-
-      </div>
-    </section><!-- End Appointment Section -->
-
-  
+ 
     
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
@@ -506,7 +457,6 @@ while($data = mysqli_fetch_assoc($result)){
 
         <div class="row mt-5">
 
-          <div class="col-lg-6">
 
             <div class="row">
               <div class="col-md-12">
@@ -545,24 +495,7 @@ while($data = mysqli_fetch_assoc($result)){
   <footer id="footer">
 
 
-    <!--<a class="nav-item nav-link disabled" href="#">Disabled</a>-->
-        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <ul>
-
-                  <form class="form-inline">
-
-                   <input class="form-control mr-sm-2" type="search" placeholder="Recherche..." aria-label="Search">
-
-                   <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Recherche </button>
-
-                  </form>
-
-                </ul>
-
-
-          </div>
-
-
+   
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>2022 Omnes Santé</span></strong>.

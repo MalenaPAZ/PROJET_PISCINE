@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cv>
+
+    <entete>
+        <nom>PAZ</nom>
+        <prenom>Victoria</prenom>
+        <ddn>28/08/1982</ddn>
+        <nationalite>Française</nationalite>
+        <mail>malena.paz@edu.ece.fr</mail>
+    </entete>
+    <situationActuelle>Medecin gynécologue</situationActuelle>
+    <diplomes>
+        <diplome>
+            <annee>2015</annee>
+            <intitule>Diplomé de gynécologie à Paris VI</intitule>
+        </diplome>
+        <diplome>
+            <annee>2003</annee>
+            <intitule>Baccaulauréat Scientifique</intitule>
+        </diplome>
+    </diplomes>
+    <stages>
+        <stage>
+            <date>Eté</date>
+            <annee>2005:</annee>
+            <titre>Stage d'observation à l'hôpital</titre>
+            <description>Accompagnement d'un chirurgien dans son quotidien à l'Hôpital Fosch, pas de bloc </description>
+        </stage>
+        <stage> 
+            <annee>2009-2012</annee>
+            <titre>Stage de pratique</titre>
+            <description>Cabinet de gynécologie</description>
+        </stage>
+    </stages>
+    <competences>
+        <competence>
+            <titre>Prendre en charge le suivi gynécologique de patientes:</titre>
+            <description>Superviser les accouchements et intervenir pour procéder à des actes chirurgicaux. Mettre en œuvre des techniques de procréation médicalement assistée</description>
+        </competence>
+
+        <competence>
+            <titre>Rôle de prévention dans la santé des femmes:</titre>
+            <description>Surveiller les anomalies qui peuvent survenir au niveau du col de l’utérus ou des ovaires, dépistent les cancers du sein.</description>
+        </competence>
+    </competences>
+    <langues>
+        <langue>
+            <intitule>Anglais:</intitule>
+            <niveau>Bilingue</niveau>
+        </langue>
+        <langue>
+            <intitule>Japonais:</intitule>
+            <niveau>A2</niveau>
+        </langue>
+    </langues>
+    <loisirs>
+        <loisir>Ski</loisir>
+        <loisir>Cinéma</loisir>
+        <loisir>Musée</loisir>
+        <loisir>Course a pied</loisir>
+    </loisirs>
+</cv>

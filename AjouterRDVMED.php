@@ -1,9 +1,10 @@
 <?php
 
 session_start();
-$loginpatient = $_SESSION["login"];
-$mdppatient = $_SESSION["mdp"];
-
+$login = $_SESSION["login"];
+$mdp = $_SESSION["mdp"];
+$nommed = $_GET['nom'];
+$prenommed = $_GET['prenom'];
 $idRdv = $_GET['idrdv'];
 
 
@@ -29,8 +30,7 @@ $db_found = mysqli_select_db($db_handle, $database);
  
     if ($db_found) {
 
-    $sql = "SELECT * FROM admin";
-
+   
     $sql = "SELECT * FROM rdv WHERE NumRDV LIKE '$idRdv'";
     $result = mysqli_query($db_handle, $sql);
 
@@ -45,22 +45,22 @@ $db_found = mysqli_select_db($db_handle, $database);
     //on supprime cet item par son ID
     $sql = "INSERT INTO rdv WHERE NumRDV = $idRdv";
     $result =mysqli_query($db_handle, $sql);
-
+    
     if($idpatient='')
     {
         echo "Le médecin est indisponible";
         header("Location: accueilMed.php");
-    } 
-    
+    }
+
     if($result)
         {
             echo "add Sucessful";
-            header("Location: AfficherRDV.php");
+            header("Location: accueilMed.php");
         }
         else {
             echo "Unable to add";
-            header("Location:  AfficherRDV.php");
-            }   
+            header("Location: accueilMed.php");
+            }  
 
     //on affiche le reste des livres dans notre BDD
     

@@ -28,7 +28,6 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
         $email = $data['EmailAdmin'];
     }
 
-
 ?>
 
 <!DOCTYPE html >
@@ -63,7 +62,7 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
 
           </head>
           <body>
-         <!-- ======= Header ======= -->
+              <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
@@ -134,7 +133,7 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
 
       <br><br><br><br><br><br><br>
 
-    <title>Creer Medecin</title>
+    <title>Creer Admin</title>
   </head>
   <body>
 
@@ -150,9 +149,9 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
 
     <div id="section1">
       <div id="a">
-        <h1>Créer un compte : Inscription</h1><br>
+        <h1>Créer un compte </h1><br>
       </div>
-      <form action="CreerMed.php" method="post">
+      <form action="CreerAdmin2.php" method="post">
           <p>
               <label for="nom" class="left">Nom</label>
               <div id="section1">
@@ -173,34 +172,13 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
           </div>
         </p>
         <p>
-          <label for="mdp" class="left">Mot de passe</label>
+          <label for="dmp" class="left">Mot de passe</label>
           <div id="section1">
             <input name="mdp" id="mdp" type="password" size="30" maxlength="30" />
           </div>
         </p>
 
-        <p>
-          <label for="salle" class="left">Salle</label>
-          <div id="section1">
-            <input name="salle" id="salle" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
-        <p>  
-          <label for="Specialite" class="left">Spécialité</label> 
-          <div id="section1">
-            <select name="Specialite" id="Specialite">
-              <option value="Generaliste">Géneraliste</option>
-              <option value="Addictologie">Addictologie</option>
-              <option value="Andrologie">Andrologie</option>
-              <option value="Cardiologie">Cardiologie</option>
-              <option value="Dertmatologie">Dertmatologie</option>
-              <option value="Gynecologie">Gynécologie</option>
-              <option value="I.S.T">I.S.T</option>
-              <option value="Ostéopathie">Ostéopathie</option>
-              <option value="Gastro-blablabla">Gastro-blablabla</option>
-            </select>
-          </div>
-        </p>
+        
         <p>
           <label for="email" class="left">Email</label>
           <div id="section1">
@@ -208,12 +186,7 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
           </div>
         </p>
 
-        <p>
-          <label for="telephone" class="left">Numéro de téléphone</label>
-          <div id="section1">
-            <input name="telephone" id="telephone" type="text" size="30" maxlength="30" />
-          </div>
-        </p>
+        
 
         <input type="submit" name="Creer" value="Créer">
       </form>

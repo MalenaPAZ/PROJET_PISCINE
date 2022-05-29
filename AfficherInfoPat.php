@@ -74,41 +74,65 @@
     
     <body>
         <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center">
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-        <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+      <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
-        <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="accueilPat.php">Accueil</a></li>
+          <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-                <li class="dropdown"><a href="#"><span>Medecin</span><i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                    <li><a href="#"><span>Ajouter</span></a>
-                    <li class="dropdown"><a href="#"><span>Supprimer</span></i></a>
-                    </ul>
-                </li>
-                <li class="nav-link scrollto"><a href="#">Patient</a></li>
+              <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
                 
-                <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
+              <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                    <li><a href="#"><span>Ajouter</span></a>
-                    <li class="dropdown"><a href="#"><span>Supprimer</span></i></a>
+                  <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
+                  <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
-                <li class="nav-link scrollto"><a href="#">Services</a></li>
-
-                </li>
-                <li class="nav-link scrollto"><a href="#">Mon compte</a></li>
+                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Informations</a></li>
+                  <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
+                  <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
+                  <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
+                  <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
+                  <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
+                </ul>
             </ul>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+          </li>
+          <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
+          <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
+          <li class="dropdown"><a href="chat.php"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
+                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+              </ul>
+            </li>
+            
+            <div class="col-sm">
+                <?php echo $nom. ' '. $prenom ?>
+                <?php echo "ID : " . $id ?>
+                        </div>
+                        
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-        <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"> </a>
+      
 
-        </div>
-    </header><!-- End Header -->
+    </div>
+  </header><!-- End Header -->
 
 
   
@@ -125,7 +149,8 @@
                     <div class="info-box">
                         <p><?php echo $prenom." ".$nom;?></p>
                         <br>
-                        <p><?php echo '<img class="image" src="'.$data['Photo'].'" width ="200" height="200"/></a>';?></p>
+
+                        <p><?php echo '<img class="image" src="'.$avatar.'" width ="200" height="200"/></a>';?></p>
                     </div>
                 </div>
                 <div class="col-md-6">
