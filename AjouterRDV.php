@@ -45,6 +45,12 @@ $db_found = mysqli_select_db($db_handle, $database);
     //on supprime cet item par son ID
     $sql = "INSERT INTO rdv WHERE NumRDV = $idRdv";
     $result =mysqli_query($db_handle, $sql);
+
+    if($idpatient='')
+    {
+        echo "Le médecin est indisponible"
+        header("Location: accueilMed.php");
+    } 
     
     if($result)
         {
@@ -55,11 +61,7 @@ $db_found = mysqli_select_db($db_handle, $database);
             echo "Unable to add";
             header("Location:  AfficherRDV.php");
             }   
-    if($idpatient='')
-        {
-            echo "Le médecin est indisponible"
-            header("Location: accueilMed.php");
-        } 
+
     //on affiche le reste des livres dans notre BDD
     
 }}
