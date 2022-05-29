@@ -15,12 +15,14 @@ $adresse = isset($_POST["adresse"]) ? $_POST["adresse"] : "";
 $codepostal = isset($_POST["codepostal"]) ? $_POST["codepostal"] : "";
 $pays = isset($_POST["pays"]) ? $_POST["pays"] : "";
 $numcartevitale = isset($_POST["numcartevitale"]) ? $_POST["numcartevitale"] : "";
-$avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "Patient.png";
+
+$avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "";
 $typecarte = isset($_POST["Typecarte"]) ? $_POST["Typecarte"] : "";
-$numCarte = isset($_POST["numcarte"]) ? $_POST["numcarte"] : "";
-$nomcarte = isset($_POST["nomcarte"]) ? $_POST["nomcarte"] : "";
-$dateexp = isset($_POST["dateexp"]) ? $_POST["dateexp"] : "";
-$codecarte = isset($_POST["codecarte"]) ? $_POST["codecarte"] : "";
+$numcarte = isset($_POST["Numcarte"]) ? $_POST["Numcarte"] : "";
+$nomcarte = isset($_POST["Nomcarte"]) ? $_POST["Nomcarte"] : "";
+$dateexp = isset($_POST["Dateexp"]) ? $_POST["Dateexp"] : "";
+$codesecu = isset($_POST["Codesecu"]) ? $_POST["Codesecu"] : "";
+
 
 
 
@@ -59,11 +61,25 @@ if (isset($_POST["Creer"])) {
             
 
             //on ajoute ce compte
+<<<<<<< HEAD
+            $sql1 = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo, Typecarte, Numcarte, Nomcarte, Dateexp, Codesecu)
+     VALUES('$nom','$prenom','$login','$motdepasse','$email','$telephone','$adresse','$numcartevitale','$specialiteP','$ville','$codepostal','$pays','$avatar','$typecarte','$numcarte','$nomcarte','$dateexp','$codesecu')";
+            $result1 = mysqli_query($db_handle, $sql1);
+        }
+        //on cherche l'ADMIN
+        $sql = "SELECT * FROM patient ";
+        //avec son LOGIIN ET MDP
+        if (($login != "") && ($motdepasse != "")) {
+            $sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$motdepasse%'";
+        }
+        $result = mysqli_query($db_handle, $sql);
+=======
             $sql = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo, TypeCarte, NumCarteB, NomCarte, DateExp, CodeSecu)
      VALUES('".$nom."','".$prenom."','".$login."','".$motdepasse."','".$email."','".$telephone."','".$adresse."','".$numcartevitale."','".$specialiteP."','".$ville."','".$codepostal."','".$pays."','".$avatar."', '".$typecarte."', '".$numCarte."', '".$nomcarte."', '".$dateexp."', '".$codecarte."')";
             $result = mysqli_query($db_handle, $sql);
             
         if ($result) {
+>>>>>>> dd07caf2a862fad226634c30208447e8fc6a507f
 
             ## Définitions des deux constantes
         define('ADRESSE_WEBMASTER', 'pazmalena2001@yahoo.fr'); // Votre adresse qui apparaitra en tant qu'expéditeur des E-mails

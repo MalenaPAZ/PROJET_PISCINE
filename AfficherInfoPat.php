@@ -27,24 +27,16 @@
         $codepostal = $data['CodePostal'];
         $pays = $data['Pays'];
         $avatar = $data['Photo'];
+
+        $typecarte = $data['TypeCarte'];
+        $numcarte = $data['NumCarteB'];
+        $nomcarte = $data['NomCarte'];
+        $dateexp = $data['DateExp'];
+        $codesecu = $data['CodeSecu'];
         
+
     }
-    /*
-    echo "Id : ".$id ."<br>";
-    echo "Nom : ".$nom."<br>";
-    echo "Prenom : ".$prenom."<br>";
-    echo "Identifiant : ".$login."<br>";
-    echo "Mot de passe : ".$motdepasse."<br>";
-    echo "Email : ".$email."<br>";
-    echo "Numéro de téléphone : ".$telephone."<br>";
-    echo "Adresse : ".$adresse."<br>";
-    echo "Numéro carte vitale : ".$numcartevitale."<br>";
-    echo "Spécialité préférée : ".$specialiteP."<br>";
-    echo "Ville : ".$ville."<br>";
-    echo "Code postal : ".$codepostal."<br>";
-    echo "Pays : ".$pays."<br>";
-    echo "Photo : ".$avatar."<br>";
-    */
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -133,7 +125,7 @@
                     <div class="info-box">
                         <p><?php echo $prenom." ".$nom;?></p>
                         <br>
-                        <p><img src = "patient.png" /></p>
+                        <p><?php echo '<img class="image" src="'.$data['Photo'].'" width ="200" height="200"/></a>';?></p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -144,49 +136,68 @@
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Id : ".$id ."<br>";?></p>             
+                        <p><?php echo "Id : ".$id ."<br>";?></p>        
                    </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Mot de passe : ".$motdepasse;?></p>             
+                        <p><?php echo "Mot de passe : ".$motdepasse;?></p>
+                        
+                                                         
                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Numéro carte vitale : ".$numcartevitale;?></p>             
+                        <p><?php echo "Numéro carte vitale : ".$numcartevitale;?></p>
+                                    
                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Email : ".$email;?></p>             
+                        <p><?php echo "Email : ".$email;?></p>
+                                    
                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Ville : ".$ville;?></p>             
+                        <p><?php echo "Ville : ".$ville;?></p>
+                                    
                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Numéro de téléphone : ".$telephone;?></p>             
+                        <p><?php echo "Numéro de téléphone : ".$telephone;?></p>
+                                     
                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Pays : ".$pays;?></p>             
+                        <p><?php echo "Pays : ".$pays;?></p>
+                                     
                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Spécialité préférée : ".$specialiteP;?></p>             
+                        <p><?php echo "Spécialité préférée : ".$specialiteP;?></p>
+                                     
                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="info-box mt-4">
-                        <p><?php echo "Adresse : ".$adresse.", ".$codepostal;?></p>             
+                        <p><?php echo "Adresse : ".$adresse.", ".$codepostal;?></p>
+                                   
                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="info-box mt-4">
+                        <p><?php echo "Type de carte : ".$typecarte."<br>";?></p>
+                        <p><?php echo "Numéro de la carte : ".$numcarte."<br>";?></p>
+                        <p><?php echo "Propriaitaire : ".$nomcarte."<br>";?></p>
+                        <p><?php echo "Date expiration : ".$dateexp."<br>";?></p>
+                        <p><?php echo "Code de sécurité : ".$typecarte."<br>";?></p>
+                   </div>
+                   
                 </div>
 
         </div>
