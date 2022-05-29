@@ -457,7 +457,6 @@ while($data = mysqli_fetch_assoc($result)){
 
         <div class="row mt-5">
 
-          <div class="col-lg-6">
 
             <div class="row">
               <div class="col-md-12">
@@ -496,24 +495,7 @@ while($data = mysqli_fetch_assoc($result)){
   <footer id="footer">
 
 
-    <!--<a class="nav-item nav-link disabled" href="#">Disabled</a>-->
-        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <ul>
-
-                  <form class="form-inline">
-
-                   <input class="form-control mr-sm-2" type="search" placeholder="Recherche..." aria-label="Search">
-
-                   <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Recherche </button>
-
-                  </form>
-
-                </ul>
-
-
-          </div>
-
-
+   
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>2022 Omnes Santé</span></strong>.
