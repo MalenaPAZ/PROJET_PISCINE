@@ -172,7 +172,7 @@ $result = mysqli_query($Connexion,$sql);
     $tel = $data['Tel'];
     $email = $data['Email'];
     $salle = $data['Salle'];
-    $photo = $data['Photo'];
+    $avatar = $data['Photo'];
     
         
         
