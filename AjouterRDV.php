@@ -48,7 +48,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
     if($idpatient='')
     {
-        echo "Le médecin est indisponible"
+        echo "Le médecin est indisponible";
         header("Location: accueilMed.php");
     } 
     

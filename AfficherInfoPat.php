@@ -149,7 +149,7 @@
                     <div class="info-box">
                         <p><?php echo $prenom." ".$nom;?></p>
                         <br>
-<<<<<<< HEAD
+
                         <p><?php echo '<img class="image" src="'.$avatar.'" width ="200" height="200"/></a>';?></p>
                     </div>
                 </div>
