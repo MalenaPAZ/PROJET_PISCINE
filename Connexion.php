@@ -102,6 +102,31 @@ session_start();
                     <td><input type="text"  name="mdp"></td><br><br>
                 </div>
             </tr>
+            <tr>
+                <td>ReCaptcha</td>
+                <div class="g-recaptcha" data-sitekey="6LcePAATAAAAAGPRWgx90814DTjgt5sXnNbV5WaW"></div>
+                <!--js-->
+                <script src='https://www.google.com/recaptcha/api.js'>
+                    // grab recaptcha library
+                require_once "recaptchalib.php";
+                // your secret key
+                $secret = "6LcePAATAAAAABjXaTsy7gwcbnbaF5XgJKwjSNwT";
+                // empty response
+                $response = null;
+                // check secret key
+                $reCaptcha = new ReCaptcha($secret);
+                if ($_POST["g-recaptcha-response"]) {
+                $response = $reCaptcha->verifyResponse(
+                $_SERVER["REMOTE_ADDR"],
+                $_POST["g-recaptcha-response"]);
+                }
+                if ($response != null && $response->success) {
+                echo "Welcome !";
+                } else 
+                </script>
+            </tr>
+
+            <tr>
                 <td colspan="2" align="center">
                     <input type="submit" name="button1" value="Se Connecter">
                 </td>

@@ -111,7 +111,7 @@
                     <div class="info-box">
                         <p><?php echo $prenom." ".$nom;?></p>
                         <br>
-                        <p><?php echo '<img class="image" src="'.$data['Photo'].'" width ="200" height="200"/></a>';?></p>
+                        <p><?php echo '<img class="image" src="medecin.png" width ="200" height="200"/></a>';?></p>
 
                         <!--<p><img src = "medecin.png" width = "200px" height = "200px"/></p>!-->
                     </div>
