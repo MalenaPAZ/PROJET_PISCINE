@@ -15,7 +15,12 @@ $adresse = isset($_POST["adresse"]) ? $_POST["adresse"] : "";
 $codepostal = isset($_POST["codepostal"]) ? $_POST["codepostal"] : "";
 $pays = isset($_POST["pays"]) ? $_POST["pays"] : "";
 $numcartevitale = isset($_POST["numcartevitale"]) ? $_POST["numcartevitale"] : "";
-$avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "";
+$avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "Patient.png";
+$typecarte = isset($_POST["Typecarte"]) ? $_POST["Typecarte"] : "";
+$numCarte = isset($_POST["numcarte"]) ? $_POST["numcarte"] : "";
+$nomcarte = isset($_POST["nomcarte"]) ? $_POST["nomcarte"] : "";
+$dateexp = isset($_POST["dateexp"]) ? $_POST["dateexp"] : "";
+$codecarte = isset($_POST["codecarte"]) ? $_POST["codecarte"] : "";
 
 
 
@@ -28,31 +33,6 @@ $db_found = mysqli_select_db($db_handle, $database);
 //*************************************
 
 
-/*// si bouton1 (Rechercher) est cliqué
-if (isset($_POST["button1"])){
-if ($db_found) {
-//commencer le query
-$sql = "SELECT * FROM medecin ";
-if (($login != "") && ($mdp != "")) {
-//on recherche le livre par son titre
-$sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$mdp%'";
-//on cherche ce livre par son auteur aussi
-/*if ($mdp != "") {
-$sql .= " AND Mdp LIKE '%$mdp%'";
-}
-}
-$result = mysqli_query($db_handle, $sql);
-//regarder s'il y a des resultats
-if (mysqli_num_rows($result) == 0) {
-echo "<p>Incorrect</p>";
-} else {
-echo "Num : " . mysqli_num_rows($result);
-echo "/// Compte trouvé";
-}
-} else {
-echo "<p>Database not found.</p>";
-}
-} //end Rechercher*/
 
 
 
@@ -73,19 +53,13 @@ if (isset($_POST["Creer"])) {
         } else {
 
             //on ajoute ce compte
-            $sql1 = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo)
-     VALUES('$nom','$prenom','$login','$motdepasse','$email','$telephone','$adresse','$numcartevitale','$specialiteP','$ville','$codepostal','$pays','$avatar')";
-            $result1 = mysqli_query($db_handle, $sql1);
-        }
-        //on cherche l'ADMIN
-        $sql = "SELECT * FROM patient ";
-        //avec son LOGIIN ET MDP
-        if (($login != "") && ($motdepasse != "")) {
-            $sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$motdepasse%'";
-        }
-        $result = mysqli_query($db_handle, $sql);
+            $sql = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo, TypeCarte, NumCarteB, NomCarte, DateExp, CodeSecu)
+     VALUES('".$nom."','".$prenom."','".$login."','".$motdepasse."','".$email."','".$telephone."','".$adresse."','".$numcartevitale."','".$specialiteP."','".$ville."','".$codepostal."','".$pays."','".$avatar."', '".$typecarte."', '".$numCarte."', '".$nomcarte."', '".$dateexp."', '".$codecarte."')";
+            $result = mysqli_query($db_handle, $sql);
+           
+        if ($result) {
 
-        ## Définitions des deux constantes
+            ## Définitions des deux constantes
         define('ADRESSE_WEBMASTER', 'pazmalena2001@yahoo.fr'); // Votre adresse qui apparaitra en tant qu'expéditeur des E-mails
         define('SUJET', 'Creation Compte Omnes sante'); // Sujet commun aux deux E-mail
 
@@ -117,43 +91,19 @@ if (isset($_POST["Creer"])) {
             //header("Location : CreerPatient.html");
     
         }
+            
+        } else {
+            echo "MERDE";
+        }
+        }
+        
+        
 
-        header("Location : Accueil_neutre.html");
+        //header("Location : Accueil_neutre.html");
     } else echo "database not found";
 } else echo "bouton not found";
 
-/*
 
-//si le bouton3 (Supprimer) est cliqué
-if (isset($_POST["button3"])) {
-    if ($db_found) {
-    //on cherche le livre
-    $sql = "SELECT * FROM admin";
-    //avec son titre et auteur
-    if (($login != "")&&($mdp != "")) {
-    $sql .= " WHERE Login LIKE '%$login%'AND Mdp LIKE '%$mdp%'";
-    }
-    $result = mysqli_query($db_handle, $sql);
-    //regarder s'il y a de resultat
-    if (mysqli_num_rows($result) == 0) {
-        //ce livre n'existe pas
-    echo "<p>Cannot delete. account not found.</p>";
-    } else {
-    //on supprime cet item
-    while ($data = mysqli_fetch_assoc($result)) {
-        $id = $data['ID'];
-        }
-    //on supprime cet item par son ID
-    $sql = "DELETE FROM admin WHERE ID = $id";
-    $result =mysqli_query($db_handle, $sql);
-    
-    if($result)
-        {
-            echo "delete Sucessful";
-        }
-        else {
-            echo "Unable to delete";
-            }    
-    //on affiche le reste des livres dans notre BDD
-    
-}}}*/
+
+
+echo "<td>" . $login .'//'.$motdepasse. '//'.$nom .'//'.$prenom .'//'.$specialiteP .'//'.$email.'//' .$telephone .'//'.$ville .'//'.$adresse .'//'.$codepostal.'//' .$pays .'//'.$numcartevitale.'//'. $avatar.'//'. $typecarte .'//'.$numCarte.'//'. $nomcarte.'//'. $dateexp .'//'.$codecarte ;

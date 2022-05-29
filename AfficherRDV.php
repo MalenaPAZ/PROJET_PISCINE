@@ -196,7 +196,17 @@ while ($data = mysqli_fetch_assoc($result)) {
 
 
      
-
+      $sql = "SELECT * FROM medecin WHERE ID LIKE '$idmed' ";
+      $result = mysqli_query($Connexion, $sql);
+      
+      while ($data = mysqli_fetch_assoc($result)) {
+      
+        $prenommed = $data['Prenom'];
+        $nommed = $data['Nom'];
+        $telmed = $data['Tel'];
+        $emailmed = $data['Email'];
+        $photomed = $data['Photo'];
+      }
 
       echo '<div class="Enseignants">';
       echo ' <div class="row">';
@@ -206,7 +216,7 @@ while ($data = mysqli_fetch_assoc($result)) {
       echo '</div>';
 
       echo '<div class="col-sm"> <!--Changer la mise en page utiliser tr td th-->';
-      echo '<h2 href=""> Dr.' . $nommed . '   ' . $prenommed . '</h2>';
+      echo '<h2 href=""> Dr.' . $idmed . '   ' . $prenommed . '</h2>';
       //echo '<h2 href=""> Dr.' . $nompatient . '   ' . $prenompatient . '</h2>';
       echo '<div class="row">';
       echo '<div class="col-sm">';
