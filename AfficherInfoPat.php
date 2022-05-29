@@ -128,14 +128,12 @@
         <div class="container">
 
             <div class="row mt-5">
-                <div class="col-md-12">
-                    <div class="info-box">
-                        <p><?php echo $photo;?></p>
-                    </div>
-                </div>
+                
                 <div class="col-md-12">
                     <div class="info-box">
                         <p><?php echo $prenom." ".$nom;?></p>
+                        <br>
+                        <p><img src = "patient.png" /></p>
                     </div>
                 </div>
                 <div class="col-md-6">
