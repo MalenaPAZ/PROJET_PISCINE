@@ -8,7 +8,7 @@
     //Verifier connexion
     if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
 
-    $sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
+    $sql = "SELECT * FROM admin WHERE Login LIKE '$login' AND
     Mdp LIKE '$mdp'";
     $result = mysqli_query($Connexion,$sql);
     while($data = mysqli_fetch_assoc($result)){
@@ -56,42 +56,75 @@
 
     
     <body>
-        <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center">
+      <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-        <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+      <a href="Accueil_neutre.html" class="logo me-auto"><img src="Omnes sante.png" alt="Omnes sante logo" height="280" width="130"></a>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
-        <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+        <li><a class="nav-link scrollto " href="accueilAdmin.php">Accueil</a></li>
+        <li class="dropdown"><a href="#"><span>Medecins</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-                <li class="dropdown"><a href="#"><span>Medecin</span><i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                    <li><a href="#"><span>Ajouter</span></a>
-                    <li class="dropdown"><a href="#"><span>Supprimer</span></i></a>
-                    </ul>
-                </li>
-                <li class="nav-link scrollto"><a href="#">Patient</a></li>
+              <li><a href="CreerMedecin.php"><span>Ajouter</span></a>
                 
-                <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
+              <li class="dropdown"><a href="#"><span>Parcourir</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                    <li><a href="#"><span>Ajouter</span></a>
-                    <li class="dropdown"><a href="#"><span>Supprimer</span></i></a>
+                <li><a href="AfficherMedADMIN.php?spe=Generaliste">Généraliste</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Addictologie">Addictologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Andrologie">Andrologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Cardiologie">Cardiologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Dermatologie">Dermatologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Gynecologie">Gynécologie</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=I.S.T.">I.S.T.</a></li>
+                  <li><a href="AfficherMedADMIN.php?spe=Osteopathie">Ostéopathie</a></li>
                 </ul>
-                <li class="nav-link scrollto"><a href="#">Services</a></li>
-
-                </li>
-                <li class="nav-link scrollto"><a href="#">Mon compte</a></li>
+                
             </ul>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+          </li>
 
-        <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"> </a>
+             <li class="dropdown"><a href="#"><span>Patient</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="CreerPatADMIN.php"><span>Ajouter</span></a>
+                  <li class="dropdown"><a href="AfficherPatADMIN.php"><span>Parcourir</span></i></a>
+                </ul>
+             </li>
+            
+            <li class="dropdown"><a href="#"><span>Rendez-vous</span><i class="bi bi-chevron-down"></i></a>
+               <ul>
+                 <li><a href="#"><span>Ajouter</span></a>
+                 <li class="dropdown"><a href="AfficherRdvADMIN.php"><span>Parcourir</span></i></a>
+               </ul>
+            </li>
 
-        </div>
-    </header><!-- End Header -->
+              <li class="nav-link scrollto"><a href="AfficherSerADMIN.php">Services</a></li>
+
+             <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                <li><a href="CreerAdmin1.php"><span>CreerAdmin</span></a>
+                  <li><a href="AfficherInfoAdmin"><span>Mes informations</span></a>
+                  <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
+                </ul>
+             </li>
+             <div class="col-sm">
+                <?php echo '    '.$nomAdmin. ' '. $prenomAdmin ?>
+                <?php echo "ID : " . $id ?>
+                        </div>
+
+          </ul>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+     
+
+    </div>
+  </header><!-- End Header -->
+
 
 
     <style type="text/css">

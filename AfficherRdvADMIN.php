@@ -7,9 +7,28 @@ $mdpadmin = $_SESSION["mdp"];
 
 
 
+
 $Connexion = mysqli_connect('localhost', 'root', '','omnes sante' );
 //Verifier connexion
 if(!$Connexion){die("Echec de la connexion : ". mysqli_connect_error());}
+
+
+
+
+
+$sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
+    Mdp LIKE '$mdpadmin'";
+    $result = mysqli_query($Connexion,$sql);
+    while($data = mysqli_fetch_assoc($result)){
+
+        $id = $data['ID'];
+        $nomAdmin = $data['NomAdmin'];
+        $prenomAdmin = $data['PrenomAdmin'];
+        $login = $data['Login'];
+        $motdepasse = $data['Mdp'];
+        $email = $data['EmailAdmin'];
+    }
+
 
 
 $sql = "SELECT * FROM rdv WHERE Etat_RDV LIKE '0' ";
@@ -17,8 +36,8 @@ $result = mysqli_query($Connexion,$sql);
 while($data = mysqli_fetch_assoc($result)){
 
     $Numrdv = $data['NumRDV'];
-    $date = $data['Date_RDV'];
-    $heure = $data['Heure_RDV'];
+    $date = $data['Date'];
+
     $idpatient = $data['IDPatient'];
     $idmed = $data['IDMedecin'];
     $salle = $data['Salle_RDV']; }
@@ -112,7 +131,7 @@ $result = mysqli_query($Connexion,$sql);
 
   <body>
 
-      <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
@@ -161,17 +180,22 @@ $result = mysqli_query($Connexion,$sql);
 
              <li class="dropdown"><a href="#"><span>Mon Compte</span><i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="#"><span>Mes informations</span></a>
+                <li><a href="CreerAdmin1.php"><span>CreerAdmin</span></a>
+                  <li><a href="AfficherInfoAdmin"><span>Mes informations</span></a>
                   <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
                 </ul>
              </li>
+             <div class="col-sm">
+                <?php echo '    '.$nomAdmin. ' '. $prenomAdmin ?>
+                <?php echo "ID : " . $id ?>
+                        </div>
 
           </ul>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"> </a>
+     
 
     </div>
   </header><!-- End Header -->
@@ -189,8 +213,8 @@ $result = mysqli_query($Connexion,$sql);
  while($data = mysqli_fetch_assoc($result)){
 
     $Numrdv = $data['NumRDV'];
-    $date = $data['Date_RDV'];
-    $heure = $data['Heure_RDV'];
+    $date = $data['Date'];
+  
 
     $idpatient = $data['IDPatient'];
     $idmed = $data['IDMedecin'];
@@ -235,7 +259,7 @@ $result = mysqli_query($Connexion,$sql);
 
                         echo'<div class="row">';
                             echo'<div class="col-sm">';
-                                echo'<p>Date : '.$date.' a '.$heure.' heure.</p>';
+                                echo'<p>Date : '.$date.'  heure.</p>';
                            echo'</div>';
                             
                         echo'</div>';
