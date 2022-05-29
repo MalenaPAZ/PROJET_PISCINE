@@ -68,16 +68,48 @@
           </ul>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-        <Div Class="Recherche_p">
-          <Form Class="Form-Inline My-2 My-Lg-0">
-            <Div Class="Recherche-Barr">
-              <Input Class="Recherche-Input" Type="Search" Placeholder="Recherche" Aria-Label="Search">
-              <A Href="#" Class="Recherche-Icone">
-                <I Class="Fas Fa-Search"></I>
-              </A>
-            </Div>
-          </Form>
-        </Div>
+        <div class="search">
+          <input class="srch" type="search" id="search" value="" placeholder="Rechercher" onchange="ouvrirPage()">
+          <button class="btn" id="button" type="button" onclick="ouvrirPage()">Search</button>
+      </div>
+      <script>
+      function ouvrirPage() {
+      var a = document.getElementById("search").value;
+
+      if (a === "medecin generaliste" | a =="médecin généraliste" | a =="médecine générale" | a =="medecine generale") {
+          window.open("medecin generaliste.html");
+      }
+      if (a === "rendez vous" | a=="rendez-vous" | a=="rdv") {
+          window.open("rendezvous.php");
+      }
+      if (a === "mon compte" | a=="compte") {
+          window.open("compte.html");
+      }
+      if (a === "nos activites" | a=="nos activités" | a=="activités"  | a=="activites") {
+          window.open("activiteSportives.html");
+      }
+      if (a === "salle de sport" | a=="salles de sport" | a=="salle sport"  | a=="salles de sport" | a=="salles" | a=="salle" ) {
+          window.open("SalledeSport.html");
+      }
+
+      if (a === "nos services" | a=="services" | a=="service"  | a=="services salle de sport" | a=="services salles de sport"
+          | a=="horaires" | a=="horraires" | a=="horaires salles de sport" | a=="horaires salle de sport " | a=="sale de sport "
+          | a=="personnel salle de sport " | a=="le personnel " | a=="personnel " | a==" le personnel de la salle de sport"
+          | a==" les machines" | a=="règles d'utilisation des machines" | a=="règles machines" | a=="regles d'utilisation des machines"
+          | a=="alimentation" | a=="alimentation et nutrition" | a=="alimentation nutritions" | a=="nutrition"
+          | a=="visite salle de sport" | a=="horraires visite salle de sport" | a=="horraire visite salle de sport"| a=="horaire visite salle de sport" | a=="disponibilité visite") {
+          window.open("NosServices.php");
+      }
+if (a === "sport de competition" | a=="sports de competition" | a=="compet"  | a=="competition" | a=="sport de compet" | a=="sports de compet"
+          | a=="basket" | a=="foot" | a=="football" | a=="tennis" | a=="rugby" | a=="natation" | a=="plongeon") {
+          window.open("sportCompet.html");
+      }
+
+
+
+   }
+
+</script>
       </nav><!-- .navbar -->
 
     </div>
