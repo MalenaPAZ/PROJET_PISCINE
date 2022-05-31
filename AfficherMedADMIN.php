@@ -32,6 +32,9 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
 
 
 
+
+
+
 <!doctype html>
 
 <html lang="en">

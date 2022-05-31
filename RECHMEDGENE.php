@@ -1,10 +1,3 @@
-<?php
-
-
-
-
-
-?>
 
 
 
@@ -78,47 +71,46 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="accueilPat.php">Accueil</a></li>
-          <li class="dropdown"><a href="#"><span>Tout parcourir</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="MedecinGeneraliste.php"><span>Médecine générale</span></a>
-                
-              <li class="dropdown"><a href="#"><span>Médecins spécialistes</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="MedecinSpecialiste.php?spe=Addictologie">Addictologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Andrologie">Andrologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Cardiologie">Cardiologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Dermatologie">Dermatologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gastro-Hépato-Enterologie">Gastro-Hépato-Entérologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Gynecologie">Gynécologie</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=I.S.T.">I.S.T.</a></li>
-                  <li><a href="MedecinSpecialiste.php?spe=Osteopathie">Ostéopathie</a></li>
-                </ul>
-                <li class="dropdown"><a href="#"><span>Laboratoire de biologie médicale</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Informations</a></li>
-                  <li><a href="ServicesP.php?service=Depistage covid-19">Dépistage covid-19</a></li>
-                  <li><a href="ServicesP.php?service=Biologie preventive">Biologie préventive</a></li>
-                  <li><a href="ServicesP.php?service=Biologie de la femme enceinte">Biologie de la femme enceinte</a></li>
-                  <li><a href="ServicesP.php?service=Biologie de routine">Biologie de routine</a></li>
-                  <li><a href="ServicesP.php?service=Cancerologie">Cancérologie</a></li>
-                  <li><a href="ServicesP.php?service=Gynecologie">Gynécologie</a></li>
-                </ul>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#services">Recherche</a></li>
-          <li><a class="nav-link scrollto" href="AfficherRDV.php">Rendez-vous</a></li>
-          <li class="dropdown"><a href="chat.php"><span>Votre compte</span><i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="AfficherInfoPat.php"><span>Mon compte</span></a>
-                <li class="dropdown"><a href="Accueil_neutre.html"><span>Deconnexion</span></i></a>
-              </ul>
-            </li>
-            
-            
+        <div class="search">
+          <input class="srch" type="search" id="search" value="" placeholder="Rechercher" onchange="ouvrirPage()">
+          <button class="btn" id="button" type="button" onclick="ouvrirPage()">Search</button>
+      </div>
+                <li class="dropdown"><a href="Connexion.php"><span>Se connecter</span></i></a>
                         
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <script>
+        $database = "omnes sante";
+        $db_handle = mysqli_connect('localhost','root','');
+        $db_found = mysqli_select_db($db_handle, $database);
+
+      function ouvrirPage() {
+      var a = document.getElementById("search").value;
+
+      if (a === "medecin generaliste" | a =="généraliste" | a =="médecine générale" | a =="medecine generale") {
+          window.open("MEDGENERECH.php");
+      }
+      if (a === "medecin specialiste" | a =="spécialiste" | a =="specialistes" | a =="medecin spécialiste") {
+          window.open("MedecinSpecialiste.php");
+      }
+      if (a === "labo" | a =="laboratoire" | a =="laboratoire de biologie" | a =="laboratoire de biologie médicale  ") {
+          window.open("AfficherSerADMIN.php");
+      }
+      
+      if (a === "gynécologie" | a=="addictologie" | a=="andrologie"  | a=="cardiologie" | a=="dermatologie"
+          | a=="gastro" | a=="gastro-hépato" | a=="gastro-hépato-entérologie" | a=="ist" | a=="IST "
+          | a=="I.S.T" | a=="I.S.T. " | a=="ostéopathie") {
+          window.open("MedecinSpecialiste.php");
+      }
+      if (a === "informations" | a=="depistage covid-19" | a=="covid 19"  | a=="depistage" | a=="bilogie preventive" | a=="biologie de la femme enceinte"
+          | a=="biologie de routine" | a=="cancérologie" | a=="cancerologie" | a=="gynecologie") {
+          window.open("AfficherSerADMIN.php");
+      }
+
+
+
+      }
+
+      </script>
       </nav><!-- .navbar -->
 
       
@@ -191,7 +183,7 @@
 
 
       echo '<div class="btn-group" role="group" aria-label="Basic example">';
-      echo '<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom=' . $data['Nom'] . '& prenom=' . $data['Prenom'] . '">Disponibilité</a>';
+      echo '<a role="button" class="btn btn-secondary" href="RECHMEDEDT.php?nom=' . $data['Nom'] . '& prenom=' . $data['Prenom'] . '">Disponibilité</a>';
       echo '<a role="button" class="btn btn-secondary" href="testxmlphp.php">CV</a>';
       echo '<a role="button" class="btn btn-secondary" href="chat.php">Contacter</a>';
       echo '</div>';
