@@ -32,6 +32,9 @@ $sql = "SELECT * FROM admin WHERE Login LIKE '$loginadmin' AND
 
 
 
+
+
+
 <!doctype html>
 
 <html lang="en">
@@ -175,6 +178,8 @@ $result = mysqli_query($Connexion,$sql);
  while($data = mysqli_fetch_assoc($result)){
 
     $prenom = $data['Prenom'];
+    $loginmed = $data['Login'];
+    $mdpmed = $data['Mdp'];
     $nom = $data['Nom'];
     $idmed = $data['ID'];
     $tel = $data['Tel'];
@@ -231,7 +236,7 @@ $result = mysqli_query($Connexion,$sql);
                         echo'<div class="btn-group" role="group" aria-label="Basic example">';
                         echo'<a role="button" class="btn btn-secondary" href="AfficheMed.php?nom='.$data['Nom'].'& prenom='.$data['Prenom'].'">Disponibilité</a>';
                         echo'<a role="button" class="btn btn-secondary" href="testxmlphp.php">CV</a>';
-                        echo'<a role="button" class="btn btn-secondary" href="">Contacter</a>';
+                        echo'<a role="button" class="btn btn-secondary" href="Contacter? idrec='.$idmed.'&amp;loginrec='.$loginmed.'&amp;mdprec='.$mdpmed.'">Contacter</a>';
                         echo'<a role="button" class="btn btn-secondary" href="SuppMed.php? nom='.$nom.'& prenom='.$prenom. '& idmed='.$idmed.'">Supprimer</a>';
                         echo'</div>';
                         

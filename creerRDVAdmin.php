@@ -28,7 +28,7 @@ if (isset($_POST["Creer"]))   {
     //regarder s'il y a de resultat
     if (mysqli_num_rows($result) != 0) {
     echo "<p>Cannot add to the database.</p>";
-    header("Location : CreerRDVMedecin.php");
+    header("Location : CreerRDV.php");
     } else {
     $sql = "INSERT INTO rdv( NumRDV, IDPatient, IDMedecin, Motif_RDV, Salle_RDV, Etat_RDV, Type_RDV, prix, Date) 
      VALUES('$NumRDV','$IDPatient','$IDMedecin','$Motif_RDV','$Salle_RDV','$Etat_RDV','$Type_RDV','$prix','$Date')";
@@ -38,12 +38,12 @@ if (isset($_POST["Creer"]))   {
         if($result)
         {
             echo "Insert Sucessful";
-            header("Location : Accueil_médecin.php");
+            header("Location : Accueil_admin.php");
         }
         else {
             
             echo "Unable to insert";
-            header("Location : Accueil_médecin.php");
+            header("Location : Accueil_admin.php");
             }  
     
 }}else echo "WTF";}
