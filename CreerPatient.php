@@ -61,25 +61,13 @@ if (isset($_POST["Creer"])) {
             
 
             //on ajoute ce compte
-<<<<<<< HEAD
-            $sql1 = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo, Typecarte, Numcarte, Nomcarte, Dateexp, Codesecu)
-     VALUES('$nom','$prenom','$login','$motdepasse','$email','$telephone','$adresse','$numcartevitale','$specialiteP','$ville','$codepostal','$pays','$avatar','$typecarte','$numcarte','$nomcarte','$dateexp','$codesecu')";
-            $result1 = mysqli_query($db_handle, $sql1);
-        }
-        //on cherche l'ADMIN
-        $sql = "SELECT * FROM patient ";
-        //avec son LOGIIN ET MDP
-        if (($login != "") && ($motdepasse != "")) {
-            $sql .= " WHERE Login LIKE '%$login%' AND Mdp LIKE '%$motdepasse%'";
-        }
-        $result = mysqli_query($db_handle, $sql);
-=======
+
+
             $sql = "INSERT INTO patient (NomPatient, PrenomPatient, Login, Mdp, EmailPatient, NumPatient, AdressePatient,NumCarteVitale,SpecialitePref, Ville, CodePostal, Pays, Photo, TypeCarte, NumCarteB, NomCarte, DateExp, CodeSecu)
-     VALUES('".$nom."','".$prenom."','".$login."','".$motdepasse."','".$email."','".$telephone."','".$adresse."','".$numcartevitale."','".$specialiteP."','".$ville."','".$codepostal."','".$pays."','".$avatar."', '".$typecarte."', '".$numCarte."', '".$nomcarte."', '".$dateexp."', '".$codecarte."')";
+     VALUES('".$nom."','".$prenom."','".$login."','".$motdepasse."','".$email."','".$telephone."','".$adresse."','".$numcartevitale."','".$specialiteP."','".$ville."','".$codepostal."','".$pays."','".$avatar."', '".$typecarte."', '".$numcarte."', '".$nomcarte."', '".$dateexp."', '".$codesecu."')";
             $result = mysqli_query($db_handle, $sql);
-            
         if ($result) {
->>>>>>> dd07caf2a862fad226634c30208447e8fc6a507f
+
 
             ## Définitions des deux constantes
         define('ADRESSE_WEBMASTER', 'pazmalena2001@yahoo.fr'); // Votre adresse qui apparaitra en tant qu'expéditeur des E-mails
@@ -116,8 +104,9 @@ if (isset($_POST["Creer"])) {
         }
         header('Location: Accueil_neutre.html');
         exit();
-        } header('Location: CreerPatient.html');
-        exit();
+        }  echo'<script type="text/javascript">
+        alert("Impossible de creer le compte")';
+        echo '</script>';
         }
         
         
