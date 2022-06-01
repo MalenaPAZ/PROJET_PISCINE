@@ -186,8 +186,12 @@ while($data = mysqli_fetch_assoc($result)){
                             echo'<div class="col-sm">';
                                echo'<p>Salle : '.$salle.'</p>';
                             echo'</div>';
-                           
                         echo'</div>';
+                        echo'<div class="row">';
+                        echo'<div class="col-sm">';
+                               echo"Adresse : 350 Quai Grennelle, Batiment A";
+                            echo'</div>';
+                            echo '</div>';
                        echo'<div class="row">';
                             echo'<div class="col-sm">';
                                 echo'<p>Infos : '. $infos.'</p>';
