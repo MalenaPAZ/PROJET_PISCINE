@@ -1,12 +1,15 @@
 <?php
 session_start();
-
-
-
 $login = $_SESSION["login"];
 $mdp = $_SESSION["mdp"];
 $idpat = $_SESSION["idpat"];
 $idmed = $_SESSION["idmed"];
+
+//identifier BDD
+$database = "omnes sante";
+//connectez-vous dans BDD
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
 
 $sql = "SELECT * FROM patient WHERE Login LIKE '$login' AND
  Mdp LIKE '$mdp'";
@@ -25,13 +28,13 @@ if (mysqli_num_rows($result) == 0)
 
         } else { 
             
-            header("Location: accueilAdmin.php");}//si admin
+            }//si admin
     }else { 
         
-        header("Location: accueilMed.php");}//si medecin
+        }//si medecin
 }else { 
     
-    header("Location: accueilPat.php");}//si patient
+   }//si patient
 
 
  if (isset($_GET['logout'])){
@@ -90,7 +93,7 @@ if (mysqli_num_rows($result) == 0)
  </div>
  <div id="chatbox">
  <?php
- if(file_exists("/log".$id1.".".$id2.".html") && filesize("/log".$id1.".".$id2.".html") > 0){
+ if(file_exists("/log.html") && filesize("/log.html") > 0){
  $contents = file_get_contents("/log".$id1.".".$id2.".html");
  echo $contents;
  }
